@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="Object" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.popularize.CaseSearchPromotionActivity">
+
+        <RelativeLayout
+            android:id="@+id/rl_top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/iv_finish"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/page_padding"
+                android:paddingRight="@dimen/page_padding"
+                android:src="@drawable/fanhui_hui" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="案例站内搜索推广"
+                android:textColor="#FF333333"
+                android:textSize="17sp" />
+
+            <RelativeLayout
+                android:id="@+id/rl_add"
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp50"
+                android:layout_alignParentRight="true"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp25"
+                android:paddingTop="18dp"
+                android:paddingRight="@dimen/dp15"
+                android:paddingBottom="@dimen/dp12">
+
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/cricle_red_border"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textColor="#FF526A"
+                    android:textSize="@dimen/sp16" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <android.support.design.widget.CustomTabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp46"
+            android:background="@android:color/white"
+            android:paddingBottom="@dimen/dp3"
+            android:visibility="gone"
+            app:tabIndicator="@color/colorPrimary"
+            app:tabIndicatorHeight="@dimen/dp2"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabTextColor="@color/color_3" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_f5" />
+    </LinearLayout>
+</layout>

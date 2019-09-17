@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.chengzi.app.ui.find.viewmodel.CreditEnqiryViewModel" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.find.activity.CreditEnquiryActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="信用查询" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <com.chengzi.app.widget.CommentEditText
+                android:id="@+id/editText"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp30"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/dp15"
+                android:layout_weight="1"
+                android:background="@drawable/main_stroke_bg"
+                android:drawableLeft="@drawable/home_sousuo"
+                android:hint="请输入用户昵称或ID"
+                android:imeOptions="actionSearch"
+                android:inputType="textAutoComplete"
+                android:maxLength="30"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
+                android:singleLine="true"
+                android:text="@={viewModel.searchContent}"
+                android:textColor="@color/color_3"
+                android:textColorHint="#FF999999"
+                android:textSize="13sp"
+                app:hand_disableEmoji="false" />
+
+            <TextView
+                android:id="@+id/btn_search"
+                android:layout_width="60dp"
+                android:layout_height="@dimen/dp30"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp15"
+                android:background="@drawable/rect_btn_gray_background"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,null)}"
+                android:text="@string/search"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <include
+            android:id="@+id/empty_view"
+            layout="@layout/empty_layout"
+            android:visibility="gone" />
+    </LinearLayout>
+</layout>

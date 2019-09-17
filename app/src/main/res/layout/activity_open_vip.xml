@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.OpenVipBean" />
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--普通用户开通VIP-->
+        <LinearLayout
+            android:id="@+id/ll_vip_mine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:context=".ui.mine.activity.vip.OpenVipActivity">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/vip_beijing">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="208dp"
+                    android:layout_marginTop="@dimen/dp20"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_top_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center">
+
+                        <ImageView
+                            android:id="@+id/iv_finish"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:onClick="@{v-> listener.onClick(v)}"
+                            android:paddingLeft="@dimen/page_padding"
+                            android:paddingRight="@dimen/page_padding"
+                            android:src="@drawable/fanhui_hui" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginRight="50dp"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="开通VIP"
+                            android:textColor="#FF333333"
+                            android:textSize="17sp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingTop="@dimen/dp20"
+                        android:text="会员套餐"
+                        android:textColor="#FF333333"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toBottomOf="@id/rl_top_bar" />
+                </android.support.constraint.ConstraintLayout>
+
+            </RelativeLayout>
+            <!--只有普通用户显示  ->转增 我的优惠券 邀请好友-->
+            <android.support.v7.widget.CardView
+                android:id="@+id/cd_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp185"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dp15"
+                android:layout_marginTop="-75dp"
+                android:layout_marginRight="@dimen/dp15"
+                android:layout_marginBottom="31dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="@dimen/dp4"
+                app:cardElevation="@dimen/dp6">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_tab_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="@dimen/dp15" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp0.5"
+                android:background="#F4F3F8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp55"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:text="实付金额"
+                    android:textColor="#FF333333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_money"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|right"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="68元"
+                    android:textColor="#FF333333"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp0.5"
+                android:background="#F4F3F8" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp0"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tv_open"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:layout_marginLeft="38dp"
+                android:layout_marginRight="38dp"
+                android:layout_marginBottom="@dimen/dp15"
+                android:background="@drawable/rect_btn_red_background"
+                android:gravity="center"
+                android:onClick="@{listener::onClick}"
+                android:text="确认开通"
+                android:textColor="#FFFFFFFF"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <!--其他(医生/咨询师/医院)开通VIP-->
+        <LinearLayout
+            android:id="@+id/ll_vip_other"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_finish1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/page_padding"
+                    android:paddingRight="@dimen/page_padding"
+                    android:src="@drawable/fanhui_hui" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="开通VIP"
+                    android:textColor="#FF333333"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp0.5"
+                android:background="#F4F3F8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp55"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:text="价格"
+                    android:textColor="#FF333333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_money1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|right"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@{bean.price+@string/yuan_year}"
+                    android:textColor="#FF333333"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp0.5"
+                android:background="#F4F3F8" />
+
+            <TextView
+                android:id="@+id/tv_open1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:layout_marginLeft="38dp"
+                android:layout_marginTop="@dimen/dp40"
+                android:layout_marginRight="38dp"
+                android:layout_marginBottom="@dimen/dp15"
+                android:background="@drawable/rect_btn_red_background"
+                android:gravity="center"
+                android:onClick="@{listener::onClick}"
+                android:text="确认开通"
+                android:textColor="#FFFFFFFF"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

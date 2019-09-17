@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--<com.yimei.app.widget.SquareTextView-->
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:background="@drawable/rect_gray1_border"
+            android:gravity="center"
+            android:textColor="#FF3D3D3D"
+            android:textSize="15sp"
+            tools:text="aaaaaaaa" />
+
+        <TextView
+            android:id="@+id/view_top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:background="@drawable/rect_gray1_border"
+            android:gravity="center"
+            android:textColor="#FFFFFFFF"
+            android:textSize="12sp"
+            android:visibility="gone"
+            tools:text="可预约" />
+
+        <TextView
+            android:id="@+id/view_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:background="@drawable/rect_gray1_border"
+            android:gravity="center"
+            android:textColor="#FFFFFFFF"
+            android:textSize="12sp"
+            android:visibility="gone" />
+    </LinearLayout>
+</layout>

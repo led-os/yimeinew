@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable name="bankName"
+            type="String"/>
+    </data>
+
+    <TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp15"
+        android:text="@{bankName}"
+        android:textColor="@color/color_3"
+        android:padding="@dimen/dp15"
+        android:foreground="?selectableItemBackground"
+        android:background="@drawable/bottom_line_bg"
+        >
+
+    </TextView>
+
+</layout>

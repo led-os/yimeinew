@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp10"
+            android:paddingRight="@dimen/dp15"
+            android:paddingBottom="@dimen/dp10">
+
+            <View
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp2"
+                android:layout_marginBottom="@dimen/dp2"
+                android:background="#FFFF526A" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp4"
+                android:text="其他商品"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <android.support.design.widget.CustomTabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp43"
+            android:paddingBottom="@dimen/dp3"
+            android:background="@drawable/tab_gray_round_bg"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"
+            android:layout_marginBottom="@dimen/dp10"
+            app:tabRippleColor="@android:color/transparent"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabTextColor="@color/color_3"
+            app:tabTextAppearance="@style/tab_textsize_14"
+            app:tabIndicatorHeight="@dimen/dp2"
+            app:tabIndicator="@color/colorPrimary"
+            app:tabMode="scrollable"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_other_goods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp8"
+            android:layout_marginRight="@dimen/dp8"
+            android:nestedScrollingEnabled="false"
+            app:layoutManager="android.support.v7.widget.GridLayoutManager"
+            app:spanCount="2"
+            app:reverseLayout="false"
+            />
+
+
+    </LinearLayout>
+
+</layout>

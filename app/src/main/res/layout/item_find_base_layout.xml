@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isVip"
+            type="Boolean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp13"
+        android:background="@drawable/shadow_gray_bg"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp15">
+
+        <TextView
+            android:id="@+id/textView_classify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp4"
+            android:background="@{isVip?@drawable/left_gold_gray_square_bg:@drawable/left_red_gray_square_bg}"
+            android:paddingLeft="@dimen/dp6"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:nestedScrollingEnabled="false"
+            android:paddingLeft="@dimen/dp10"
+            app:layoutManager="android.support.v7.widget.GridLayoutManager"
+            app:reverseLayout="false"
+            app:spanCount="3" />
+
+    </LinearLayout>
+
+</layout>

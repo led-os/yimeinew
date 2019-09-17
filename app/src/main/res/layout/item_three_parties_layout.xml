@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.find.bean.ArticleManageBean" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp95"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingTop="@dimen/dp15"
+        android:paddingRight="@dimen/dp15">
+
+        <com.chengzi.app.widget.RoundImageView
+            android:id="@+id/iv_head"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:background="@color/colorGray"
+            android:scaleType="centerCrop"
+            app:image="@{url}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="77dp"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp14">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingTop="@dimen/dp3"
+                android:text="@{bean.title}"
+                android:textColor="#FF333333"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dp2"
+                android:singleLine="true"
+                android:text="@{bean.create_times}"
+                android:textColor="#FF999999"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

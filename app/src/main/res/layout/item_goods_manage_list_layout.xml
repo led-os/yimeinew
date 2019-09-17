@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.GoodsListManageBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+
+        <variable
+            name="url"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp10" />
+
+        <LinearLayout
+            android:id="@+id/ll_goods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp10">
+
+            <com.chengzi.app.widget.AspectRatioFrameLayout
+                android:layout_width="@dimen/dp128"
+                android:layout_height="wrap_content"
+                app:resize_mode="fixed_width"
+                app:aspectRatio="@{1.7534f}"
+                >
+
+                <com.chengzi.app.widget.RoundImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@color/colorGray"
+                    app:image="@{url}" />
+
+                <ImageView
+                    android:id="@+id/iv_is_vip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_margin="@dimen/dp5"
+                    android:src="@drawable/vip" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginRight="@dimen/dp6"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:text="@{bean.grade}"
+                    android:textColor="#FF666666"
+                    android:textSize="11sp" />
+
+            </com.chengzi.app.widget.AspectRatioFrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp5"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:minLines="2"
+                    android:text="@{bean.name}"
+                    android:textColor="#FF333333"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="@dimen/dp10"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rmb_symbol"
+                        android:textColor="#FFFF526A"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{bean.buy_price}"
+                        android:textColor="#FFFF526A"
+                        android:textSize="16sp" />
+
+                    <!--200人付款-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:text="@{bean.sales_volume+@string/people_buy}"
+                        android:textColor="#FF999999"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View style="@style/lineStyle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:background="@color/white"
+            android:gravity="center|right"
+            android:paddingRight="@dimen/dp5">
+
+            <TextView
+                android:id="@+id/tv_set_special_goods"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginRight="@dimen/dp10"
+                android:background="@drawable/rect_btn_red_background"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
+                android:text="设为特色商品"
+                android:textColor="#FFFFFFFF"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_cancel_special_goods"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginRight="@dimen/dp10"
+                android:background="@drawable/rect_gray4_border"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
+                android:text="取消特色商品"
+                android:textColor="#FF666666"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_up_shelves"
+                android:layout_width="@dimen/dp78"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginRight="@dimen/dp10"
+                android:background="@drawable/rect_gray4_border"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:text="上架"
+                android:textColor="#FF666666"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_down_shelves"
+                android:layout_width="@dimen/dp78"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginRight="@dimen/dp10"
+                android:background="@drawable/rect_gray4_border"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:text="下架"
+                android:textColor="#FF666666"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

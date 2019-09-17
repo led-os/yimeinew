@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.home.bean.HospitalBean"/>
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler"/>
+
+        <import type="android.view.View"/>
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/dp10"
+        android:layout_marginBottom="@dimen/dp10"
+        android:foreground="?selectableItemBackground"
+        android:onClick="@{v -> listener.handleClick(v,bean)}"
+        >
+
+        <com.chengzi.app.widget.RatioImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hand_ratio_height="75"
+            app:hand_ratio_width="105"
+            android:scaleType="centerCrop"
+            app:image="@{bean.image}"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/vip"
+            android:layout_gravity="right"
+            android:layout_margin="@dimen/dp4"
+            android:visibility="@{bean.is_Vip == 1?View.VISIBLE:View.GONE}"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/guanggao"
+            android:layout_margin="@dimen/dp4"
+            android:layout_gravity="bottom"
+            android:visibility="@{bean.is_extension == 1?View.VISIBLE:View.GONE}"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{bean.grade}"
+            android:textColor="#FF666666"
+            android:textSize="10sp"
+            android:layout_margin="@dimen/dp4"
+            android:layout_gravity="bottom|right"
+            />
+
+    </FrameLayout>
+</layout>

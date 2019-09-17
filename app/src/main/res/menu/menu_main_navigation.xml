@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/item_home"
+        android:icon="@drawable/main_tab_shouye_selector"
+        android:title="首页"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/item_message"
+        android:icon="@drawable/main_tab_message_selector"
+        android:title="消息"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/item_vip"
+        android:icon="@drawable/main_tab_vip_selector"
+        android:title="vip"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/item_find"
+        android:icon="@drawable/main_tab_find_selector"
+        android:title="发现"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/item_wode"
+        android:icon="@drawable/main_tab_wode_selector"
+        android:title="我的"
+        app:showAsAction="always" />
+
+</menu>

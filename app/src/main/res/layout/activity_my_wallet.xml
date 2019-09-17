@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.mywallet.MyWalletActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="钱包" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginBottom="@dimen/dp10"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingTop="@dimen/dp35"
+                android:text="补给金余额(元)"
+                android:textColor="#FF333333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_account_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingTop="58dp"
+                android:text="0.00"
+                android:textColor="#FF333333"
+                android:textSize="40sp" />
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:divider="@drawable/divider_bg"
+            android:orientation="vertical"
+            android:showDividers="middle|end">
+
+            <RelativeLayout
+                android:id="@+id/rl_weixin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp45">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/zhifu_weixin"
+                    android:drawablePadding="@dimen/dp6"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:text="微信"
+                    android:textColor="#FF333333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_weixin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp"
+                    tools:text="去绑定" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_zhifubao"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp45">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/zhifu_zhifubao"
+                    android:drawablePadding="@dimen/dp6"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@string/alipay"
+                    android:textColor="#FF333333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_zhifubao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:textColor="#FF999999"
+                    android:textSize="14sp"
+                    tools:text="解除绑定" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_hospital"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp45">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/qianbao_duigongzhanghu"
+                    android:drawablePadding="@dimen/dp6"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:text="绑定对公账户"
+                    android:textColor="#FF333333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_hospital"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp"
+                    tools:text="去绑定" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_bankcard"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp45"
+                android:onClick="@{v-> listener.onClick(v)}"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/qianbao_duigongzhanghu"
+                    android:drawablePadding="@dimen/dp6"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:text="绑定银行卡"
+                    android:textColor="#FF333333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_bankcard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp"
+                    tools:text="去绑定" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp10" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:divider="@drawable/divider_bg"
+            android:orientation="vertical"
+            android:showDividers="middle|end">
+
+            <TextView
+                android:id="@+id/tv_account_details"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp44"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/qianbao_zhanghumingxi"
+                android:drawableRight="@drawable/jiantou_hui"
+                android:drawablePadding="@dimen/dp6"
+                android:foreground="?selectableItemBackground"
+                android:gravity="center_vertical"
+                android:onClick="@{v-> listener.onClick(v)}"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
+                android:text="账户明细"
+                android:textColor="#FF333333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_withdrawal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp44"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/qianbao_tixian"
+                android:drawableRight="@drawable/jiantou_hui"
+                android:drawablePadding="@dimen/dp6"
+                android:foreground="?selectableItemBackground"
+                android:gravity="center_vertical"
+                android:onClick="@{v-> listener.onClick(v)}"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
+                android:text="提现"
+                android:textColor="#FF333333"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_average_user_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp10"
+            android:text="每个月月底最后一天将自动提现到你对账户"
+            android:textColor="#FF666666"
+            android:textSize="14sp"
+            android:visibility="gone" />
+    </LinearLayout>
+</layout>

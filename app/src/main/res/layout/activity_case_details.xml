@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.chengzi.app.ui.mine.viewmodel.CaseSearchPromotionViewModel" />
+
+        <variable
+            name="bean"
+            type="Object" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:id="@+id/rl_top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/dp0.5"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/iv_finish"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/page_padding"
+                android:paddingRight="@dimen/page_padding"
+                android:src="@drawable/fanhui_hui" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="案例详情"
+                android:textColor="#FF333333"
+                android:textSize="17sp" />
+
+            <RelativeLayout
+                android:id="@+id/rl_add"
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp50"
+                android:layout_alignParentRight="true"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp25"
+                android:paddingTop="18dp"
+                android:paddingRight="@dimen/dp15"
+                android:paddingBottom="@dimen/dp12">
+
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/cricle_red_border"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textColor="#FF526A"
+                    android:textSize="@dimen/sp16" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp20">
+
+                    <com.chengzi.app.widget.CircleImageView
+                        android:id="@+id/iv_head"
+                        android:layout_width="@dimen/dp50"
+                        android:layout_height="@dimen/dp50" />
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="@dimen/dp0"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/dp10"
+                        android:text=" "
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:id="@+id/tv1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/red_line_bg"
+                        android:drawablePadding="@dimen/dp3"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingTop="@dimen/dp10"
+                        android:text="@string/case_type"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_cases_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/dp20"
+                        android:paddingTop="@dimen/dp10"
+                        android:paddingBottom="@dimen/dp15"
+                        android:text="双眼皮整形"
+                        android:textColor="#FF333333"
+                        android:textSize="14sp"
+                        app:layout_constraintTop_toBottomOf="@id/tv1" />
+
+                    <TextView
+                        android:id="@+id/tv_praise"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/thumbup_selector"
+                        android:drawablePadding="@dimen/dp5"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        android:paddingLeft="@dimen/dp10"
+                        android:paddingTop="@dimen/dp10"
+                        android:paddingRight="@dimen/dp15"
+                        android:paddingBottom="@dimen/dp15"
+                        android:text="0"
+                        android:textColor="#FF999999"
+                        android:textSize="14sp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv1" />
+                </android.support.constraint.ConstraintLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/red_line_bg"
+                    android:drawablePadding="@dimen/dp3"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingTop="@dimen/dp10"
+                    android:text="@string/Become_beautiful_process"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white" />
+
+                <TextView
+                    android:id="@+id/tv_commect_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/red_line_bg"
+                    android:drawablePadding="@dimen/dp3"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingTop="@dimen/dp10"
+                    android:text="评论(0)"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:paddingBottom="@dimen/dp10"
+                    app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F1F1F1"
+            android:padding="@dimen/dp10">
+
+            <EditText
+                android:id="@+id/et_comment_content"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginLeft="@dimen/dp5"
+                android:layout_marginRight="@dimen/dp5"
+                android:background="@drawable/rect_white_4_radius"
+                android:hint="输入评论内容"
+                android:imeOptions="actionSend"
+                android:paddingLeft="@dimen/dp10"
+                android:textColor="@color/color_6"
+                android:textColorHint="#FF999999"
+                android:textSize="13sp" />
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

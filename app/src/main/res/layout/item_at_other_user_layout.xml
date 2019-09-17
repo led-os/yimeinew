@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.FollowBean" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_line_bg"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingTop="@dimen/dp10"
+        android:paddingRight="@dimen/dp15"
+        android:paddingBottom="@dimen/dp10">
+
+        <RelativeLayout
+            android:layout_width="@dimen/dp45"
+            android:layout_height="50dp">
+
+            <com.chengzi.app.widget.CircleImageView
+                android:layout_width="@dimen/dp45"
+                android:layout_height="@dimen/dp45"
+                android:layout_marginTop="@dimen/dp2"
+                android:scaleType="centerCrop"
+                android:src="@drawable/morentouxiang"
+                app:avatar="@{true}"
+                app:image="@{url}" />
+
+            <ImageView
+                android:id="@+id/iv_vip"
+                android:layout_width="20dp"
+                android:layout_height="10dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/dp13"
+                android:src="@drawable/vip"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp10"
+            android:ellipsize="end"
+            android:maxLength="20"
+            android:text="@{bean.name}"
+            android:textColor="#FF333333"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp20"
+            android:ellipsize="end"
+            android:maxLength="30"
+            android:text="@{bean.level_name}"
+            android:textColor="#FFFF526A"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+</layout>

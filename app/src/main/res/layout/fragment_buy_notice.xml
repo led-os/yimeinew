@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/dp15"
+        >
+
+        <TextView
+            android:id="@+id/tv_validity_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/validity"
+            android:textColor="#FF333333"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tv_validity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/validity_content"
+            android:textColor="#FF333333"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toRightOf="@+id/tv_validity_hint"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="@dimen/dp10"
+            />
+
+        <TextView
+            android:id="@+id/tv_reserve_info_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reserve_information"
+            android:textColor="#FF333333"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_validity"
+            android:layout_marginTop="@dimen/dp10"
+            />
+
+        <TextView
+            android:id="@+id/tv_reserve_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/reserve_information_content"
+            android:textColor="#FF333333"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toRightOf="@+id/tv_reserve_info_hint"
+            app:layout_constraintTop_toTopOf="@+id/tv_reserve_info_hint"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tv_use_flow_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/use_flow"
+            android:textColor="#FF333333"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_reserve_info"
+            android:layout_marginTop="@dimen/dp10"
+            />
+
+        <TextView
+            android:id="@+id/tv_use_flow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/use_flow_content"
+            android:textColor="#FF333333"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toRightOf="@+id/tv_use_flow_hint"
+            app:layout_constraintTop_toTopOf="@+id/tv_use_flow_hint"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

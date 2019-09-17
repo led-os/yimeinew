@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="Object" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.editinfo.SignOrIntroduceActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="设置个性签名" />
+
+        <EditText
+            android:id="@+id/et_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp130"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp15"
+            android:background="@drawable/rect_edit_gray4_back"
+            android:cursorVisible="true"
+            android:gravity="top"
+            android:hint="请填写个性签名，不超过20字"
+            android:imeOptions="actionDone"
+            android:maxLength="20"
+            android:padding="@dimen/dp10"
+            android:textColor="@color/color_6"
+            android:textColorHint="#FF999999"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/sp13" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp40"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_save"
+            style="@style/submitBtnStyle"
+            android:layout_marginTop="@dimen/dp60"
+            android:background="@drawable/rect_btn_red_background"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:text="保存" />
+    </LinearLayout>
+</layout>

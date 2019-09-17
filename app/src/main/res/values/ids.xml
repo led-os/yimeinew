@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="comment_header_container" type="id"></item>
+    <item name="raise_detail_header_container0" type="id"/>
+    <item name="raise_detail_header_container1" type="id"/>
+</resources>

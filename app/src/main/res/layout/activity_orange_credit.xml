@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.OrangeCreditActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="橙子信用分" />
+
+        <!-- <RelativeLayout
+             android:id="@+id/rl_layout"
+             android:layout_width="wrap_content"
+             android:layout_gravity="center"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="66dp"
+             >
+
+             <ImageView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:src="@drawable/xinyongfen" />
+
+             <TextView
+                 android:id="@+id/tv_score"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_centerInParent="true"
+                 android:gravity="center"
+                 android:paddingTop="@dimen/dp15"
+                 android:text="820分\n极好"
+                 android:textColor="#FFFFFFFF"
+                 android:textSize="17sp" />
+         </RelativeLayout>-->
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:gravity="center|bottom"
+                android:paddingBottom="@dimen/dp1"
+                android:text="用户"
+                android:textColor="#FF333333"
+                android:textSize="17sp" />
+
+            <RelativeLayout
+                android:id="@+id/rl_layout"
+                android:layout_width="215dp"
+                android:layout_height="196dp"
+                android:layout_marginTop="66dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/xinyong" />
+
+                <TextView
+                    android:id="@+id/tv_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/dp15"
+                    android:text="0分\n极好"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="127dp"
+                android:paddingRight="@dimen/dp1"
+                android:paddingBottom="@dimen/dp1"
+                android:text="爱好"
+                android:textColor="#FF333333"
+                android:textSize="17sp"
+                app:layout_constraintRight_toLeftOf="@id/rl_layout" />
+
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="@dimen/dp1"
+                android:paddingTop="127dp"
+                android:paddingRight="@dimen/dp1"
+                android:text="履约"
+                android:textColor="#FF333333"
+                android:textSize="17sp"
+                app:layout_constraintLeft_toRightOf="@id/rl_layout" />
+
+            <TextView
+                android:id="@+id/tv4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp88"
+                android:text="财力"
+                android:textColor="#FF333333"
+                android:textSize="17sp"
+                app:layout_constraintTop_toBottomOf="@id/rl_layout" />
+
+            <TextView
+                android:id="@+id/tv5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/dp88"
+                android:text="关系"
+                android:textColor="#FF333333"
+                android:textSize="17sp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rl_layout" />
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</layout>

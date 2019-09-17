@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/xuanzeshenfen_beijing"
+        android:orientation="vertical"
+        tools:context=".ui.account.activity.LoginChooseActivity">
+
+        <ImageView
+            android:id="@+id/iv_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/dp20"
+            android:onClick="@{listener::onClick}"
+            android:paddingLeft="@dimen/page_padding"
+            android:paddingRight="@dimen/page_padding"
+            android:src="@drawable/nav_fanhui" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="220" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="我是"
+            android:textColor="#FF333333"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp10"
+            android:text="请选择您注册的身份"
+            android:textColor="#FF999999"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp10"
+            android:text="请认真选择角色注册，注册后将无法修改。"
+            android:textColor="#FF999999"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp40"
+            android:paddingRight="@dimen/dp40">
+
+            <TextView
+                android:id="@+id/tv_user"
+                android:layout_width="0dp"
+                android:layout_height="98dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/xuanzeshenfen_yixuan"
+                android:gravity="bottom|center"
+                android:onClick="@{listener::onClick}"
+                android:paddingTop="@dimen/dp33"
+                android:paddingBottom="28dp"
+                android:text="普通用户"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_doctor"
+                android:layout_width="0dp"
+                android:layout_height="98dp"
+                android:layout_weight="1"
+                android:gravity="bottom|center"
+                android:onClick="@{listener::onClick}"
+                android:paddingTop="@dimen/dp33"
+                android:paddingBottom="28dp"
+                android:text="医生"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp40"
+            android:paddingRight="@dimen/dp40">
+
+            <TextView
+                android:id="@+id/tv_counselor"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp85"
+                android:layout_weight="1"
+                android:gravity="bottom|center"
+                android:onClick="@{listener::onClick}"
+                android:paddingTop="@dimen/dp15"
+                android:paddingBottom="@dimen/dp35"
+                android:text="咨询师"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_hospital"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp85"
+                android:layout_weight="1"
+                android:gravity="bottom|center"
+                android:onClick="@{listener::onClick}"
+                android:paddingTop="@dimen/dp15"
+                android:paddingBottom="@dimen/dp35"
+                android:text="医院"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="160" />
+    </LinearLayout>
+</layout>

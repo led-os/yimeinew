@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.discover.bean.ForumBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+
+        <variable
+            name="viewModel"
+            type="com.chengzi.app.ui.discover.viewmodel.ForumDetailViewModel" />
+
+        <variable
+            name="isSelf"
+            type="Boolean" />
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.chengzi.app.widget.AspectRatioFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:AspectRatio="@{1.875f}"
+            app:resize_mode="fixed_width">
+
+            <com.chengzi.app.widget.RatioImageView
+                android:id="@+id/video_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/dp10"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:scaleType="centerCrop"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/btn_play"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:src="@drawable/bofang"
+                android:visibility="gone" />
+
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+        </com.chengzi.app.widget.AspectRatioFrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp15"
+            android:paddingRight="@dimen/dp15">
+
+            <com.chengzi.app.widget.CircleImageView
+                android:id="@+id/image_head"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:scaleType="centerCrop"
+                app:avatar="@{true}"
+                app:image="@{bean.image}" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/dp_4">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    android:text="@{bean.username}"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp3"
+                    android:textColor="#FF999999"
+                    android:textSize="12sp"
+                    app:letterTimeStamp="@{bean.create_time}" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btn_attention"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp24"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/attention_bg_selector"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:selected='@{viewModel.attentionObservable&amp;&amp;bean.is_follow == 1}'
+                android:text='@{viewModel.attentionObservable&amp;&amp;bean.is_follow == 1?@string/attentioned:@string/attention}'
+                android:textColor="#FFFFFFFF"
+                android:textSize="12sp"
+                android:enabled="@{viewModel.attentionObservable&amp;&amp;bean.is_follow != 1}"
+                android:visibility="@{isSelf?View.GONE:View.VISIBLE}" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp10"
+            android:paddingRight="@dimen/dp15"
+            android:paddingBottom="@dimen/dp15"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+
+</layout>

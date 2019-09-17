@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="selectedTabPos"
+            type="android.databinding.ObservableInt" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/layout_all_goods"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:foreground="?selectableItemBackground"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:selected="@{selectedTabPos == 0}">
+
+                <TextView
+                    android:id="@+id/tv_good_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableRight="@drawable/sanjiao"
+                    android:drawablePadding="@dimen/dp_4"
+                    android:duplicateParentState="true"
+                    android:text="@string/all_goods_type"
+                    android:textColor="@color/search_span_text_color_selector"
+                    android:textSize="14sp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/layout_sort"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:foreground="?selectableItemBackground"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:selected="@{selectedTabPos == 1}">
+
+                <TextView
+                    android:id="@+id/tv_sort_rule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableRight="@drawable/sanjiao"
+                    android:drawablePadding="@dimen/dp_4"
+                    android:duplicateParentState="true"
+                    android:text="@string/smart_sort"
+                    android:textColor="@color/search_span_text_color_selector"
+                    android:textSize="14sp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/layout_origanization"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:foreground="?selectableItemBackground"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:selected="@{selectedTabPos == 2}">
+
+                <TextView
+                    android:id="@+id/tv_org_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableRight="@drawable/sanjiao"
+                    android:drawablePadding="@dimen/dp_4"
+                    android:duplicateParentState="true"
+                    android:text="@string/org_type"
+                    android:textColor="@color/search_span_text_color_selector"
+                    android:textSize="14sp" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <HDViewSwitcher
+            android:id="@+id/viewSwitcher"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:layout_gravity="center" />
+
+            <com.nevermore.oceans.widget.SwipeRefreshView
+                android:id="@+id/swipeRefreshView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_f4f3f8" />
+
+            <include layout="@layout/empty_layout" />
+
+        </HDViewSwitcher>
+    </LinearLayout>
+
+</layout>

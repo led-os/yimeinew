@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.KillHospitalListBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/ll_place_an_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@color/white"
+        android:padding="@dimen/dp10">
+
+        <com.chengzi.app.widget.AspectRatioFrameLayout
+            android:id="@+id/rl_img"
+            android:layout_width="@dimen/dp128"
+            android:layout_height="wrap_content"
+            app:resize_mode="fixed_width"
+            app:aspectRatio="@{1.7534f}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <com.chengzi.app.widget.RatioImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:image="@{url}" />
+
+            <!--评分-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="right|bottom"
+                android:padding="@dimen/dp5"
+                android:text="@{bean.plan}"
+                android:textColor="#FF666666"
+                android:textSize="10sp" />
+        </com.chengzi.app.widget.AspectRatioFrameLayout>
+
+        <!--商品名称-->
+        <TextView
+            android:id="@+id/tv_name1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="2"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp5"
+            android:text="@{bean.goods_name}"
+            android:textColor="#FF333333"
+            android:textSize="15sp"
+            app:layout_constraintLeft_toRightOf="@+id/rl_img"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rl_img"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp6"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toRightOf="@id/rl_img"
+            app:layout_constraintTop_toBottomOf="@id/tv_name1"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="@dimen/dp15"
+            >
+
+            <TextView
+                android:id="@+id/tv_original_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingTop="@dimen/dp2"
+                android:text="@{@string/the_yuan +bean.practical_price}"
+                android:textColor="#FF333333"
+                android:textSize="11sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingTop="@dimen/dp2"
+                android:text="¥"
+                android:textColor="@color/colorPrimary"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp"
+                tools:text="0" />
+
+            <TextView
+                android:id="@+id/tv_spell_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp6"
+                android:gravity="bottom"
+                android:text="@{@string/spell_price(bean.spell_price)}"
+                android:textColor="#FFFF526A"
+                android:textSize="11sp"
+                tools:text="（拼团¥0）" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toRightOf="@+id/rl_img"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_price"
+            android:layout_marginTop="@dimen/dp6"
+            android:paddingLeft="@dimen/dp10"
+            >
+
+            <LinearLayout
+                android:id="@+id/ll_attention"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="限购"
+                    android:textColor="#FF999999"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp5"
+                    android:text="@{bean.num}"
+                    android:textColor="#FF333333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="时段"
+                    android:textColor="#FF999999"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp5"
+                    android:text="@{bean.time}"
+                    android:textColor="#FF333333"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tv_confirm_take_part"
+                android:layout_width="@dimen/dp75"
+                android:layout_height="@dimen/dp25"
+                android:background="@drawable/rect_btn_red_background"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:text="确认参与"
+                android:textColor="#FFFFFFFF"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:id="@+id/tv_cancle_take_part"
+                android:layout_width="@dimen/dp75"
+                android:layout_height="@dimen/dp25"
+                android:background="@drawable/app_navigator_item_bg"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:text="取消参与"
+                android:textColor="#FF333333"
+                android:textSize="13sp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

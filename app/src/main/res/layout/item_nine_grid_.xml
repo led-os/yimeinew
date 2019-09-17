@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chengzi.app.widget.AspectRatioFrameLayout
+    android:id="@+id/root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:resize_mode="fixed_width"
+    android:layout_marginBottom="10dp"
+    android:layout_marginRight="@dimen/dp10"
+    android:padding="@dimen/dp0.5"
+    >
+
+    <RelativeLayout
+        android:id="@+id/publishListLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:id="@+id/image_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/hand_tianjia" />
+
+        <ImageView
+            android:id="@+id/btn_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/bofang"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/btn_del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/hand_fabu_guanbi" />
+
+    </RelativeLayout>
+</com.chengzi.app.widget.AspectRatioFrameLayout>

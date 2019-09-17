@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/color_f5"
+        tools:context=".ui.mine.activity.beautifulprofile.BeautifulProfileActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="美丽档案" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp42"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:text="您的美丽档案为私人空间，不对外公开！"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <com.nevermore.oceans.widget.SwipeRefreshView
+            android:id="@+id/swipeRefreshView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</layout>

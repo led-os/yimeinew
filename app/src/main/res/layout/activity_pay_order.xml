@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.pay.activity.PayOrderActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="@string/payment" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp0"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    />
+
+                <!--商品订单的确认支付-->
+                <LinearLayout
+                    android:id="@+id/ll_order_pay_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mRecyclerView"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingTop="@dimen/dp10"
+                        android:text="@string/select_payment_method"
+                        android:textColor="#FF666666"
+                        android:textSize="12sp" />
+
+                    <!--微信-->
+                    <LinearLayout
+                        android:id="@+id/ll_weixin"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp32"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:visibility="gone"
+                        android:onClick="@{v -> listener.handleClick(v,null)}"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_weixin"
+                            android:layout_width="@dimen/dp0"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:drawableLeft="@drawable/zhifu_weixin"
+                            android:drawablePadding="@dimen/dp5"
+                            android:gravity="center_vertical"
+                            android:onClick="@{v -> listener.handleClick(v,null)}"
+                            android:paddingLeft="@dimen/dp15"
+                            android:text="@string/wxpay"
+                            android:textColor="#FF333333"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/iv_weixin"
+                            android:layout_width="@dimen/dp30"
+                            android:layout_height="@dimen/dp30"
+                            android:layout_margin="@dimen/dp15"
+                            android:onClick="@{v -> listener.handleClick(v,null)}"
+                            android:padding="@dimen/dp5"
+                            android:src="@drawable/bg_select_pay" />
+                    </LinearLayout>
+
+                    <!--支付宝-->
+                    <LinearLayout
+                        android:id="@+id/ll_zhifubao"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp32"
+                        android:layout_marginTop="@dimen/dp5"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:onClick="@{v -> listener.handleClick(v,null)}"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_zhifubao"
+                            android:layout_width="@dimen/dp0"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:drawableLeft="@drawable/zhifu_zhifubao"
+                            android:drawablePadding="@dimen/dp5"
+                            android:gravity="center_vertical"
+                            android:onClick="@{v -> listener.handleClick(v,null)}"
+                            android:paddingLeft="@dimen/dp15"
+                            android:text="@string/alipay"
+                            android:textColor="#FF333333"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:id="@+id/iv_zhifubao"
+                            android:layout_width="@dimen/dp30"
+                            android:layout_height="@dimen/dp30"
+                            android:layout_margin="@dimen/dp15"
+                            android:onClick="@{v -> listener.handleClick(v,null)}"
+                            android:padding="@dimen/dp5"
+                            android:src="@drawable/bg_select_pay" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_pay"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_marginLeft="38dp"
+                        android:layout_marginTop="@dimen/dp55"
+                        android:layout_marginRight="38dp"
+                        android:background="@drawable/rect_btn_red_background"
+                        android:gravity="center"
+                        android:onClick="@{v -> listener.handleClick(v,null)}"
+                        android:text="@string/confirm_payment"
+                        android:textColor="#FFFFFFFF"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <!--购物车的确认支付-->
+        <TextView
+            android:id="@+id/tv_confirm_payment"
+            style="@style/submitBtnStyle"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dp15"
+            android:layout_marginBottom="@dimen/dp15"
+            android:background="@drawable/rect_btn_red_background"
+            android:onClick="@{v -> listener.handleClick(v,null)}"
+            android:text="@string/confirm_payment"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.message.fragment.MessageFragment.MessageBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+
+        <variable
+            name="unreadCount"
+            type="android.databinding.ObservableInt" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_line_bg"
+        android:foreground="?selectableItemBackground"
+        android:onClick="@{v -> listener.handleClick(v,bean)}"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp15"
+                android:src="@{bean.res}" />
+
+            <com.netease.nim.uikit.common.ui.drop.DropFake
+                android:id="@+id/unread_number_tip"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="@dimen/dp4"
+                android:layout_marginRight="6dip"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:visibility="@{unreadCount == 0?View.GONE:View.VISIBLE}"
+                app:text="@{String.valueOf(Math.min(99,unreadCount.get()))}" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"
+            android:drawableRight="@drawable/jiantou_hui"
+            android:drawablePadding="@dimen/dp10"
+            android:gravity="center_vertical"
+            android:text="@{bean.text}"
+            android:textColor="#FF333333"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+
+</layout>

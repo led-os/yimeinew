@@ -1,0 +1,17 @@
+<resources>
+
+    <style name="AppTheme" parent="QMUI.Compat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:homeAsUpIndicator">@drawable/nav_fanhui</item>
+        <item name="topbar_background">@color/topbar_background_color</item>
+        <item name="android:overScrollMode">never</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+        <item name="android:listDivider">@drawable/divider_match_parent</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <!--<item name="android:statusBarColor">@color/topbar_background_color</item>-->
+</resources>

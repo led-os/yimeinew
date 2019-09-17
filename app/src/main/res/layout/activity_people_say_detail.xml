@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="viewModel"
+            type="com.chengzi.app.ui.goods.viewmodel.PeopleSayDetailViewModel" />
+
+        <variable
+            name="isSelf"
+            type="Boolean" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="@string/question_detail" />
+
+        <com.nevermore.oceans.widget.SwipeRefreshView
+            android:id="@+id/swipeRefreshView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp0"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F1F1F1"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10"
+            android:visibility="@{isSelf?View.GONE:View.VISIBLE}">
+
+            <com.chengzi.app.widget.CommentEditText
+                android:id="@+id/editText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginBottom="@dimen/dp10"
+                android:layout_weight="1"
+                android:background="@drawable/rect_white_4_radius"
+                android:gravity="center_vertical"
+                android:hint="@string/input_your_question_answer_hint"
+                android:imeOptions="actionDone"
+                android:minHeight="@dimen/dp30"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
+                android:text="@={viewModel.answerContent}"
+                android:textColor="@color/color_3"
+                android:textColorHint="#FF999999"
+                android:textSize="13sp"
+                app:hand_disableEmoji="true"
+                app:hand_max_length="100" />
+
+            <TextView
+                android:id="@+id/btn_submit"
+                android:layout_width="65dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp10"
+                android:background="@drawable/round_dark_black_bg"
+                android:gravity="center"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:text="@string/submit"
+                android:textColor="#FFFFFFFF"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

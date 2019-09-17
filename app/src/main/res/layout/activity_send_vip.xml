@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.chengzi.app.ui.mine.viewmodel.MyVipViewModel" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.vip.SendVipActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="转增VIP" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp30"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp15"
+            android:layout_marginBottom="@dimen/dp10"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/dp10"
+                android:layout_weight="1"
+                android:background="@drawable/rect_gray4_border"
+                android:cursorVisible="true"
+                android:hint="请输入好友注册手机号"
+                android:imeOptions="actionNext"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
+                android:text="@={model.mobile}"
+                android:textColor="@color/color_9"
+                android:textColorHint="#FF999999"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/sp12" />
+
+            <TextView
+                android:id="@+id/tv_vip_give"
+                android:layout_width="@dimen/dp64"
+                android:layout_height="match_parent"
+                android:background="@drawable/rect_btn_gray_background"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,null)}"
+                android:text="确认赠送"
+                android:textColor="#FFFFFFFF"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingRight="@dimen/dp15"
+            android:text="您可以转赠三次VIP给好友，好友需要为普通用户身份"
+            android:textColor="#FF333333"
+            android:textSize="14sp" />
+
+        <View
+            style="@style/lineStyle"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp15" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp42"
+            android:drawableLeft="@drawable/red_line_bg"
+            android:drawablePadding="@dimen/dp2"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:text="已赠好友"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <View style="@style/lineStyle" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <include
+            android:id="@+id/empty_view"
+            layout="@layout/empty_layout"
+            android:visibility="gone" />
+    </LinearLayout>
+</layout>

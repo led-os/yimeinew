@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.CouponListBean" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp86"
+        android:layout_marginLeft="@dimen/dp15"
+        android:layout_marginRight="@dimen/dp15"
+        android:layout_marginBottom="@dimen/dp10"
+        android:background="@drawable/youhuiquan_beijing"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp30"
+            android:paddingTop="@dimen/dp15"
+            android:text="@{bean.amount+@string/yuan}"
+            android:textColor="#FFEB2525"
+            android:textSize="20sp" />
+
+        <!-- coupon_buy_full
+            android:text="购买满100元可用"-->
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp30"
+            android:paddingTop="@dimen/dp48"
+            android:text="@{@string/coupon_buy_full+bean.full_amount+@string/coupon_yuan_available}"
+            android:textColor="#FF333333"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingTop="@dimen/dp23"
+            android:paddingRight="60dp"
+            android:text="有效期至"
+            android:textColor="#FF333333"
+            android:textSize="14sp"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp48"
+            android:text="@{bean.end_time}"
+            android:textColor="#FF333333"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@id/tv1" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

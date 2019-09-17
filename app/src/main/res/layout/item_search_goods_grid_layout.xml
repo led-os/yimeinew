@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="show"
+            type="Boolean" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.home.bean.GoodBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp2"
+        android:layout_marginBottom="@dimen/dp12"
+        android:background="@drawable/shadow_white_bg"
+        android:foreground="?selectableItemBackground"
+        android:onClick="@{v -> listener.handleClick(v,bean)}"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.chengzi.app.widget.RatioImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                app:hand_ratio_height="73"
+                app:hand_ratio_width="128"
+                app:image="@{bean.logo}"
+                app:image_radius="0dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="@dimen/dp8"
+                android:src="@drawable/vip"
+                android:visibility="@{bean.is_VIP == 1?View.VISIBLE:View.GONE}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:src="@drawable/guanggao"
+                android:visibility="@{bean.is_extension == 1?View.VISIBLE:View.GONE}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_margin="@dimen/dp8"
+                android:text="@{bean.grade}"
+                android:textColor="#FF666666"
+                android:textSize="11sp" />
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:ellipsize="end"
+            android:padding="@dimen/dp5"
+            android:singleLine="true"
+            android:text="@{bean.name}"
+            android:textColor="#FF333333"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tv_price_and_buy_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:paddingLeft="@dimen/dp5"
+            android:paddingRight="@dimen/dp5"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/main_bottom_round_bg"
+            android:ellipsize="end"
+            android:padding="@dimen/dp5"
+            android:singleLine="true"
+            android:text="@{bean.hospital_name}"
+            android:textColor="#FF666666"
+            android:textSize="11sp"
+            android:visibility="@{show?View.VISIBLE:View.INVISIBLE}" />
+    </LinearLayout>
+</layout>

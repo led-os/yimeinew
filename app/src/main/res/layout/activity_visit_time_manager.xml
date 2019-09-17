@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.VisitTimeManagerActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="@string/visit_time_manage" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/red_line_bg"
+            android:drawablePadding="@dimen/dp3"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp12"
+            android:text="@string/Booking_schedule"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_month_year"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp42"
+            android:background="@color/white"
+            android:gravity="center"
+            android:textColor="#FF3D3D3D"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp">
+
+            <TextView
+                android:layout_width="53dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/rect_gray1_border"
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/dp5"
+                android:text="@string/week"
+                android:textColor="#FF3D3D3D"
+                android:textSize="15sp" />
+
+            <GridView
+                android:id="@+id/recycler_view_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:listSelector="@android:color/transparent"
+                android:numColumns="7" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:background="@color/white">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView1"
+                android:layout_width="53dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:overScrollMode="never" />
+
+            <com.chengzi.app.widget.CustomeGridView
+                android:id="@+id/recyclerViewTime"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:background="@color/white"
+                android:listSelector="@android:color/transparent"
+                android:numColumns="7"
+                android:overScrollMode="never" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_is_visit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp20"
+            android:visibility="gone"
+            android:paddingTop="@dimen/dp13"
+            android:text="点击时间方块设置可预约情况"
+            android:textColor="#FF666666"
+            android:textSize="14sp" />
+    </LinearLayout>
+</layout>

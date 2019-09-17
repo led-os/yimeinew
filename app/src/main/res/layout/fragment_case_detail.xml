@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="avatar"
+            type="String" />
+
+        <variable
+            name="hospitalName"
+            type="String" />
+
+        <variable
+            name="categoryName"
+            type="String" />
+
+        <variable
+            name="viewModel"
+            type="com.chengzi.app.ui.cases.viewmodel.CaseDetailViewModel" />
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:id="@+id/ll_hosipital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp20"
+            android:paddingTop="@dimen/dp15"
+            android:paddingRight="@dimen/dp15"
+            android:paddingBottom="@dimen/dp15"
+            android:onClick="@{v -> listener.onClick(v)}"
+            >
+
+            <com.chengzi.app.widget.CircleImageView
+                android:id="@+id/image_head"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:scaleType="centerCrop"
+                app:avatar="@{true}"
+                app:image="@{avatar}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:text="@{hospitalName}"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp15"
+            android:background="@drawable/left_red_white_square_bg"
+            android:paddingLeft="@dimen/dp6"
+            android:text="@string/case_type"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp20">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="@{categoryName}"
+                android:textColor="#FF333333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/btn_thumbup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/thumbup_selector"
+                android:drawablePadding="@dimen/dp6"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingTop="@dimen/dp10"
+                android:paddingRight="@dimen/dp15"
+                android:paddingBottom="@dimen/dp10"
+                android:selected="@{viewModel.thumbUpObservable &amp;&amp;viewModel.like}"
+                android:text="@{viewModel.thumbUpObservable?viewModel.likeNumber:viewModel.likeNumber}"
+                android:textColor="#FF999999"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"
+            android:layout_marginBottom="@dimen/dp10"
+            android:background="@drawable/left_red_white_square_bg"
+            android:paddingLeft="@dimen/dp6"
+            android:text="@string/Become_beautiful_process"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_beautiful_case"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:nestedScrollingEnabled="false"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp10"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+    </LinearLayout>
+
+</layout>

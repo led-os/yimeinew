@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.design.widget.AppBarLayout
+                    android:id="@+id/appBarLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    app:elevation="@dimen/dp0">
+
+
+                    <android.support.design.widget.CollapsingToolbarLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/dp43"
+                        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="@dimen/dp43"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/dp10"
+                            app:layout_collapseMode="none">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/rect_yellow4_back"
+                                android:paddingLeft="@dimen/dp15"
+                                android:paddingTop="@dimen/dp8"
+                                android:paddingRight="@dimen/dp15"
+                                android:paddingBottom="@dimen/dp8"
+                                android:text="VIP会员"
+                                android:textColor="#FFFFFFFF"
+                                android:textSize="13sp" />
+
+                            <Space
+                                android:layout_width="@dimen/dp0"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
+                            <ImageView
+                                android:id="@+id/btn_search"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:onClick="@{v -> listener.onClick(v)}"
+                                android:paddingLeft="@dimen/dp15"
+                                android:paddingTop="@dimen/dp15"
+                                android:paddingRight="@dimen/dp15"
+                                android:paddingBottom="@dimen/dp15"
+                                android:src="@drawable/home_sousuo" />
+
+                            <TextView
+                                android:id="@+id/btn_ranking_list"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/dp10"
+                                android:background="@drawable/main_stroke_bg"
+                                android:onClick="@{v -> listener.onClick(v)}"
+                                android:padding="@dimen/dp8"
+                                android:text="@string/ranking_list"
+                                android:textColor="#FF999999"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/btn_people_say"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/dp10"
+                                android:background="@drawable/main_stroke_bg"
+                                android:onClick="@{v -> listener.onClick(v)}"
+                                android:padding="@dimen/dp8"
+                                android:text="@string/everyone_says"
+                                android:textColor="#FF999999"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/btn_refer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/dp10"
+                                android:background="@drawable/main_stroke_bg"
+                                android:onClick="@{v -> listener.onClick(v)}"
+                                android:padding="@dimen/dp8"
+                                android:text="@string/consult"
+                                android:textColor="#FF999999"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
+
+                        <com.youth.banner.Banner
+                            android:id="@+id/banner"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_marginLeft="@dimen/dp10"
+                            android:layout_marginTop="93dp"
+                            android:layout_marginRight="@dimen/dp10"
+                            app:layout_collapseMode="none" />
+
+                        <android.support.design.widget.CustomTabLayout
+                            android:id="@+id/tabLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp43"
+                            android:background="#C8A666"
+                            android:paddingBottom="@dimen/dp3"
+                            app:layout_collapseMode="pin"
+                            app:layout_scrollFlags="snap"
+                            app:tabIndicator="@android:color/white"
+                            app:tabIndicatorHeight="@dimen/dp2"
+                            app:tabMode="scrollable"
+                            app:tabRippleColor="@android:color/transparent"
+                            app:tabSelectedTextColor="@android:color/white"
+                            app:tabTextColor="@android:color/white"
+                            app:tabUnboundedRipple="false" />
+
+
+                    </android.support.design.widget.CollapsingToolbarLayout>
+
+                </android.support.design.widget.AppBarLayout>
+
+                <com.handongkeji.widget.NoScrollViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+            </android.support.design.widget.CoordinatorLayout>
+
+        </FrameLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</layout>

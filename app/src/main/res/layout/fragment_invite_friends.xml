@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.mine.fragment.InviteFriendsFragment">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp10"
+            android:background="@color/color_f5" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="51dp"
+            android:layout_marginBottom="66dp"
+            android:gravity="center"
+            android:text="邀请好友下载APP\n好友输入您的手机号为邀请人\n您即可获得7天VIP的使用权"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/iv_qrcode"
+            android:layout_width="137dp"
+            android:layout_height="137dp"
+            android:layout_gravity="center"
+            android:background="@color/colorGray" />
+
+        <TextView
+            android:id="@+id/tv_invite_friends"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="@dimen/dp80"
+            android:layout_marginRight="65dp"
+            android:background="@drawable/rect_red4_border"
+            android:gravity="center"
+            android:text="邀请好友下载APP"
+            android:textColor="#FF526A" />
+    </LinearLayout>
+</layout>

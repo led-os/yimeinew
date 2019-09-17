@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.ExtensionRankBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp60"
+        android:layout_marginBottom="@dimen/dp1"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_position"
+            android:layout_width="38dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <com.chengzi.app.widget.CircleImageView
+            android:id="@+id/iv_head"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:scaleType="centerCrop"
+            android:src="@drawable/morentouxiang"
+            app:avatar="@{true}"
+            app:image="@{url}" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:text="@{bean.user_name}"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp2"
+            android:text="推广总计:"
+            android:textColor="#FF999999"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/dp3"
+            android:paddingRight="@dimen/dp2"
+            android:text="¥"
+            android:textColor="#FFFF526A"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/dp15"
+            android:text="@{bean.num}"
+            android:textColor="#FFFF526A"
+            android:textSize="17sp" />
+    </LinearLayout>
+</layout>

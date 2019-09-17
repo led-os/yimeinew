@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".carfans.publish.activity.PublishCameraActivity">
+
+        <com.chengzi.app.recordvideo.widget.JCameraView
+            android:id="@+id/jcameraview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:hand_duration_max="10000"
+            app:hand_iconMargin="20dp"
+            app:hand_iconLeft="@drawable/hand_back_white"
+            app:hand_iconSize="30dp"
+            app:hand_iconSrc="@drawable/hand_ic_camera"/>
+
+    </LinearLayout>
+
+</layout>

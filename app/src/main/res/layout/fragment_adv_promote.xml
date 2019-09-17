@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.BannerPromotionListBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="157dp"
+        android:padding="@dimen/dp10"
+        tools:context=".ui.mine.fragment.AdvPromoteFragment">
+
+        <com.chengzi.app.widget.RatioImageView
+            android:id="@+id/iv_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@color/colorGray"
+            app:image="@{url}" />
+
+        <TextView
+            android:id="@+id/tv_snap_up"
+            android:layout_width="@dimen/dp70"
+            android:layout_height="@dimen/dp25"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/dp10"
+            android:background="@drawable/rect_btn_red_background"
+            android:gravity="center"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:text="抢"
+            android:textColor="#FFFFFFFF"
+            android:textSize="13sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_has_occupied"
+            android:layout_width="@dimen/dp70"
+            android:layout_height="@dimen/dp25"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/dp10"
+            android:background="@drawable/rect_btn_transparent_background"
+            android:gravity="center"
+            android:text="@{bean.status}"
+            android:textColor="#FFFFFFFF"
+            android:textSize="13sp"
+            android:visibility="gone" />
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler"/>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.home.bean.DoctorBean"/>
+
+        <import type="android.view.View"/>
+
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingRight="@dimen/dp15"
+        android:paddingBottom="@dimen/dp15"
+        android:onClick="@{v -> listener.handleClick(v,bean)}"
+        >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.chengzi.app.widget.CircleImageView
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginBottom="@dimen/dp3"
+                android:scaleType="centerCrop"
+                app:image="@{bean.image}"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/vip"
+                android:layout_gravity="bottom|center_horizontal"
+                android:visibility="@{bean.is_Vip == 1?View.VISIBLE:View.GONE}"
+                />
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{bean.name}"
+            android:textColor="#FF333333"
+            android:textSize="15sp"
+            android:layout_marginLeft="@dimen/dp10"
+            android:maxLength="18"
+            android:singleLine="true"
+            android:ellipsize="end"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{bean.rank}"
+            android:textColor="#FFFF526A"
+            android:textSize="11sp"
+            android:layout_marginLeft="@dimen/dp15"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/score_place(bean.grade)}"
+            android:textColor="#FF333333"
+            android:textSize="11sp"
+            android:layout_marginLeft="@dimen/dp15"
+            />
+    </LinearLayout>
+
+</layout>

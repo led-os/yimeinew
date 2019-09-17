@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.message.bean.QuestionMsgBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/dp15">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.chengzi.app.widget.CircleImageView
+                android:id="@+id/image_head"
+                android:layout_width="@dimen/dp45"
+                android:layout_height="@dimen/dp45"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:scaleType="centerCrop"
+                app:avatar="@{true}"
+                app:image="@{bean.usericon}" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/image_head"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp3"
+                android:layout_toRightOf="@+id/image_head"
+                android:maxLength="20"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:text="@{bean.username}"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_name"
+                android:layout_marginLeft="@dimen/dp7"
+                android:layout_toRightOf="@+id/tv_name"
+                android:text="@{bean.level}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_name"
+                android:layout_alignLeft="@+id/tv_name"
+                android:layout_marginTop="@dimen/dp7"
+                android:text="@{bean.create_time}"
+                android:textColor="#FF999999"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/tv_type_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="回答了我："
+                android:textColor="#FFDB8325"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_comment_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{bean.content}"
+                android:textColor="#FF333333"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@drawable/round_bg"
+            android:onClick="@{v -> listener.handleClick(v,bean)}">
+
+            <com.chengzi.app.widget.RoundImageView
+                android:id="@+id/image"
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp50"
+                android:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tv_question_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/image"
+                android:layout_alignRight="@id/image"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:textColor="#FFFFFFFF"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_question_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp15"
+                android:layout_marginRight="@dimen/dp15"
+                android:layout_toRightOf="@id/image"
+                android:text="@{bean.title}"
+                android:textColor="#FF333333"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.PromotionInfoBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.popularize.IWantPopularizeActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="我要推广"
+            app:rightText="推广规则" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="@dimen/dp36"
+                    android:text="余额(元)"
+                    android:textColor="#FF333333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="@dimen/dp2"
+                    android:paddingBottom="@dimen/dp24"
+                    android:singleLine="true"
+                    android:text="@{bean.balance}"
+                    android:textColor="#FF333333"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:id="@+id/tv_recharge"
+                    style="@style/submitBtnStyle"
+                    android:background="@drawable/rect_btn_red_background"
+                    android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    android:text="充值" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/dp10"
+                    android:paddingBottom="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="已充值："
+                        android:textColor="#FF999999"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{bean.total_recharge}"
+                        android:textColor="#FF999999"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="元；当前您的推广价格为"
+                        android:textColor="#FF999999"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{bean.promotion_price}"
+                        android:textColor="#FF999999"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="元/次"
+                        android:textColor="#FF999999"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp10"
+                    android:background="@color/color_f5" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@drawable/divider_bg"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <TextView
+                        android:id="@+id/tv_zone_promote"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp44"
+                        android:background="@color/white"
+                        android:drawableRight="@drawable/jiantou_hui"
+                        android:foreground="?selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingRight="@dimen/dp15"
+                        android:text="专区推广"
+                        android:textColor="@color/color_3"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_adv_promote"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp44"
+                        android:background="@color/white"
+                        android:drawableRight="@drawable/jiantou_hui"
+                        android:foreground="?selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingRight="@dimen/dp15"
+                        android:text="Banner广告位推广"
+                        android:textColor="@color/color_3"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_goods_search_promotion"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp44"
+                        android:background="@color/white"
+                        android:drawableRight="@drawable/jiantou_hui"
+                        android:foreground="?selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingRight="@dimen/dp15"
+                        android:text="商品站内搜索推广"
+                        android:textColor="@color/color_3"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_doctor_search_promotion"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp44"
+                        android:background="@color/white"
+                        android:drawableRight="@drawable/jiantou_hui"
+                        android:foreground="?selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingRight="@dimen/dp15"
+                        android:text="医生站内搜索推广"
+                        android:textColor="@color/color_3"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_counselor_search_promotion"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp44"
+                        android:background="@color/white"
+                        android:drawableRight="@drawable/jiantou_hui"
+                        android:foreground="?selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingRight="@dimen/dp15"
+                        android:text="咨询师站内搜索推广"
+                        android:textColor="@color/color_3"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_case_search_promotion"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp44"
+                        android:background="@color/white"
+                        android:drawableRight="@drawable/jiantou_hui"
+                        android:foreground="?selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingRight="@dimen/dp15"
+                        android:text="案例站内搜索推广"
+                        android:textColor="@color/color_3"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_hospital_search_promotion"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp44"
+                        android:background="@color/white"
+                        android:drawableRight="@drawable/jiantou_hui"
+                        android:foreground="?selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingRight="@dimen/dp15"
+                        android:text="医院站内搜索推广"
+                        android:textColor="@color/color_3"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/color_f5" />
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

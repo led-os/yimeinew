@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_bg"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/dp12"
+            android:paddingBottom="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp9"
+
+            >
+
+            <TextView
+                android:id="@+id/btn_private_refer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/home_sixiangzixun"
+                android:drawablePadding="@dimen/dp10"
+                android:gravity="center"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:text="@string/consult"
+                android:textColor="#FF333333"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/btn_diagnose_online"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/left_line_e5_bg"
+                android:drawableTop="@drawable/home_zaixianmianzhen"
+                android:drawablePadding="@dimen/dp10"
+                android:gravity="center"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:text="@string/online_consultation"
+                android:textColor="#FF333333"
+                android:textSize="13sp" />
+
+
+            <TextView
+                android:id="@+id/btn_people_raise"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/left_line_e5_bg"
+                android:drawableTop="@drawable/home_meirenchou"
+                android:drawablePadding="@dimen/dp10"
+                android:gravity="center"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:text="美人筹"
+                android:textColor="#FF333333"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp15"
+            android:background="@drawable/round_bg"
+            android:orientation="horizontal"
+            android:layout_marginRight="@dimen/dp9"
+            >
+
+            <com.chengzi.app.widget.HalfWidthFrameLayout
+                android:id="@+id/main_time_up_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.chengzi.app.widget.MainDynamicFrameLayout
+                android:id="@+id/main_dynamic_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/left_line_e5_bg" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

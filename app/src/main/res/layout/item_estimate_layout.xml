@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.homepage.bean.EvaluateBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingTop="@dimen/dp10"
+        android:paddingRight="@dimen/dp15"
+        android:paddingBottom="@dimen/dp10">
+
+        <com.chengzi.app.widget.CircleImageView
+            android:id="@+id/image_head"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:scaleType="centerCrop"
+            app:avatar="@{true}"
+            app:image="@{bean.usericon}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp6"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{bean.username}"
+                android:textColor="#FF333333"
+                android:textSize="13sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/doctor_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_hint0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/skill"
+                            android:textColor="#FF333333"
+                            android:textSize="13sp" />
+
+                        <RatingBar
+                            android:id="@+id/ratingBar_profession"
+                            style="@style/ratingStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp6"
+                            android:isIndicator="true"
+                            android:numStars="10"
+                            android:stepSize="0.1" />
+
+                        <TextView
+                            android:id="@+id/tv_profession_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp6"
+                            android:textColor="#FF333333"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_hint1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/service"
+                            android:textColor="#FF333333"
+                            android:textSize="13sp" />
+
+                        <RatingBar
+                            android:id="@+id/ratingBar_service"
+                            style="@style/ratingStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp6"
+                            android:isIndicator="true"
+                            android:numStars="10"
+                            android:stepSize="0.1" />
+
+                        <TextView
+                            android:id="@+id/tv_service_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp6"
+                            android:text="8.0分"
+                            android:textColor="#FF333333"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/goods_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <android.support.v7.widget.AppCompatRatingBar
+                        android:id="@+id/ratingBar_average"
+                        style="@style/ratingStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:isIndicator="true"
+                        android:numStars="10"
+                        android:stepSize="0.1" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_doctor_score"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp6"
+                        android:orientation="horizontal">
+
+                        <!--
+                        医生技术 医生专业
+                        ->医生审美 医生技术
+                        -->
+                        <!--  android:text="@{@string/doctor_skill_score(bean.doctor_skill)}"-->
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.2"
+                            android:text="@{@string/doctor_beauty_score(bean.doctor_major)}"
+                            android:textColor="@color/color_6"
+                            android:textSize="@dimen/sp13" />
+
+                        <!--
+                            android:text="@{@string/doctor_profession_score(bean.doctor_major)}"-->
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp10"
+                            android:layout_weight="2"
+                            android:text="@{@string/doctor_skill_score(bean.doctor_skill)}"
+                            android:textColor="@color/color_6"
+                            android:textSize="@dimen/sp13" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_counselor_socre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp6"
+                        android:orientation="horizontal">
+
+                        <!--
+                        咨询师服务 咨询师技术
+                        ->咨询师审美 咨询师服务
+                        -->
+                        <!--
+                         android:text="@{@string/counselor_service_score(bean.consultant_service)}"
+                        -->
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.2"
+                            android:text="@{@string/counselor_beauty_score(bean.consultant_major)}"
+                            android:textColor="@color/color_6"
+                            android:textSize="@dimen/sp13" />
+
+                        <!--
+                        android:text="@{@string/counselor_profession_score(bean.consultant_major)}"
+                        -->
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp10"
+                            android:layout_weight="2"
+                            android:text="@{@string/counselor_service_score(bean.consultant_service)}"
+                            android:textColor="@color/color_6"
+                            android:textSize="@dimen/sp13" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="@{bean.content}"
+                android:textColor="#FF333333"
+                android:textSize="13sp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/nineGridView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="android.support.v7.widget.GridLayoutManager"
+                app:reverseLayout="false"
+                app:spanCount="3" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

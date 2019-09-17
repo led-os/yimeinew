@@ -1,0 +1,96 @@
+<resources>
+
+    <!--<style name="AppTheme" parent="QMUI.Compat.NoActionBar">-->
+    <style name="AppTheme" parent="QMUI.Compat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:homeAsUpIndicator">@drawable/nav_fanhui</item>
+        <item name="topbar_background">@color/topbar_background_color</item>
+        <item name="android:overScrollMode">never</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:listDivider">@drawable/divider_match_parent</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+    <!--PopUpWindow的style-->
+    <style name="contextMenuAnim" parent="@android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@anim/context_menu_enter</item>
+        <item name="android:windowExitAnimation">@anim/context_menu_exit</item>
+    </style>
+    <!--APP的底部导航-->
+    <style name="itemTextAppearanceActive">
+        <item name="android:textSize">@dimen/sp10</item>
+    </style>
+
+    <style name="lineStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider_size</item>
+        <!--<item name="android:background">@color/color_6</item>-->
+        <item name="android:background">#cdcdcd</item>
+    </style>
+
+    <style name="submitBtnStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp40</item>
+        <item name="android:layout_marginLeft">38dp</item>
+        <item name="android:layout_marginRight">38dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="registerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp40</item>
+        <item name="android:layout_marginTop">@dimen/dp15</item>
+        <item name="android:layout_marginLeft">38dp</item>
+        <item name="android:paddingLeft">@dimen/dp15</item>
+        <item name="android:layout_marginRight">38dp</item>
+        <item name="android:paddingRight">@dimen/dp15</item>
+        <item name="android:textColor">@color/color_9</item>
+        <item name="android:textColorHint">@color/color_9</item>
+        <item name="android:textSize">@dimen/sp12</item>
+        <item name="android:background">@drawable/rect_gray4_border</item>
+        <item name="android:cursorVisible">true</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+
+    <style name="drop_down_popup">
+        <item name="android:windowEnterAnimation">@anim/show_from_top</item>
+        <item name="android:windowExitAnimation">@anim/hide_to_top</item>
+    </style>
+
+    <style name="tab_textsize_14">
+        <item name="android:textSize">@dimen/sp14</item>
+    </style>
+
+    <style name="tab_textsize_15">
+        <item name="android:textSize">@dimen/sp15</item>
+    </style>
+
+    <style name="edit_info_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp56</item>
+        <item name="android:layout_marginBottom">@dimen/dp0.5</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">@dimen/dp15</item>
+        <item name="android:paddingRight">@dimen/dp15</item>
+    </style>
+
+    <style name="ratingStyle" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="android:progressDrawable">@drawable/ratingbar_progress</item>
+        <item name="android:indeterminateDrawable">@drawable/ratingbar_progress</item>
+        <item name="android:minHeight">16dp</item>
+        <item name="android:maxHeight">16dp</item>
+    </style>
+
+    <style name="startTheme" parent="AppTheme">
+        <!--<item name="android:windowBackground">@drawable/splash</item>-->
+        <item name="android:windowBackground">@color/color_ff9156</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+</resources>

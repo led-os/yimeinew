@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="@string/question_online" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10"
+            android:paddingTop="@dimen/dp10"
+            android:paddingBottom="@dimen/dp10"
+            >
+
+            <TextView
+                android:id="@+id/btn_search"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/main_stroke_bg"
+                android:drawableLeft="@drawable/home_sousuo"
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp6"
+                android:text="@string/search_for_content_of_interest"
+                android:textColor="#FF999999"
+                android:textSize="13sp"
+                android:layout_marginRight="@dimen/dp10"
+                android:onClick="@{v -> listener.onClick(v)}"
+                />
+
+            <TextView
+                android:id="@+id/btn_ask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/orange_stroke_bg"
+                android:padding="6dp"
+                android:text="@string/I_am_going_to_ask"
+                android:textColor="#FFF07A4C"
+                android:textSize="13sp"
+                android:layout_marginRight="@dimen/dp10"
+                android:onClick="@{v -> listener.onClick(v)}"
+                />
+
+            <TextView
+                android:id="@+id/btn_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dark_blue_stroke_bg"
+                android:padding="6dp"
+                android:text="@string/I_want_to_answer"
+                android:textColor="#FF2DBA8F"
+                android:textSize="13sp"
+                android:onClick="@{v -> listener.onClick(v)}"
+                />
+
+        </LinearLayout>
+
+        <com.nevermore.oceans.widget.SwipeRefreshView
+            android:id="@+id/swipeRefreshView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+</layout>

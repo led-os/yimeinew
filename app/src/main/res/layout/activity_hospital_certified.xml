@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="Object" />
+
+        <variable
+            name="viewModel"
+            type="com.chengzi.app.ui.account.viewmodel.HospitalCertifiedViewModel" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".ui.account.activity.HospitalCertifiedActivity2">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="填写认证资料" />
+
+        <View
+            style="@style/lineStyle"
+            android:layout_marginBottom="@dimen/dp5" />
+
+        <!--
+            android:cursorVisible="true"
+            android:textCursorDrawable="@null"
+            -->
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingRight="@dimen/dp15">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:background="@drawable/rect_gray4_border"
+                    android:hint="请输入医院名称"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@={viewModel.real_name}"
+                    android:textColor="@color/color_9"
+                    android:textColorHint="#FF999999"
+                    android:textSize="@dimen/sp12"
+                    android:maxLength="12"
+                    />
+
+                <EditText
+                    android:id="@+id/et_name_people"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp4"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:background="@drawable/rect_gray4_border"
+                    android:hint="请输入医院运营人姓名"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:maxLength="16"
+                    android:text="@={viewModel.hospital_opreation_name}"
+                    android:textColor="@color/color_9"
+                    android:textColorHint="#FF999999"
+                    android:textSize="@dimen/sp12" />
+
+                <com.nevermore.oceans.widget.EnterLayout
+                    android:id="@+id/el_choose_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    android:paddingLeft="@dimen/dp15"
+                    app:textSubject="医院所属城市"
+                    app:text_content="请选择" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_size"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:background="#F4F3F8" />
+
+                <com.nevermore.oceans.widget.EnterLayout
+                    android:id="@+id/el_choose_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    android:paddingLeft="@dimen/dp15"
+                    app:textSubject="医院所属类型"
+                    app:text_content="请选择" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_size"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:background="#F4F3F8" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:gravity="center_vertical"
+                    android:text="上传经营资质照片"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+                <!--上传经营资质照片-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_business1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        android:paddingLeft="@dimen/dp8"
+                        app:text="营业执照" />
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_business2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:text="医疗机构许可证" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:gravity="center_vertical"
+                    android:paddingTop="@dimen/dp5"
+                    android:text="上传法人身份证照片"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+                <!--上传法人身份证照片-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp8">
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_id_number1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:text="身份证正面" />
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_id_number2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:text="身份证反面" />
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_id_number3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:text="手持身份证照片"
+                        android:visibility="gone"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:gravity="center_vertical"
+                    android:paddingTop="@dimen/dp5"
+                    android:text="上传广审资质照片"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+                <!--上传广审资质照片-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp8">
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_honor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:text="上传广审资质照片" />
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <TextView
+            android:id="@+id/tv_submit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginLeft="38dp"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="38dp"
+            android:layout_marginBottom="@dimen/dp10"
+            android:background="@drawable/rect_btn_red_background"
+            android:gravity="center"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:text="确认"
+            android:textColor="#FFFFFFFF"
+            android:textSize="15sp" />
+    </LinearLayout>
+</layout>

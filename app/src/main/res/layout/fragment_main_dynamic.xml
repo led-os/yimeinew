@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp12">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/btn_trade_dynamic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingTop="@dimen/dp12"
+                android:paddingRight="@dimen/dp10"
+                android:paddingBottom="@dimen/dp12"
+                android:text="@string/trade_dynamic"
+                android:textColor="@color/textcolor_3_9_selector"
+                android:textSize="15sp"
+                android:onClick="@{v -> listener.onClick(v)}"
+                />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/btn_academic_dynamic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingTop="@dimen/dp12"
+                android:paddingRight="@dimen/dp10"
+                android:paddingBottom="@dimen/dp12"
+                android:text="@string/academic_dynamic"
+                android:textColor="@color/textcolor_3_9_selector"
+                android:textSize="15sp"
+                android:onClick="@{v -> listener.onClick(v)}"
+                />
+
+        </LinearLayout>
+
+        <com.handongkeji.widget.NoScrollViewPager
+            android:id="@+id/viewPager_dynamic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</layout>

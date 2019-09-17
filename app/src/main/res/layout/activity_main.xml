@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="unreadCount"
+            type="android.databinding.ObservableInt" />
+
+        <variable
+            name="imUnreadCount"
+            type="android.databinding.ObservableInt" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/color_9" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.BottomNavigationView
+                android:id="@+id/bottomNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                app:elevation="@dimen/dp0"
+                app:itemHorizontalTranslationEnabled="false"
+                app:itemTextAppearanceActive="@style/itemTextAppearanceActive"
+                app:itemTextAppearanceInactive="@style/itemTextAppearanceActive"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/menu_main_navigation" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/dp30"
+                    android:layout_weight="1" />
+
+                <FrameLayout
+                    android:layout_width="@dimen/dp0"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <com.netease.nim.uikit.common.ui.drop.DropFake
+                        android:id="@+id/unread_number_tip"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_marginBottom="@dimen/dp12"
+                        android:gravity="center_horizontal"
+                        android:singleLine="true"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"
+                        android:visibility="@{unreadCount.get()+imUnreadCount.get() == 0?View.GONE:View.VISIBLE}"
+                        app:text="@{String.valueOf(Math.min(99,unreadCount.get()+imUnreadCount.get()))}" />
+
+                    <!--<TextView-->
+                    <!--android:id="@+id/tv_message_num"-->
+                    <!--android:layout_width="20dp"-->
+                    <!--android:layout_height="@dimen/dp20"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:background="@drawable/red_point"-->
+                    <!--android:layout_marginLeft="@dimen/dp15"-->
+                    <!--android:gravity="center"-->
+                    <!--android:textColor="@android:color/white"-->
+                    <!--/>-->
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+</layout>

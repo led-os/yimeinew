@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="urlh"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.HospitalDoctorAppointmentBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp12"
+            android:paddingBottom="@dimen/dp5">
+
+            <com.chengzi.app.widget.CircleImageView
+                android:id="@+id/iv_head"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:scaleType="centerCrop"
+                android:src="@drawable/morentouxiang"
+                app:avatar="@{true}"
+                app:image="@{url}" />
+
+            <!--昵称-->
+            <TextView
+                android:id="@+id/tv_nick_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/dp2"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp3"
+                android:text="@{bean.customer.name}"
+                android:textColor="#FF333333"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toRightOf="@id/iv_head" />
+
+            <!--年龄 性别-->
+            <TextView
+                android:id="@+id/tv_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp12"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp5"
+                android:paddingRight="@dimen/dp5"
+                android:text="@{bean.customer.age}"
+                android:textColor="#FFFFFFFF"
+                android:textSize="8sp"
+                app:layout_constraintLeft_toRightOf="@id/tv_nick_name" />
+
+            <!--评分-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp10"
+                android:text="@{bean.customer.grade + @string/score}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="13sp"
+                app:layout_constraintLeft_toRightOf="@id/iv_head"
+                app:layout_constraintTop_toBottomOf="@id/tv_nick_name" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <!--姓名 手机号 预约时间 预约需求-->
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/ll_make_an_appointment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp10"
+            android:paddingRight="@dimen/dp15">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="姓名"
+                android:textColor="#FF999999"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{bean.appo_name}"
+                android:textColor="#FF333333"
+                android:textSize="15sp"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp6"
+                android:text="手机号"
+                android:textColor="#FF999999"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp6"
+                android:text="@{bean.appo_phone}"
+                android:textColor="#FF333333"
+                android:textSize="15sp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp6"
+                android:text="预约时间"
+                android:textColor="#FF999999"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_phone" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp6"
+                android:text="@{bean.appo_time}"
+                android:textColor="#FF333333"
+                android:textSize="15sp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_phone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp6"
+                android:text="预约需求"
+                android:textColor="#FF999999"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_time" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingLeft="@dimen/dp80"
+                android:paddingTop="@dimen/dp6"
+                android:singleLine="true"
+                android:text="@{bean.appo_content}"
+                android:textColor="#FF333333"
+                android:textSize="15sp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_time" />
+        </android.support.constraint.ConstraintLayout>
+
+        <View
+            style="@style/lineStyle"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp10" />
+
+        <!--医生 或者 医院-->
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_doctor_or_hospital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp12"
+            android:paddingBottom="@dimen/dp5">
+
+            <com.chengzi.app.widget.CircleImageView
+                android:id="@+id/iv_head1"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:scaleType="centerCrop"
+                android:src="@drawable/morentouxiang"
+                app:avatar="@{true}"
+                app:image="@{urlh}" />
+
+            <TextView
+                android:id="@+id/tv_nick_name1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/dp2"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp10"
+                android:text="@{bean.object.name}"
+                android:textColor="#FF333333"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toRightOf="@id/iv_head1" />
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/nv"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp4"
+                android:paddingTop="@dimen/dp1"
+                android:paddingRight="@dimen/dp5"
+                android:text="@{bean.object.occupation_name}"
+                android:textColor="#FF333333"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@id/tv_nick_name1" />
+
+            <!--
+                android:text="专业审美：8.0分       技术：8.0分"-->
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingTop="@dimen/dp2"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@id/iv_head1"
+                app:layout_constraintTop_toBottomOf="@id/tv_nick_name1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp15"
+                android:background="@drawable/jiantou_hui"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</layout>

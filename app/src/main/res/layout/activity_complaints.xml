@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="urlDoctor"
+            type="String" />
+
+        <variable
+            name="urlCounselor"
+            type="String" />
+
+        <variable
+            name="urlHospital"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.GetEvaluationObjectBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.myorder.ComplaintsActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="投诉" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/dp15"
+                        android:text="请勾选你的投诉对象"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <!--普通用户-->
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/cl_user"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_user_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:paddingLeft="@dimen/dp15"
+                            android:text="用户"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_user"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp50"
+                            android:background="@color/white"
+                            android:gravity="center_vertical"
+                            android:onClick="@{v -> listener.handleClick(v,bean)}"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/dp5"
+                            android:paddingBottom="@dimen/dp15"
+                            app:layout_constraintTop_toBottomOf="@id/tv_user_text">
+
+                            <com.chengzi.app.widget.CircleImageView
+                                android:layout_width="@dimen/dp30"
+                                android:layout_height="@dimen/dp30"
+                                android:layout_marginLeft="@dimen/dp15"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/morentouxiang"
+                                app:avatar="@{true}"
+                                app:image="@{url}" />
+
+                            <TextView
+                                android:id="@+id/tv_user"
+                                android:layout_width="@dimen/dp0"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                                android:paddingLeft="@dimen/dp10"
+                                android:text="@{bean.user_data.name}"
+                                android:textColor="#FF333333"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                    </android.support.constraint.ConstraintLayout>
+
+                    <!--医生-->
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/cl_doctor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_doctor_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:paddingLeft="@dimen/dp15"
+                            android:text="医生"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_doctor"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp50"
+                            android:background="@color/white"
+                            android:gravity="center_vertical"
+                            android:onClick="@{v -> listener.handleClick(v,bean)}"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/dp5"
+                            android:paddingBottom="@dimen/dp15"
+                            app:layout_constraintTop_toBottomOf="@id/tv_doctor_text">
+
+                            <com.chengzi.app.widget.CircleImageView
+                                android:layout_width="@dimen/dp30"
+                                android:layout_height="@dimen/dp30"
+                                android:layout_marginLeft="@dimen/dp15"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/morentouxiang"
+                                app:avatar="@{true}"
+                                app:image="@{urlDoctor}" />
+
+                            <TextView
+                                android:id="@+id/tv_doctor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                                android:paddingLeft="@dimen/dp10"
+                                android:text="@{bean.doctor_data.name}"
+                                android:textColor="#FF333333"
+                                android:textSize="15sp"
+                                android:maxLength="18"
+                                android:singleLine="true"
+                                android:ellipsize="end"
+                                />
+
+                            <TextView
+                                android:id="@+id/tv_doctor1"
+                                android:layout_width="@dimen/dp0"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                                android:paddingLeft="@dimen/dp15"
+                                android:text="@{bean.doctor_data.occupation_class}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="10sp" />
+
+                            <ImageView
+                                android:id="@+id/iv_doctor"
+                                android:layout_width="@dimen/dp30"
+                                android:layout_height="@dimen/dp30"
+                                android:layout_margin="@dimen/dp15"
+                                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                                android:padding="@dimen/dp5"
+                                android:src="@drawable/bg_select_pay" />
+                        </LinearLayout>
+                    </android.support.constraint.ConstraintLayout>
+
+                    <!--咨询师-->
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/cl_counselor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_counselor_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:paddingLeft="@dimen/dp15"
+                            android:text="咨询师"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_counselor"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp50"
+                            android:background="@color/white"
+                            android:gravity="center_vertical"
+                            android:onClick="@{v -> listener.handleClick(v,bean)}"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/dp5"
+                            android:paddingBottom="@dimen/dp15"
+                            app:layout_constraintTop_toBottomOf="@id/tv_counselor_text">
+
+                            <com.chengzi.app.widget.CircleImageView
+                                android:layout_width="@dimen/dp30"
+                                android:layout_height="@dimen/dp30"
+                                android:layout_marginLeft="@dimen/dp15"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/morentouxiang"
+                                app:avatar="@{true}"
+                                app:image="@{urlCounselor}" />
+
+                            <TextView
+                                android:id="@+id/tv_counselor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                                android:paddingLeft="@dimen/dp10"
+                                android:text="@{bean.counselling_data.name}"
+                                android:textColor="#FF333333"
+                                android:textSize="15sp"
+                                android:maxLength="18"
+                                android:singleLine="true"
+                                android:ellipsize="end"
+                                />
+
+                            <TextView
+                                android:id="@+id/tv_counselor1"
+                                android:layout_width="@dimen/dp0"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                                android:paddingLeft="@dimen/dp15"
+                                android:text="@{bean.counselling_data.occupation_class}"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="10sp" />
+
+                            <ImageView
+                                android:id="@+id/iv_counselor"
+                                android:layout_width="@dimen/dp30"
+                                android:layout_height="@dimen/dp30"
+                                android:layout_margin="@dimen/dp15"
+                                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                                android:padding="@dimen/dp5"
+                                android:src="@drawable/bg_select_pay" />
+                        </LinearLayout>
+                    </android.support.constraint.ConstraintLayout>
+
+                    <!--机构-->
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/cl_hospital"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_hospital_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:paddingLeft="@dimen/dp15"
+                            android:text="机构"
+                            android:textColor="#FF666666"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_hospital"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp50"
+                            android:background="@color/white"
+                            android:gravity="center_vertical"
+                            android:onClick="@{v -> listener.handleClick(v,bean)}"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/dp5"
+                            android:paddingBottom="@dimen/dp15"
+                            app:layout_constraintTop_toBottomOf="@id/tv_hospital_text">
+
+                            <com.chengzi.app.widget.CircleImageView
+                                android:layout_width="@dimen/dp30"
+                                android:layout_height="@dimen/dp30"
+                                android:layout_marginLeft="@dimen/dp15"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/morentouxiang"
+                                app:avatar="@{true}"
+                                app:image="@{urlHospital}" />
+
+                            <TextView
+                                android:id="@+id/tv_hospital"
+                                android:layout_width="@dimen/dp0"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                                android:paddingLeft="@dimen/dp10"
+                                android:text="@{bean.hospital_data.name}"
+                                android:textColor="#FF333333"
+                                android:textSize="15sp"
+                                android:maxLength="18"
+                                android:singleLine="true"
+                                android:ellipsize="end"
+                                />
+
+                            <ImageView
+                                android:id="@+id/iv_hospital"
+                                android:layout_width="@dimen/dp30"
+                                android:layout_height="@dimen/dp30"
+                                android:layout_margin="@dimen/dp15"
+                                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                                android:padding="@dimen/dp5"
+                                android:src="@drawable/bg_select_pay" />
+                        </LinearLayout>
+                    </android.support.constraint.ConstraintLayout>
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/et_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp140"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@color/white"
+                    android:cursorVisible="true"
+                    android:gravity="top"
+                    android:hint="请输入你的评价，200字以内"
+                    android:imeOptions="actionDone"
+                    android:maxLength="200"
+                    android:padding="@dimen/dp15"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:textColor="@color/color_6"
+                    android:textColorHint="#FF999999"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/sp15" />
+
+                <com.chengzi.app.widget.NineGridView2
+                    android:id="@+id/nineGridView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/top_bar"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:nestedScrollingEnabled="false" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp0"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <TextView
+            android:id="@+id/tv_submit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginLeft="38dp"
+            android:layout_marginRight="38dp"
+            android:layout_marginBottom="@dimen/dp16"
+            android:background="@drawable/rect_btn_red_background"
+            android:gravity="center"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:text="确认提交"
+            android:textColor="#FFFFFFFF"
+            android:textSize="15sp" />
+    </LinearLayout>
+</layout>

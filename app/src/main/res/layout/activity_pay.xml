@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.pay.bean.VipPrePaymentBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".ui.pay.activity.PayActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="支付" />
+
+        <!--订单编号-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp10"
+            android:text="@{@string/pay_order_number+bean.order_number_id}"
+            android:textColor="#FF333333"
+            android:textSize="14sp" />
+
+        <!--商品名称-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp10"
+            android:text="@{@string/pay_goods_name+bean.goods_name}"
+            android:textColor="#FF333333"
+            android:textSize="14sp" />
+
+        <!--购买方式-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp10"
+            android:text="@{@string/pay_buy_way+bean.product_name}"
+            android:textColor="#FF333333"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp10">
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp15"
+                android:text="支付金额："
+                android:textColor="#FF333333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv1"
+                android:text="@{@string/the_yuan+bean.amount_pay}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <View
+            style="@style/lineStyle"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp9"
+            android:layout_marginRight="@dimen/dp15" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp10"
+            android:text="请选择支付方式"
+            android:textColor="#FF666666"
+            android:textSize="12sp" />
+
+        <!--微信-->
+        <LinearLayout
+            android:id="@+id/ll_weixin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp32"
+            android:layout_marginTop="@dimen/dp5"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:id="@+id/tv_weixin"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/zhifu_weixin"
+                android:drawablePadding="@dimen/dp5"
+                android:gravity="center_vertical"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp15"
+                android:text="@string/wxpay"
+                android:textColor="#FF333333"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/iv_weixin"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:layout_margin="@dimen/dp15"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:padding="@dimen/dp5"
+                android:src="@drawable/bg_select_pay" />
+        </LinearLayout>
+
+        <!--微信-->
+        <LinearLayout
+            android:id="@+id/ll_zhifubao"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp32"
+            android:layout_marginTop="@dimen/dp5"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_zhifubao"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/zhifu_zhifubao"
+                android:drawablePadding="@dimen/dp5"
+                android:gravity="center_vertical"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp15"
+                android:text="@string/alipay"
+                android:textColor="#FF333333"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/iv_zhifubao"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:layout_margin="@dimen/dp15"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:padding="@dimen/dp5"
+                android:src="@drawable/bg_select_pay" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_pay"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginLeft="38dp"
+            android:layout_marginTop="@dimen/dp55"
+            android:layout_marginRight="38dp"
+            android:background="@drawable/rect_btn_red_background"
+            android:gravity="center"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:text="@string/confirm_payment"
+            android:textColor="#FFFFFFFF"
+            android:textSize="15sp" />
+    </LinearLayout>
+</layout>

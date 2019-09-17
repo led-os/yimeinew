@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  x
+    <item name="header_fragment" type="id"/>
+    <item name="click_event" type="id"></item>
+    <item name="fragment_container" type="id"/>
+</resources>

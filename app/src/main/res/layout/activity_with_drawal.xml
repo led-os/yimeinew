@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.mywallet.WithDrawalActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp10"
+            app:centerText="提现" />
+
+        <RelativeLayout
+            android:id="@+id/rl_withdrawal"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginBottom="@dimen/dp10"
+            android:background="@color/white"
+            android:onClick="@{v-> listener.onClick(v)}">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp15"
+                android:text="到账方式"
+                android:textColor="#FF333333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_way"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@drawable/jiantou_hui"
+                android:drawablePadding="@dimen/dp6"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
+                android:text="请选择"
+                android:textColor="#FF333333"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:text="提现金额"
+            android:textColor="#FF333333"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp42"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp15"
+                android:text="@string/rmb_symbol"
+                android:textColor="#FF333333"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/et_tixian_num"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:inputType="numberDecimal"
+                android:maxLength="12"
+                android:paddingLeft="@dimen/dp35"
+                android:textColor="#FF333333"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp0.5"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/dp15"
+                android:layout_marginRight="@dimen/dp15"
+                android:background="#F4F3F8" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_account_num"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp42"
+            android:layout_marginBottom="@dimen/dp10"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:text="可提现：¥0.00"
+            android:textColor="#FF999999"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp42"
+            android:layout_marginTop="@dimen/dp23"
+            android:layout_marginBottom="@dimen/dp10"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:text="注：提现金额不能少于10元"
+            android:textColor="#FF666666"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_apply_withdrawals"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginLeft="38dp"
+            android:layout_marginTop="@dimen/dp45"
+            android:layout_marginRight="38dp"
+            android:background="@drawable/rect_btn_red_background"
+            android:gravity="center"
+            android:onClick="@{listener::onClick}"
+            android:text="申请提现"
+            android:textColor="#FFFFFFFF"
+            android:textSize="15sp" />
+    </LinearLayout>
+</layout>

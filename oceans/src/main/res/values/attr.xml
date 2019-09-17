@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="topbar_background" format="color|reference"/>
+
+    <!--比例布局-->
+    <declare-styleable name="PercentRelativeLayout">
+        <attr name="widthSize" format="float"/>
+        <attr name="heightSize" format="float"/>
+
+        <attr name="fixFlag">
+            <enum name="width" value="0"/>
+            <enum name="height" value="1"/>
+        </attr>
+    </declare-styleable>
+
+
+
+    <!--搜索导航栏-->
+    <declare-styleable name="SearchBar">
+        <attr name="textRight" format="string"/>
+        <attr name="searchHint" format="string"/>
+        <attr name="ivRightHint" format="boolean"/>
+        <attr name="textRightHint" format="boolean"/>
+        <attr name="ivRightIcon" format="reference"/>
+        <attr name="ivLeftIcon" format="reference"/>
+    </declare-styleable>
+
+
+
+    <!--评分条-->
+    <declare-styleable name="RatingBar">
+        <attr name="starNormalIcon" format="reference"/>
+        <attr name="starCheckedIcon" format="reference"/>
+        <attr name="starSize" format="dimension"/>
+        <attr name="starPadding" format="dimension"/>
+        <attr name="starMaxCount" format="integer"/>
+        <attr name="starCurCount" format="integer"/>
+    </declare-styleable>
+
+
+    <!--流式布局-->
+    <declare-styleable name="FlowLayout">
+
+        <attr name="horizontalSpacing" format="dimension"/>
+        <attr name="verticalSpacing" format="dimension"/>
+    </declare-styleable>
+
+
+    <!--corner_color 边角颜色，
+        scanner_color 扫描线颜色
+        possible_result_color 扫描点颜色
+        frame_color 扫描框边线颜色
+        mask_color 模糊区域颜色
+        label_text  框上方提示
+    -->
+    <declare-styleable name="ViewfinderView">
+        <attr name="corner_color" format="color"/>
+        <attr name="laser_color" format="color"/>
+        <attr name="frame_color" format="color" />
+        <attr name="mask_color" format="color" />
+        <attr name="result_point_color" format="color"/>
+        <attr name="result_color" format="color" />
+        <attr name="label_text_color" format="color"/>
+        <attr name="label_text" format="string"/>
+        <attr name="label_text_size" format="float"/>
+    </declare-styleable>
+
+</resources>

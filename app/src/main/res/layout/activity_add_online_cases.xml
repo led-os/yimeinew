@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.CaseInfoBean" />
+
+        <variable
+            name="model"
+            type="com.chengzi.app.ui.mine.viewmodel.OnlineCasesViewModel" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="填写病例信息" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nsv_have_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:divider="@drawable/list_divider_all_bg"
+                android:orientation="vertical"
+                android:showDividers="middle|end">
+
+                <!--基本信息-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp41"
+                        android:background="@color/white"
+                        android:drawableLeft="@drawable/red_line_bg"
+                        android:drawablePadding="@dimen/dp3"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingTop="@dimen/dp11"
+                        android:paddingBottom="@dimen/dp5"
+                        android:text="基本信息"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <!--用户姓名-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/dp15"
+                            android:paddingRight="@dimen/dp15"
+                            android:text="*用户姓名"
+                            android:textColor="#FF333333"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/et_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="@dimen/dp15"
+                            android:background="@null"
+                            android:cursorVisible="true"
+                            android:gravity="right|center"
+                            android:hint="请填写"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:paddingLeft="@dimen/dp15"
+                            android:paddingRight="@dimen/dp15"
+                            android:singleLine="true"
+                            android:text="@={model.user_name}"
+                            android:textColor="#FF333333"
+                            android:textColorHint="#FF999999"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!--性别-->
+                    <com.nevermore.oceans.widget.EnterLayout
+                        android:id="@+id/el_sex"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:gravity="center"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingRight="@dimen/dp15"
+                        app:textColor="@color/color_3"
+                        app:textSize="14"
+                        app:textSubject="*性别"
+                        app:text_content="请选择" />
+
+                    <!--身份证号码-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/dp15"
+                            android:paddingRight="@dimen/dp15"
+                            android:text="*身份证号码"
+                            android:textColor="#FF333333"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/et_id_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="@dimen/dp15"
+                            android:background="@null"
+                            android:cursorVisible="true"
+                            android:digits="0123456789Xx"
+                            android:gravity="right|center"
+                            android:hint="身份证无法修改请谨慎填写"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:maxLength="18"
+                            android:paddingLeft="@dimen/dp15"
+                            android:paddingRight="@dimen/dp15"
+                            android:singleLine="true"
+                            android:text="@={model.user_codes}"
+                            android:textColor="#FF333333"
+                            android:textColorHint="#FF999999"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!--联系电话-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/dp15"
+                            android:paddingRight="@dimen/dp15"
+                            android:text="*联系电话"
+                            android:textColor="#FF333333"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/et_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="@dimen/dp15"
+                            android:background="@null"
+                            android:cursorVisible="true"
+                            android:gravity="right|center"
+                            android:hint="请填写"
+                            android:imeOptions="actionNext"
+                            android:inputType="phone"
+                            android:maxLength="11"
+                            android:paddingLeft="@dimen/dp15"
+                            android:paddingRight="@dimen/dp15"
+                            android:singleLine="true"
+                            android:text="@={model.phone}"
+                            android:textColor="#FF333333"
+                            android:textColorHint="#FF999999"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!--生日-->
+                    <com.nevermore.oceans.widget.EnterLayout
+                        android:id="@+id/el_birthday"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:gravity="center"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingRight="@dimen/dp15"
+                        app:textColor="@color/color_3"
+                        app:textSize="14"
+                        app:textSubject="  生日 "
+                        app:text_content="请选择" />
+
+                    <!--所在地址-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/dp15"
+                            android:paddingRight="@dimen/dp15"
+                            android:text="  所在地址"
+                            android:textColor="#FF333333"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/et_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="@dimen/dp15"
+                            android:background="@null"
+                            android:cursorVisible="true"
+                            android:gravity="right|center"
+                            android:hint="请填写"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:paddingLeft="@dimen/dp15"
+                            android:paddingRight="@dimen/dp15"
+                            android:singleLine="true"
+                            android:text="@={model.address}"
+                            android:textColor="#FF333333"
+                            android:textColorHint="#FF999999"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp10"
+                        android:background="#fafafa" />
+                </LinearLayout>
+
+                <!-- 健康信息-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp41"
+                        android:background="@color/white"
+                        android:drawableLeft="@drawable/red_line_bg"
+                        android:drawablePadding="@dimen/dp3"
+                        android:gravity="center_vertical"
+                        android:paddingTop="@dimen/dp11"
+                        android:paddingBottom="@dimen/dp5"
+                        android:text="健康信息"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <!--  身高-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/dp15"
+                            android:text="  身高"
+                            android:textColor="#FF333333"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/et_height"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:cursorVisible="true"
+                            android:gravity="right|center"
+                            android:hint="请填写"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:paddingLeft="@dimen/dp15"
+                            android:paddingRight="@dimen/dp15"
+                            android:singleLine="true"
+                            android:text="@={model.height}"
+                            android:textColor="#FF333333"
+                            android:textColorHint="#FF999999"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/dp15"
+                            android:text="cm"
+                            android:textColor="#FF333333"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!--体重-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/dp15"
+                            android:text="  体重"
+                            android:textColor="#FF333333"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/et_width"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:cursorVisible="true"
+                            android:gravity="right|center"
+                            android:hint="请填写"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:paddingLeft="@dimen/dp15"
+                            android:paddingRight="@dimen/dp15"
+                            android:singleLine="true"
+                            android:text="@={model.weight}"
+                            android:textColor="#FF333333"
+                            android:textColorHint="#FF999999"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/dp15"
+                            android:text="kg"
+                            android:textColor="#FF333333"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!--血型-->
+                    <com.nevermore.oceans.widget.EnterLayout
+                        android:id="@+id/el_blood_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:gravity="center"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:textColor="@color/color_3"
+                        app:textSize="14"
+                        app:textSubject="  血型 "
+                        app:text_content="请选择" />
+
+                    <!--心率-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/dp15"
+                            android:text="  心率"
+                            android:textColor="#FF333333"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/et_heart_rate"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:cursorVisible="true"
+                            android:gravity="right|center"
+                            android:hint="请填写"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:paddingLeft="@dimen/dp15"
+                            android:paddingRight="@dimen/dp15"
+                            android:singleLine="true"
+                            android:text="@={model.heart_rate}"
+                            android:textColor="#FF333333"
+                            android:textColorHint="#FF999999"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!--血压-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/dp15"
+                            android:text="  血压"
+                            android:textColor="#FF333333"
+                            android:textSize="14sp" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <EditText
+                            android:id="@+id/et_low_blood_pressure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:cursorVisible="true"
+                            android:gravity="right|center"
+                            android:hint="请填写"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:singleLine="true"
+                            android:text="@={model.blood_pressure_low}"
+                            android:textColor="#FF333333"
+                            android:textColorHint="#FF999999"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/dp10"
+                            android:paddingRight="@dimen/dp10"
+                            android:text="/"
+                            android:textColor="#FF333333"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/et_high_blood_pressure"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:cursorVisible="true"
+                            android:gravity="right|center"
+                            android:hint="请填写"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:paddingRight="@dimen/dp15"
+                            android:singleLine="true"
+                            android:text="@={model.blood_pressure_high}"
+                            android:textColor="#FF333333"
+                            android:textColorHint="#FF999999"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/dp15"
+                            android:text="mmhg"
+                            android:textColor="#FF333333"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!--以往手术经历-->
+                    <com.nevermore.oceans.widget.EnterLayout
+                        android:id="@+id/el_previous_surgical_experience"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:gravity="center"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:textColor="@color/color_3"
+                        app:textSize="14"
+                        app:textSubject="  以往手术经历 "
+                        app:text_content="请填写" />
+
+                    <!--外伤经历-->
+                    <com.nevermore.oceans.widget.EnterLayout
+                        android:id="@+id/el_traumatic_experience"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:gravity="center"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:textColor="@color/color_3"
+                        app:textSize="14"
+                        app:textSubject="  外伤经历 "
+                        app:text_content="请填写" />
+
+                    <!--变美经历-->
+                    <com.nevermore.oceans.widget.EnterLayout
+                        android:id="@+id/el_become_beautiful"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:gravity="center"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:textColor="@color/color_3"
+                        app:textSize="14"
+                        app:textSubject="  变美经历 "
+                        app:text_content="请填写" />
+
+                    <!-- 过敏药物-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/dp15"
+                            android:text="  过敏药物"
+                            android:textColor="#FF333333"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/et_drug_allergy"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="@dimen/dp15"
+                            android:background="@null"
+                            android:cursorVisible="true"
+                            android:gravity="right|center"
+                            android:hint="请填写"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:paddingLeft="@dimen/dp15"
+                            android:singleLine="true"
+                            android:text="@={model.allergy_drugs}"
+                            android:textColor="#FF333333"
+                            android:textColorHint="#FF999999"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!-- 慢性病-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:paddingRight="@dimen/dp15"
+                            android:text="  慢性病"
+                            android:textColor="#FF333333"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/et_sidease"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="@dimen/dp15"
+                            android:background="@null"
+                            android:cursorVisible="true"
+                            android:gravity="right|center"
+                            android:hint="请填写"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:paddingLeft="@dimen/dp15"
+                            android:singleLine="true"
+                            android:text="@={model.sidease}"
+                            android:textColor="#FF333333"
+                            android:textColorHint="#FF999999"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!--是否有家族遗传病-->
+                    <com.nevermore.oceans.widget.EnterLayout
+                        android:id="@+id/el_have_familial_disease"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:gravity="center"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:textColor="@color/color_3"
+                        app:textSize="14"
+                        app:textSubject="  是否有家族遗传病"
+                        app:text_content="请选择" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp10"
+                    android:background="#fafafa" />
+
+                <!-- 生活习惯-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp41"
+                        android:background="@color/white"
+                        android:drawableLeft="@drawable/red_line_bg"
+                        android:drawablePadding="@dimen/dp3"
+                        android:gravity="center_vertical"
+                        android:paddingTop="@dimen/dp11"
+                        android:paddingBottom="@dimen/dp5"
+                        android:text="生活习惯"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <!-- 吸烟频率-->
+                    <com.nevermore.oceans.widget.EnterLayout
+                        android:id="@+id/el_smoking_frequency"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:gravity="center"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:textColor="@color/color_3"
+                        app:textSize="14"
+                        app:textSubject="  吸烟频率 "
+                        app:text_content="请选择" />
+
+                    <!--饮酒频率-->
+                    <com.nevermore.oceans.widget.EnterLayout
+                        android:id="@+id/el_drinking_frequency"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:gravity="center"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:textColor="@color/color_3"
+                        app:textSize="14"
+                        app:textSubject="  饮酒频率 "
+                        app:text_content="请选择" />
+
+                    <!-- 锻炼频率-->
+                    <com.nevermore.oceans.widget.EnterLayout
+                        android:id="@+id/el_exercise_frequency"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp56"
+                        android:gravity="center"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:textColor="@color/color_3"
+                        app:textSize="14"
+                        app:textSubject="  锻炼频率 "
+                        app:text_content="请选择" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp10"
+                    android:background="#fafafa" />
+
+                <!-- 补充信息-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp41"
+                        android:background="@color/white"
+                        android:drawableLeft="@drawable/red_line_bg"
+                        android:drawablePadding="@dimen/dp3"
+                        android:gravity="center_vertical"
+                        android:paddingTop="@dimen/dp11"
+                        android:paddingBottom="@dimen/dp5"
+                        android:text="补充信息"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <!--上传图片-->
+                    <com.chengzi.app.widget.NineGridView
+                        android:id="@+id/nineGridView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/top_bar"
+                        android:layout_marginRight="@dimen/dp15"
+                        android:nestedScrollingEnabled="false" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp50"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:weightSum="4">
+
+                        <ImageView
+                            android:id="@+id/btn_photo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#EEEEEE"
+                            android:onClick="@{v -> listener.handleClick(v,bean)}"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="10dp"
+                            android:scaleType="center"
+                            android:src="@drawable/hand_fabu_tupain" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="38dp"
+                    android:layout_marginTop="@dimen/dp8"
+                    android:layout_marginRight="38dp"
+                    android:layout_marginBottom="@dimen/dp15"
+                    android:background="@drawable/rect_btn_red_background"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    android:text="提交"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+
+    </LinearLayout>
+</layout>

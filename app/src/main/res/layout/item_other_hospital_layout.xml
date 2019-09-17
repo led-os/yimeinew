@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.homepage.bean.HospitalHomeInfoBean.MoreHospitalBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <com.chengzi.app.widget.AspectRatioFrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp5"
+        android:layout_marginRight="@dimen/dp5"
+        android:layout_marginBottom="@dimen/dp10"
+        android:onClick="@{v -> listener.handleClick(v,bean)}"
+        app:aspectRatio="@{1.0f}"
+        app:resize_mode="fixed_width">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:image="@{bean.image}" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="@dimen/dp3"
+            android:src="@drawable/vip"
+            android:visibility="@{bean.isVip?View.VISIBLE:View.GONE}" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="@dimen/dp3"
+            android:src="@drawable/guanggao"
+            android:visibility="@{bean.is_advert?View.VISIBLE:View.GONE}" />
+
+
+    </com.chengzi.app.widget.AspectRatioFrameLayout>
+</layout>

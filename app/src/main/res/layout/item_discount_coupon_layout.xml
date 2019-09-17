@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.CouponListBean" />
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="selectPos"
+            type="android.databinding.ObservableInt" />
+
+        <variable
+            name="pos"
+            type="Integer" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?selectableItemBackground"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dp12"
+        android:paddingBottom="@dimen/dp12">
+
+        <TextView
+            android:id="@+id/tv_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:text="@{@string/price_place_holder_with_unit(String.valueOf(bean.amount))}"
+            android:textColor="#FFD40000"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_full_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp6"
+            android:text="@{@string/full_amount(String.valueOf(bean.full_amount))}"
+            android:textColor="#FF333333"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_amount" />
+
+        <TextView
+            android:layout_width="65dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="@dimen/dp15"
+            android:background="@drawable/attention_bg_selector"
+            android:gravity="center"
+            android:onClick="@{v -> listener.onClick(v)}"
+            android:selected="@{pos == selectPos}"
+            android:text="@{pos == selectPos?@string/cancel:@string/use}"
+            android:textColor="#FFFFFFFF"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

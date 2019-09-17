@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.chengzi.app.ui.comment.viewmodel.CommentContainerViewModel" />
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <FrameLayout
+        android:id="@+id/btn_case_comment"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:background="#f1f1f1"
+        android:onClick="@{v -> listener.onClick(v)}"
+        android:visibility="@{!viewModel.isComment?View.VISIBLE:View.GONE}">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp15"
+            android:layout_marginBottom="@dimen/dp10"
+            android:background="@drawable/rect_white_4_radius"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:text="@string/input_comment_content"
+            android:textColor="#FF999999"
+            android:textSize="13sp" />
+
+    </FrameLayout>
+
+</layout>

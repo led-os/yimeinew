@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_recommand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingTop="@dimen/dp15"
+            android:clipToPadding="false"
+            android:paddingRight="@dimen/dp2"
+            />
+
+</layout>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.homepage.bean.UserHeaderInfoBean" />
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="init"
+            type="Boolean" />
+
+        <variable
+            name="isSelef"
+            type="Boolean" />
+
+        <variable
+            name="hideChatBtn"
+            type="Boolean" />
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="@string/user_home_page" />
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.design.widget.AppBarLayout
+                    android:id="@+id/appBarLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    app:elevation="@dimen/dp0">
+
+                    <android.support.design.widget.CollapsingToolbarLayout
+                        android:id="@+id/collapsingToolbarLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_scrollFlags="scroll">
+
+                        <com.chengzi.app.widget.RatioImageView
+                            android:id="@+id/iv_back_ground"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{v -> listener.onClick(v)}"
+                            android:scaleType="centerCrop"
+                            app:hand_ratio_height="210"
+                            app:hand_ratio_width="375"
+                            app:image_radius="0dp"
+                            app:layout_collapseMode="parallax" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_collapseMode="none">
+
+                            <com.chengzi.app.widget.AspectRatioFrameLayout
+                                android:id="@+id/layout_header"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:aspectRatio="@{1.786f}"
+                                app:resize_mode="fixed_width">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <android.support.constraint.ConstraintLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:padding="@dimen/dp15">
+
+                                        <TextView
+                                            android:id="@+id/btn_chat"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="24dp"
+                                            android:layout_marginTop="@dimen/dp15"
+                                            android:layout_marginRight="@dimen/dp10"
+                                            android:background="@drawable/rect_white_4_radius"
+                                            android:foreground="?selectableItemBackground"
+                                            android:gravity="center"
+                                            android:minWidth="@dimen/dp56"
+                                            android:onClick="@{v -> listener.onClick(v)}"
+                                            android:paddingLeft="@dimen/dp10"
+                                            android:paddingRight="@dimen/dp10"
+                                            android:text="@string/chat"
+                                            android:textColor="#FFFF526A"
+                                            android:textSize="13sp"
+                                            android:visibility="@{!init?View.GONE:(isSelef || hideChatBtn?View.GONE:View.VISIBLE)}"
+                                            app:layout_constraintRight_toLeftOf="@+id/btn_attention"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <TextView
+                                            android:id="@+id/btn_attention"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="24dp"
+                                            android:layout_marginTop="@dimen/dp15"
+                                            android:background="@drawable/rect_white_4_radius"
+                                            android:foreground="?selectableItemBackground"
+                                            android:gravity="center"
+                                            android:minWidth="@dimen/dp56"
+                                            android:onClick="@{v -> listener.onClick(v)}"
+                                            android:paddingLeft="@dimen/dp5"
+                                            android:paddingRight="@dimen/dp5"
+                                            android:textColor="#FFFF526A"
+                                            android:textSize="13sp"
+                                            android:visibility="@{!init?View.GONE:(isSelef?View.GONE:View.VISIBLE)}"
+                                            app:layout_constraintRight_toRightOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <TextView
+                                            android:id="@+id/btn_compile_profile"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="24dp"
+                                            android:layout_marginTop="@dimen/dp15"
+                                            android:background="@drawable/rect_white_4_radius"
+                                            android:foreground="?selectableItemBackground"
+                                            android:gravity="center"
+                                            android:minWidth="@dimen/dp56"
+                                            android:onClick="@{v -> listener.onClick(v)}"
+                                            android:paddingLeft="@dimen/dp5"
+                                            android:paddingRight="@dimen/dp5"
+                                            android:text="@string/compile_profile"
+                                            android:textColor="#FFFF526A"
+                                            android:textSize="13sp"
+                                            android:visibility="@{!init?View.GONE:(isSelef?View.VISIBLE:View.GONE)}"
+                                            app:layout_constraintRight_toRightOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <com.chengzi.app.widget.CircleImageView
+                                            android:id="@+id/image_head"
+                                            android:layout_width="@dimen/dp50"
+                                            android:layout_height="@dimen/dp50"
+                                            android:scaleType="centerCrop"
+                                            app:avatar="@{true}"
+                                            app:image="@{bean.image}"
+                                            app:layout_constraintLeft_toLeftOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <TextView
+                                            android:id="@+id/tv_user_name"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="@dimen/dp10"
+                                            android:layout_marginTop="@dimen/dp2"
+                                            android:maxLength="20"
+                                            android:text="@{bean.nameAndId}"
+                                            android:textColor="#FFFFFFFF"
+                                            android:textSize="20sp"
+                                            app:layout_constraintLeft_toRightOf="@+id/image_head"
+                                            app:layout_constraintTop_toTopOf="@+id/image" />
+
+
+                                        <LinearLayout
+                                            android:id="@+id/ll_sex"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="@dimen/dp15"
+                                            android:background="@drawable/rect_btn_red_background"
+                                            android:gravity="center"
+                                            android:paddingLeft="@dimen/dp2"
+                                            android:paddingRight="@dimen/dp2"
+                                            app:layout_constraintBottom_toBottomOf="@+id/tv_user_name"
+                                            app:layout_constraintLeft_toRightOf="@+id/tv_user_name"
+                                            app:layout_constraintTop_toTopOf="@+id/tv_user_name">
+
+                                            <ImageView
+                                                android:id="@+id/image_user_sex"
+                                                android:layout_width="@dimen/dp10"
+                                                android:layout_height="@dimen/dp10"
+                                                android:src='@{TextUtils.equals(bean.gender,"1")?@drawable/nan:@drawable/nv}' />
+
+                                            <TextView
+                                                android:id="@+id/tv_age"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="@dimen/dp2"
+                                                android:layout_marginTop="@dimen/dp2"
+                                                android:maxLength="2"
+                                                android:text="@{bean.age}"
+                                                android:textColor="#FFFFFFFF"
+                                                android:textSize="12sp" />
+
+                                        </LinearLayout>
+
+                                        <TextView
+                                            android:id="@+id/tv_user_score"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="@dimen/dp10"
+                                            android:text='@{bean == null?"":@string/user_homepage_score(bean.grade)}'
+                                            android:textColor="#FFFFFFFF"
+                                            android:textSize="12sp"
+                                            app:layout_constraintLeft_toLeftOf="@id/tv_user_name"
+                                            app:layout_constraintTop_toBottomOf="@id/tv_user_name" />
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="@dimen/dp15"
+                                            android:text="@{bean.autograph}"
+                                            android:textColor="#FFFFFFFF"
+                                            android:textSize="15sp"
+                                            app:layout_constraintLeft_toLeftOf="@id/tv_user_name"
+                                            app:layout_constraintRight_toRightOf="parent"
+                                            app:layout_constraintTop_toBottomOf="@+id/tv_user_score" />
+
+                                    </android.support.constraint.ConstraintLayout>
+
+                                    <LinearLayout
+                                        android:id="@+id/ll_num_container"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_marginLeft="@dimen/dp15"
+                                        android:layout_marginTop="@dimen/dp15"
+                                        android:layout_marginRight="@dimen/dp15"
+                                        android:layout_marginBottom="@dimen/dp15"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/rect_white_4_radius"
+                                        android:orientation="horizontal"
+                                        android:paddingTop="@dimen/dp10"
+                                        android:paddingBottom="@dimen/dp10"
+                                        android:visibility="gone">
+
+                                        <TextView
+                                            android:id="@+id/btn_my_attention"
+                                            android:layout_width="@dimen/dp0"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:lineSpacingMultiplier="1.4"
+                                            android:onClick="@{v -> listener.onClick(v)}"
+                                            android:textColor="#FF666666"
+                                            android:textSize="13sp" />
+
+
+                                        <TextView
+                                            android:id="@+id/btn_my_fans"
+                                            android:layout_width="@dimen/dp0"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:lineSpacingMultiplier="1.4"
+                                            android:onClick="@{v -> listener.onClick(v)}"
+                                            android:textColor="#FF666666"
+                                            android:textSize="13sp" />
+
+                                        <TextView
+                                            android:id="@+id/btn_my_thumbup"
+                                            android:layout_width="@dimen/dp0"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:lineSpacingMultiplier="1.4"
+                                            android:onClick="@{v -> listener.onClick(v)}"
+                                            android:textColor="#FF666666"
+                                            android:textSize="13sp" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </com.chengzi.app.widget.AspectRatioFrameLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp10"
+                                android:background="@color/color_f4f3f8" />
+
+                            <android.support.design.widget.CustomTabLayout
+                                android:id="@+id/tabLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp43"
+                                android:background="@drawable/bottom_line_bg"
+                                android:paddingBottom="@dimen/dp3"
+                                app:tabIndicator="@color/colorPrimary"
+                                app:tabIndicatorHeight="@dimen/dp2"
+                                app:tabMode="fixed"
+                                app:tabRippleColor="@android:color/transparent"
+                                app:tabSelectedTextColor="@color/colorPrimary"
+                                app:tabTextAppearance="@style/tab_textsize_15"
+                                app:tabTextColor="@color/color_3" />
+
+                        </LinearLayout>
+
+                    </android.support.design.widget.CollapsingToolbarLayout>
+
+                </android.support.design.widget.AppBarLayout>
+
+                <com.handongkeji.widget.NoScrollViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+            </android.support.design.widget.CoordinatorLayout>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="Object" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.SettingActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="设置" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:divider="@drawable/list_divider_left15_bg"
+            android:orientation="vertical"
+            android:showDividers="middle">
+            <!--信息提醒 普通用户-->
+            <LinearLayout
+                android:id="@+id/ll_message_free"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:text="信息提醒"
+                    android:textColor="@color/color_3"
+                    android:textSize="@dimen/sp16" />
+
+                <ImageView
+                    android:id="@+id/tv_message_free"
+                    android:layout_width="@dimen/dp50"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center|right"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    android:src="@drawable/sel_set" />
+            </LinearLayout>
+
+            <!--在线情况 医生 咨询师 医院-->
+            <RadioGroup
+                android:id="@+id/rg_button"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingRight="@dimen/dp15">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:text="在线情况"
+                    android:textColor="@color/color_3"
+                    android:textSize="@dimen/sp16" />
+
+                <RadioButton
+                    android:id="@+id/rb_set_left"
+                    android:layout_width="@dimen/dp60"
+                    android:layout_height="@dimen/dp30"
+                    android:background="@drawable/sel_set_left"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    android:text="在线"
+                    android:textColor="@drawable/sel_set_text_color"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_set_center"
+                    android:layout_width="@dimen/dp60"
+                    android:layout_height="@dimen/dp30"
+                    android:background="@drawable/sel_set_center"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    android:text="离线"
+                    android:textColor="@drawable/sel_set_text_color"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_set_right"
+                    android:layout_width="@dimen/dp60"
+                    android:layout_height="@dimen/dp30"
+                    android:background="@drawable/sel_set_right"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    android:text="忙碌"
+                    android:textColor="@drawable/sel_set_text_color"
+                    android:textSize="13sp" />
+            </RadioGroup>
+
+            <!--检查更新-->
+            <TextView
+                android:id="@+id/tv_check_update"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/white"
+                android:drawableRight="@drawable/jiantou_hui"
+                android:drawablePadding="@dimen/dp15"
+                android:foreground="?selectableItemBackground"
+                android:gravity="center_vertical"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
+                android:text="检查更新"
+                android:textColor="#FF333333"
+                android:textSize="16sp" />
+
+            <!--清除缓存-->
+            <com.nevermore.oceans.widget.EnterLayout
+                android:id="@+id/el_clear_cache"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
+                app:textColor="@color/color_3"
+                app:textSubject="清除缓存"
+                app:text_content=""
+                app:text_size="@dimen/sp16" />
+            <!--手机号-->
+            <com.nevermore.oceans.widget.EnterLayout
+                android:id="@+id/el_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@color/white"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
+                app:textColor="@color/color_3"
+                app:textSize="16"
+                app:textSubject="手机号"
+                app:text_content=""
+                app:text_size="@dimen/sp16" />
+            <!--密码-->
+            <com.nevermore.oceans.widget.EnterLayout
+                android:id="@+id/el_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
+                app:textColor="@color/color_3"
+                app:textSize="16"
+                app:textSubject="密码"
+                app:text_content="更换"
+                app:text_size="@dimen/sp16" />
+
+            <TextView
+                android:id="@+id/tv_un_login"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@color/white"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:text="退出登录"
+                android:textColor="@color/color_3"
+                android:textSize="@dimen/sp16" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

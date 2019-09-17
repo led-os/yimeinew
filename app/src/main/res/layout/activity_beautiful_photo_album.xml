@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="Object" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.beautifulprofile.BeautifulPhotoAlbumActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="美丽档案" />
+
+
+        <com.chengzi.app.widget.NineGridView2
+            android:id="@+id/nineGridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top_bar"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp15"
+            android:nestedScrollingEnabled="false" />
+
+        <TextView
+            android:id="@+id/tv_submit"
+            style="@style/submitBtnStyle"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp15"
+            android:background="@drawable/rect_btn_red_background"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:text="确定" />
+    </RelativeLayout>
+</layout>

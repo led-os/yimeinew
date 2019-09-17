@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.DataNalysisActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="数据分析" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/red_line_bg"
+            android:drawablePadding="@dimen/dp3"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp10"
+            android:paddingBottom="@dimen/dp4"
+            android:text="交易分析"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/et_skin_surgery"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp27"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            app:hideArrow="true"
+            app:textColor="#FF333333"
+            app:textSize="15"
+            app:textSubject="皮肤/手术订单比"
+            app:text_content="0/0" />
+
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/et_skin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp27"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            app:hideArrow="true"
+            app:textColor="#FF333333"
+            app:textSize="15"
+            app:textSubject="皮肤订单占比"
+            app:text_content="0.00%" />
+
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/et_surgery"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp27"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            app:hideArrow="true"
+            app:textColor="#FF333333"
+            app:textSize="15"
+            app:textSubject="手术订单占比"
+            app:text_content="0.00%" />
+
+        <!--成交总数-->
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/et_today_total_order_count"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp27"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            app:hideArrow="true"
+            app:textColor="#FF333333"
+            app:textSize="15"
+            app:textSubject="今日成交订单"
+            app:text_content="0" />
+
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/et_month_total_order_count"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp27"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            app:hideArrow="true"
+            app:textColor="#FF333333"
+            app:textSize="15"
+            app:textSubject="本月成交订单"
+            app:text_content="0" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/red_line_bg"
+            android:drawablePadding="@dimen/dp3"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp10"
+            android:paddingBottom="@dimen/dp4"
+            android:text="花费分析"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <!--推广花费-->
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/et_today_advert_price"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp27"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            app:hideArrow="true"
+            app:textColor="#FF333333"
+            app:textSize="15"
+            app:textSubject="今日广告花费"
+            app:text_content="¥0.00" />
+
+        <!--推广成交数-->
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/et_today_pro_order_count"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp27"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            app:hideArrow="true"
+            app:textColor="#FF333333"
+            app:textSize="15"
+            app:textSubject="日成单"
+            app:text_content="0单" />
+
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/et_month_advert_price"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp27"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            app:hideArrow="true"
+            app:textColor="#FF333333"
+            app:textSize="15"
+            app:textSubject="本月广告花费"
+            app:text_content="¥0.00" />
+
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/et_month_pro_order_count"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp27"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            app:hideArrow="true"
+            app:textColor="#FF333333"
+            app:textSize="15"
+            app:textSubject="月成单"
+            app:text_content="0单" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/red_line_bg"
+            android:drawablePadding="@dimen/dp3"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp10"
+            android:paddingBottom="@dimen/dp4"
+            android:text="流量分析"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/et_today_visit_count"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp27"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            app:hideArrow="true"
+            app:textColor="#FF333333"
+            app:textSize="15"
+            app:textSubject="今日访客"
+            app:text_content="0人" />
+
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/et_today_goods_visit_count"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp27"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingBottom="@dimen/dp10"
+            app:hideArrow="true"
+            app:textColor="#FF333333"
+            app:textSize="15"
+            app:textSubject="今日商品访客"
+            app:text_content="0人" />
+    </LinearLayout>
+</layout>

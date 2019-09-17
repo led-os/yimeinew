@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.HospitalPromotionBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.popularize.HospitalSearchPromotionActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="医院推广" />
+        <!--机构-->
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/ll_hospital"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp80"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dp15">
+
+            <com.chengzi.app.widget.RoundImageView
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:background="@color/colorGray"
+                android:scaleType="centerCrop"
+                app:image="@{url}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--医院昵称-->
+            <TextView
+                android:id="@+id/tv_hospital"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp60"
+                android:paddingTop="@dimen/dp20"
+                android:text="@{bean.name}"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <!--评分-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp60"
+                android:paddingTop="@dimen/dp45"
+                android:text="@{bean.grade+@string/score}"
+                android:textColor="#FFFF526A"
+                android:textSize="12sp" />
+        </android.support.constraint.ConstraintLayout>
+
+        <!--秒杀价格-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp41"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp15"
+                android:text="推广"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/iv_promote"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="30dp"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="@dimen/dp15"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:src="@drawable/sel_set" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp0.5"
+            android:background="@drawable/list_divider_left15_bg" />
+
+        <!--每一轮秒杀活动的限购量-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp41"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp15"
+                android:text="限额（元）"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_promote_money"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp5"
+                android:singleLine="true"
+                android:text="@{bean.preset_amount}"
+                android:textColor="@color/color_3"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iv_limit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp20"
+                android:src="@drawable/bianji" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

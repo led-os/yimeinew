@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.AuthenticationBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.editinfo.DoctorCertifiedInfoActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="认证信息" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/dp15">
+
+                <!--真实姓名：-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dp10"
+                    android:text="@{bean.true_names}"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <!--资质编号：-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dp10"
+                    android:text="@{bean.qualnumbers}"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <!--职级：-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dp10"
+                    android:text="@{bean.occupation_classs}"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dp40"
+                    android:paddingBottom="@dimen/dp10"
+                    android:text="医生执业证书"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_doccertificate_image"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@color/colorGray"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/iv_doccertificate_imagea"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_marginLeft="@dimen/dp80"
+                        android:background="@color/colorGray"
+                        android:scaleType="centerCrop" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dp20"
+                    android:paddingBottom="@dimen/dp10"
+                    android:text="身份证照片"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_card_front"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@color/colorGray"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/iv_card_reverse"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_marginLeft="@dimen/dp80"
+                        android:background="@color/colorGray"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/iv_card"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_marginLeft="@dimen/dp160"
+                        android:background="@color/colorGray"
+                        android:scaleType="centerCrop" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dp32"
+                    android:paddingBottom="@dimen/dp10"
+                    android:text="荣誉资质照片"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp20">
+
+                    <ImageView
+                        android:id="@+id/iv_aptitude_image"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@color/colorGray"
+                        android:scaleType="centerCrop" />
+
+                    <ImageView
+                        android:id="@+id/iv_aptitude_other"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_marginLeft="@dimen/dp80"
+                        android:background="@color/colorGray"
+                        android:scaleType="centerCrop" />
+                </RelativeLayout>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <TextView
+            android:id="@+id/tv_recertification"
+            style="@style/submitBtnStyle"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/dp20"
+            android:background="@drawable/rect_btn_red_background"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:text="重新认证" />
+    </LinearLayout>
+</layout>

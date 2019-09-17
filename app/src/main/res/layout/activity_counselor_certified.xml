@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="Object" />
+
+        <variable
+            name="viewModel"
+            type="com.chengzi.app.ui.account.viewmodel.CounselorCertifiedViewModel" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".ui.account.activity.CounselorCertifiedActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="填写认证资料" />
+
+        <View
+            style="@style/lineStyle"
+            android:layout_marginBottom="@dimen/dp5" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!--请输入您的真实姓名 et_name-->
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:background="@drawable/rect_gray4_border"
+                    android:cursorVisible="true"
+                    android:hint="请输入您的真实姓名"
+                    android:imeOptions="actionNext"
+                    android:text="@={viewModel.real_name}"
+                    android:inputType="text"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:textColor="@color/color_9"
+                    android:textColorHint="#FF999999"
+                    android:textCursorDrawable="@null"
+                    android:maxLength="10"
+                    android:textSize="@dimen/sp12" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingTop="@dimen/dp5"
+                    android:text="上传身份证照片"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+                <!--上传身份证照片-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp8">
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_id_number1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:text="身份证正面" />
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_id_number2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:text="身份证反面" />
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_id_number3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:text="手持身份证照片" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingTop="@dimen/dp5"
+                    android:text="上传资质照片（若没有可不传）"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+                <!--上传资质照片（若没有可不传）-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp8">
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_honor1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:text="资质照片" />
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_honor2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        app:text="其他资质" />
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <TextView
+            android:id="@+id/tv_submit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginLeft="38dp"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="38dp"
+            android:layout_marginBottom="@dimen/dp10"
+            android:background="@drawable/rect_btn_red_background"
+            android:gravity="center"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:text="确认"
+            android:textColor="#FFFFFFFF"
+            android:textSize="15sp" />
+    </LinearLayout>
+</layout>

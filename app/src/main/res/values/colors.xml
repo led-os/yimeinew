@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF526A</color>
+    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="colorOrange">#e37f10</color>
+    <color name="colorRed">#FF526A</color>
+    <color name="colorText">#333333</color>
+    <color name="colorContentText">#666666</color>
+    <color name="colorGray">#999999</color>
+
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorPressed">#e7e7e7</color>
+    <color name="colorTransparent">#00000000</color>
+
+    <color name="colorUnSelected">#999999</color>
+
+    <color name="colorThemeBlue">#4A90E2</color>
+    <color name="colorMsgRed">#ff3333</color>
+    <color name="color_47B6E2">#47B6E2</color>
+
+    <color name="windo_background">#F4F3F8</color>
+    <color name="color_f4f3f8">#F4F3F8</color>
+
+    <!--黑灰白-->
+    <color name="color_1">#111111</color>
+    <color name="color_2">#222222</color>
+    <color name="color_3">#333333</color>
+    <color name="color_4">#444444</color>
+    <color name="color_6">#666666</color>
+    <color name="color_8">#888888</color>
+    <color name="color_9">#999999</color>
+    <color name="color_2b">#2b2b2b</color>
+    <color name="color_a">#aaaaaa</color>
+    <color name="color_f5">#f5f5f5</color>
+    <color name="color_f6">#f6f6f6</color>
+    <color name="color_f7">#f7f7f7</color>
+    <color name="color_f8">#f8f8f8</color>
+    <color name="color_e3">#e3e3e3</color>
+    <color name="color_e6">#e6e6e6</color>
+    <color name="color_e7">#e7e7e7</color>
+    <color name="color_e9">#e9e9e9</color>
+    <color name="color_d9">#d9d9d9</color>
+    <color name="color_d">#dddddd</color>
+    <color name="white">#ffffff</color>
+
+    <color name="colorLine">#dfdfdf</color>
+    <color name="divider">#F0F0F0</color>
+
+    <!--透明阴影-->
+    <color name="alphaWindBg">#84c1b9b9</color>
+    <color name="alpha_0">#00000000</color>
+    <color name="alpha_10">#10000000</color>
+    <color name="alpha_20">#20000000</color>
+    <color name="alpha_20f">#20ffffff</color>
+    <color name="alpha_40f">#40ffffff</color>
+    <color name="alpha_30">#30000000</color>
+    <color name="alpha_50">#50000000</color>
+    <color name="alpha_49">#496B7987</color>
+    <color name="alpha_60">#60ffffff</color>
+
+    <color name="hand_theme_body">#cc22292c</color>
+    <color name="color_background">#F4F3F8</color>
+
+    <color name="translucent">#8f000000</color><!--半透明 -->
+    <color name="font_text">#4f5457</color><!--正文灰黑-->
+    <color name="gray">#FF666666</color>
+    <color name="f29c9f">#F29C9F</color>
+    <color name="dark_bg_20p">#33000000</color>
+    <color name="color_ff9156">#ff9156</color>
+</resources>

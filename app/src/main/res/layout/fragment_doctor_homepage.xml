@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@drawable/divider_10"
+                    android:orientation="vertical"
+                    android:showDividers="middle"
+                    android:paddingBottom="@dimen/dp50"
+                    >
+
+                </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/bottom_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp50"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom"
+                android:background="@drawable/top_line_bg"
+                >
+
+                <TextView
+                    android:id="@+id/btn_org_homepage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableTop="@drawable/shangpin_jigouzhuye"
+                    android:drawablePadding="@dimen/dp4"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp20"
+                    android:paddingTop="@dimen/dp7"
+                    android:paddingRight="@dimen/dp10"
+                    android:text="@string/org_home_page"
+                    android:textColor="#FF999999"
+                    android:textSize="10sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/btn_online_services"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:drawableTop="@drawable/shangpin_zaixianzixun"
+                    android:drawablePadding="@dimen/dp4"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp10"
+                    android:paddingTop="@dimen/dp7"
+                    android:paddingRight="@dimen/dp20"
+                    android:text="@string/online_reference_services"
+                    android:textColor="#FF999999"
+                    android:textSize="10sp"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_org_homepage"
+                    />
+
+                <TextView
+                    android:id="@+id/btn_appointment_doctor"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#F29C9F"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.onClick(v)}"
+                    android:text="@string/make_an_appointment_with_doctor"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="15sp"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_online_services"
+                    app:layout_constraintRight_toLeftOf="@+id/btn_dial"
+                    />
+
+                <TextView
+                    android:id="@+id/btn_dial"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.onClick(v)}"
+                    android:text="拨打电话"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="15sp"
+                    app:layout_constraintLeft_toRightOf="@+id/btn_appointment_doctor"
+                    app:layout_constraintRight_toRightOf="parent"
+                    />
+
+            </android.support.constraint.ConstraintLayout>
+
+        </FrameLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</layout>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.SheetListBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.docotorroborder.RobOrderSucActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="抢单成功" />
+
+        <TextView
+            android:id="@+id/tv_count_down"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingTop="@dimen/dp40"
+            android:text="60s"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_type_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingTop="@dimen/dp10"
+            android:text="等待客户选择"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="109dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp80"
+            android:src="@drawable/qiangdanchenggong" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp60"
+            android:background="@color/white"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp12"
+            android:paddingBottom="@dimen/dp12">
+
+            <com.chengzi.app.widget.CircleImageView
+                android:id="@+id/iv_head"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:scaleType="centerCrop"
+                android:src="@drawable/morentouxiang"
+                app:avatar="@{true}"
+                app:image="@{url}" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp10"
+                android:text="@{bean.name}"
+                android:textColor="#FF333333"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toRightOf="@id/iv_head" />
+
+            <TextView
+                android:id="@+id/tv_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp12"
+                android:background="@drawable/rect_btn_red_background"
+                android:drawableLeft="@drawable/nv"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp5"
+                android:paddingRight="@dimen/dp5"
+                android:text="@{bean.age}"
+                android:textColor="#FFFFFFFF"
+                android:textSize="8sp"
+                app:layout_constraintLeft_toRightOf="@id/tv_name" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                app:layout_constraintLeft_toRightOf="@id/iv_head"
+                app:layout_constraintTop_toBottomOf="@id/tv_name">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp10"
+                    android:text="评分："
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{bean.grade+@string/score}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp10"
+                    android:text="@{bean.cate_name}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp15"
+                android:drawableRight="@drawable/jiantou_hui"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_go_or_finish"
+            style="@style/submitBtnStyle"
+            android:layout_width="@dimen/dp200"
+            android:layout_height="@dimen/dp46"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp70"
+            android:background="@drawable/rect_btn_red_background"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:text=""
+            android:visibility="gone" />
+    </LinearLayout>
+</layout>

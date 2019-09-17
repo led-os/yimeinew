@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="@string/seckill" />
+
+        <android.support.design.widget.CustomTabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp43"
+            android:background="@color/colorPrimary"
+            android:paddingBottom="@dimen/dp3"
+            app:layout_collapseMode="pin"
+            app:layout_scrollFlags="snap"
+            app:tabIndicator="@android:color/white"
+            app:tabIndicatorHeight="@dimen/dp2"
+            app:tabMode="scrollable"
+            app:tabRippleColor="@android:color/transparent"
+            app:tabSelectedTextColor="@android:color/white"
+            app:tabTextColor="@android:color/white"
+            app:tabUnboundedRipple="false" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp10"
+            android:background="@color/color_f4f3f8" />
+
+        <!--
+            app:tabMode="scrollable"
+        -->
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout_time"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp55"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="@dimen/dp0"
+            app:tabMode="fixed"
+            app:tabPadding="@dimen/dp0"
+            app:tabPaddingBottom="@dimen/dp0"
+            app:tabPaddingEnd="@dimen/dp0"
+            app:tabPaddingStart="@dimen/dp0"
+            app:tabPaddingTop="@dimen/dp0" />
+
+        <com.chengzi.app.widget.SeckillView
+            android:id="@+id/ll_in_kill"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_f4f3f8"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/dp10"
+            android:paddingBottom="@dimen/dp10" />
+
+        <com.nevermore.oceans.widget.SwipeRefreshView
+            android:id="@+id/swipeRefreshView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_f4f3f8" />
+    </LinearLayout>
+</layout>

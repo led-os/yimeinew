@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+
+        <variable
+            name="viewModel"
+            type="com.chengzi.app.ui.peopleraise.viewmodel.PeopleRaiseDetailViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <com.handongkeji.widget.KeyboardLayout1
+        android:id="@+id/keyboardLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="@string/people_raise_detail" />
+
+        <FrameLayout
+            android:id="@+id/viewSwitcher"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:layout_gravity="center" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_recommand"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp50"
+                    android:background="@drawable/top_line_bg"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ll_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="@{viewModel.isComment?View.VISIBLE:View.GONE}">
+
+                        <com.chengzi.app.widget.CommentEditText
+                            android:id="@+id/edit_comment"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:gravity="center_vertical"
+                            android:hint="@string/post_comment"
+                            android:inputType="textMultiLine"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:text="@={viewModel.content}"
+                            android:textColor="#333333"
+                            android:textColorHint="#FF999999"
+                            android:textSize="15sp"
+                            app:hand_max_length="200"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@+id/btn_send" />
+
+                        <TextView
+                            android:id="@+id/btn_send"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center"
+                            android:onClick="@{v -> listener.handleClick(v,null)}"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:text="@string/hand_send"
+                            android:textColor="#47B6E2"
+                            android:textSize="15sp"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:visibility="@{viewModel.isComment?View.GONE:View.VISIBLE}">
+
+                        <TextView
+                            android:id="@+id/tv_amount"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="18sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@+id/btn_comment"
+                            app:layout_constraintWidth_percent="0.333333" />
+
+                        <TextView
+                            android:id="@+id/btn_comment"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#F29C9F"
+                            android:foreground="?selectableItemBackground"
+                            android:gravity="center"
+                            android:onClick="@{v -> listener.handleClick(v,null)}"
+                            android:text="@string/want_comment"
+                            android:textColor="#FFFFFFFF"
+                            android:textSize="18sp"
+                            app:layout_constraintLeft_toRightOf="@+id/tv_amount"
+                            app:layout_constraintRight_toLeftOf="@+id/btn_participate"
+                            app:layout_constraintWidth_percent="0.33333" />
+
+                        <TextView
+                            android:id="@+id/btn_participate"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/square_btn_selector"
+                            android:foreground="?selectableItemBackground"
+                            android:gravity="center"
+                            android:onClick="@{v -> listener.handleClick(v,null)}"
+                            android:text="@string/want_participate"
+                            android:textColor="#FFFFFFFF"
+                            android:textSize="18sp"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintWidth_percent="0.33333" />
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </com.handongkeji.widget.KeyboardLayout1>
+
+</layout>

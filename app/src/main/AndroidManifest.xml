@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.chengzi.app">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> <!-- 访问网络状态 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 控制呼吸灯，振动器等，用于新消息提醒 -->
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 外置存储存取权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 8.0 系统需要 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 多媒体相关 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 如果需要实时音视频通话模块，下面的权限也是必须的。否则，可以不加 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <permission
+        android:name="com.chengzi.app.permission.RECEIVE_MSG"
+        android:protectionLevel="signature" /> <!-- 接收 SDK 消息广播权限， 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
+    <uses-permission android:name="com.yimei.app.permission.RECEIVE_MSG" />
+
+    <application
+        android:name=".MyApp"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.mine.activity.mywallet.BindBankCardActivity" />
+        <activity android:name=".ui.mine.activity.mywallet.SelectBankActivity" />
+
+        <meta-data
+            android:name="com.netease.nim.appKey"
+            android:value="d009df3def8de31624d1bcd1a30c8584" /> <!-- 云信后台服务，请使用独立进程。 -->
+        <service
+            android:name="com.netease.nimlib.service.NimService"
+            android:process=":core" /> <!-- 云信后台辅助服务 -->
+        <service
+            android:name="com.netease.nimlib.service.NimService$Aux"
+            android:process=":core" /> <!-- 云信后台辅助服务 -->
+        <service
+            android:name="com.netease.nimlib.job.NIMJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:process=":core" /> <!-- 云信监视系统启动和网络变化的广播接收器，保持和 NimService 同一进程 -->
+        <receiver
+            android:name="com.netease.nimlib.service.NimReceiver"
+            android:exported="false"
+            android:process=":core">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver> <!-- 云信进程间通信 Receiver -->
+        <receiver android:name="com.netease.nimlib.service.ResponseReceiver" /> <!-- 云信进程间通信service -->
+        <service android:name="com.netease.nimlib.service.ResponseService" /> <!-- 云信进程间通信provider -->
+        <!-- android:authorities="{包名}.ipc.provider", 请将com.netease.nim.demo替换为自己的包名 -->
+        <provider
+            android:name="com.netease.nimlib.ipc.NIMContentProvider"
+            android:authorities="{applicationId}.ipc.provider"
+            android:exported="false"
+            android:process=":core" /> <!-- 高德地图key -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="c5ffc139cd9cf8f4c86450ab4f5b659f" />
+
+        <service android:name="com.amap.api.location.APSService" /> <!-- 高德地图key -->
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/startTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" />
+        <activity android:name=".ui.account.activity.LoginChooseActivity" />
+        <activity
+            android:name=".ui.account.activity.LoginActivity"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="${applicationId}.com.action.login" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.account.activity.RegisterActivity" />
+        <activity android:name=".ui.account.activity.UserAgreementActivity" />
+        <activity android:name=".ui.account.activity.FindPwdActivity" />
+        <activity android:name=".ui.account.activity.ThridBindPhoneActivity" />
+        <activity android:name=".ui.account.activity.DoctorCertifiedActivity" />
+        <activity android:name=".ui.account.activity.HospitalCertifiedActivity2"/>
+        <activity android:name=".ui.account.activity.HospitalCertifiedActivity"/>
+        <activity android:name=".ui.account.activity.CounselorCertifiedActivity" />
+        <activity
+            android:name=".ui.mine.activity.mywallet.MyWalletActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".ui.mine.activity.mywallet.BindCorporateAccountActivity" />
+        <activity android:name=".ui.mine.activity.mywallet.AccountDetailsActivity" />
+        <activity android:name=".ui.mine.activity.mywallet.WithDrawalActivity" />
+        <activity android:name=".ui.mine.activity.mywallet.ApplyWithDrawalsSucActivity" />
+        <activity android:name=".ui.comment.activity.CommentDetailActivity" />
+        <activity android:name=".ui.discover.activity.PostActivity" />
+        <activity android:name=".ui.mine.activity.vip.MyVipActivity" />
+        <activity android:name=".ui.mine.activity.vip.OpenVipActivity" />
+        <activity android:name=".ui.pay.activity.PayActivity" />
+        <activity android:name=".ui.pay.activity.PaySuccessActivity" />
+        <activity android:name=".ui.pay.activity.PayFailureActivity" />
+        <activity android:name=".ui.mine.activity.vip.LookVipIntroduceActivity" />
+        <activity android:name=".ui.mine.activity.vip.SendVipActivity" />
+        <activity android:name=".ui.mine.activity.vip.MyCouponActivity" />
+        <activity android:name=".ui.mine.activity.vip.InviteFriendsActivity" />
+        <activity
+            android:name=".ui.common.activity.VideoPlayActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.common.activity.PictureSwitcherActivity" />
+        <activity
+            android:name=".ui.common.activity.VideoGridActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/ImagePickerTheme" />
+        <activity
+            android:name=".ui.common.activity.VideoTrimmerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.discover.activity.PublishCameraActivity" />
+        <activity android:name=".ui.mine.activity.order_beauty_raise.UserBeautyRaiseActivity" />
+        <activity android:name=".ui.mine.activity.order_beauty_raise.BeautyRaiseDetailsActivity" />
+        <activity android:name=".ui.mine.activity.order_beauty_raise.HospitalBeautyRaiseActivity" />
+        <activity android:name=".ui.mine.activity.onlinecases.OnlineCasesActivity" />
+        <activity android:name=".ui.mine.activity.onlinecases.AddOnlineCasesActivity" />
+        <activity android:name=".ui.mine.activity.onlinecases.WriteExperienceActivity" />
+        <activity android:name=".ui.mine.activity.myorder.MyOrderActivity" />
+        <activity
+            android:name=".ui.mine.activity.myorder.MyOrderListDetailsActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".ui.mine.activity.myorder.PriceSpreadActivity" />
+        <activity android:name=".ui.mine.activity.myorder.EvaluationActivity" />
+        <activity android:name=".ui.mine.activity.myorder.ComplaintsActivity" />
+        <activity android:name=".ui.home.activity.SelectCityActivity" />
+        <activity android:name=".ui.home.activity.AppNavigatorActivity" />
+        <activity
+            android:name=".ui.search.activity.SearchActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ui.search.activity.SearchResultActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".ui.search.activity.AllGoodsActivity" />
+        <activity android:name=".ui.find.activity.FindActivity" />
+        <activity android:name=".ui.rankinglist.activity.RankingListActivity" />
+        <activity android:name=".ui.rankinglist.activity.RankingRulesActivity" />
+        <activity android:name=".ui.privaterefer.activity.PrivateReferActivity" />
+        <activity
+            android:name=".ui.peopleraise.activity.PeopleRaiseActivity"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name=".ui.mine.activity.MyShopCarActivity" />
+        <activity android:name=".ui.privaterefer.activity.PrivateReferTypeActivity" />
+        <activity android:name=".ui.privaterefer.activity.WaitForMatchingActivity" />
+        <activity android:name=".ui.privaterefer.activity.MatchedActivity" />
+        <activity android:name=".ui.mine.activity.UpdatePhoneAndPwdActivity" />
+        <activity android:name=".ui.mine.activity.HelpActivity" />
+        <activity android:name=".ui.mine.activity.FeedBackActivity" />
+        <activity android:name=".ui.mine.activity.SettingActivity" />
+        <activity android:name=".ui.mine.activity.MyBookingActivity" />
+        <activity android:name=".ui.mine.activity.electronicinvoice.ElectronicInvoiceActivity" />
+        <activity android:name=".ui.mine.activity.electronicinvoice.IssueElectronicInvoicesActivity" />
+        <activity android:name=".ui.mine.activity.electronicinvoice.InvoicesSubmitSuccessActivity" />
+        <activity android:name=".ui.mine.activity.electronicinvoice.HistoryInvoiceActivity" />
+        <activity android:name=".ui.mine.activity.docotorroborder.RobOrderActivity" />
+        <activity android:name=".ui.peopleraise.activity.PeopleRaiseDetailActivity" />
+        <activity
+            android:name=".ui.peopleraise.activity.PostPeopleRaiseActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".ui.mine.activity.docotorroborder.RobOrderSucActivity" />
+        <activity android:name=".ui.mine.activity.VisitTimeManagerActivity" />
+        <activity android:name=".ui.mine.activity.checklook.CheckLookActivity" />
+        <activity android:name=".ui.comment.activity.AllCommentsActivity" />
+        <activity android:name=".ui.find.activity.FindDetailActivity" />
+        <activity
+            android:name=".ui.mine.activity.bindingmanage.BindingManageActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".ui.mine.activity.bindingmanage.BindingNewMechanismActivity" />
+        <activity android:name=".ui.mine.activity.bindingmanage.BindHistoryRecordActivity" />
+        <activity android:name=".ui.message.activity.SystemMessageActivity" />
+        <activity android:name=".ui.message.activity.AtMeActivity" />
+        <activity android:name=".ui.message.activity.CommentAndThumbupActivity" />
+        <activity android:name=".ui.message.activity.FansActivity" />
+        <activity android:name=".ui.message.activity.QuestionsAndAnswersActivity" />
+        <activity android:name=".ui.message.activity.ConversationActivity" />
+        <activity android:name=".ui.mine.activity.DataNalysisActivity" />
+        <activity android:name=".ui.mine.activity.ReservationManageActivity" />
+        <activity android:name=".ui.mine.activity.checklook.HospitalCheckLookActivity" />
+        <activity android:name=".ui.mine.activity.SettingPhoneActivity" />
+        <activity android:name=".ui.mine.activity.DoctorOrCounselorActivity" />
+        <activity android:name=".ui.mine.activity.myorder.DoctorMyOrderActivity" />
+        <activity android:name=".ui.onlinequestionandanswer.activity.OnlineQuestionActivity" />
+        <activity
+            android:name=".ui.onlinequestionandanswer.activity.QuestionSearchActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ui.onlinequestionandanswer.activity.QuestionSearchResultActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".ui.onlinequestionandanswer.activity.AskQuestionActivity" />
+        <activity android:name=".ui.mine.activity.CompetitiveAnalysisActivity" />
+        <activity android:name=".ui.mine.activity.takepartseckill.TakePartSeckillActivity" />
+        <activity
+            android:name=".ui.mine.activity.takepartseckill.ConfirmTakePartActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.mine.activity.verifyorder.VerifyOrderActivity" />
+        <activity android:name=".ui.mine.activity.verifyorder.VerifyResultActivity" /> <!-- 扫描二维码 -->
+        <activity android:name="com.nevermore.oceans.google.zxing.activity.CaptureActivity" />
+        <activity android:name=".ui.mine.activity.popularize.IWantPopularizeActivity" />
+        <activity android:name=".ui.mine.activity.popularize.RechargeActivity" />
+        <activity android:name=".ui.mine.activity.popularize.AdvPromoteActivity" />
+        <activity android:name=".ui.mine.activity.popularize.AdvPromoteSnapUpActivity" />
+        <activity android:name=".ui.mine.activity.popularize.GoodsSearchPromtionActivity" />
+        <activity android:name=".ui.mine.activity.popularize.DoctorOrCounselorPromotionActivity" />
+        <activity android:name=".ui.mine.activity.popularize.CaseSearchPromotionActivity" />
+        <activity android:name=".ui.onlinequestionandanswer.activity.AnswerQuestionActivity" />
+        <activity android:name=".ui.onlinequestionandanswer.activity.ResolvingQuestionActivity" />
+        <activity android:name=".ui.onlinequestionandanswer.activity.QuestionDetailActivity" />
+        <activity android:name=".ui.goods.activity.GoodsDetailActivity" />
+        <activity android:name=".ui.mine.activity.popularize.ZonePromoteActivity" />
+        <activity android:name=".ui.mine.activity.popularize.ChooseGoodsActivity" />
+        <activity android:name=".ui.goods.activity.ConfirmGoodsOrderActivity" />
+        <activity android:name=".ui.goods.activity.GroupBuyingActivity" />
+        <activity android:name=".ui.homepage.doctor.activity.DoctorHomePageActivity" />
+        <activity android:name=".ui.goods.activity.PeopleSaysActivity" />
+        <activity android:name=".ui.goods.activity.PeopleSayDetailActivity" />
+        <activity android:name=".ui.homepage.activity.EstimateActivity" />
+        <activity android:name=".ui.mine.activity.popularize.HospitalSearchPromotionActivity" />
+        <activity android:name=".ui.mine.activity.IWantRecommendActivity" />
+        <activity android:name=".ui.mine.activity.OrangeCreditActivity" />
+        <activity android:name=".ui.mine.activity.cases.AddCaseActivity" />
+        <activity android:name=".ui.mine.activity.cases.ChooseCaseTypeActivity" />
+        <activity android:name=".ui.mine.activity.GoodsManageActivity" />
+        <activity android:name=".ui.mine.activity.myorder.HospitalEvaluationActivity" />
+        <activity android:name=".ui.mine.activity.editinfo.EditInfoUserActivity" />
+        <activity android:name=".ui.mine.activity.editinfo.UpdateNickNameActivity" />
+        <activity android:name=".ui.mine.activity.editinfo.SignOrIntroduceActivity" />
+        <activity android:name=".ui.mine.activity.editinfo.EditInfoDoctorOrCounselorActivity" />
+        <activity android:name=".ui.mine.activity.editinfo.JobYearActivity" />
+        <activity android:name=".ui.mine.activity.editinfo.GoodAtActivity" />
+        <activity android:name=".ui.mine.activity.editinfo.DoctorCertifiedInfoActivity" />
+        <activity android:name=".ui.mine.activity.editinfo.CounselorCertifiedInfoActivity" />
+        <activity android:name=".ui.mine.activity.editinfo.EditInfoHospitalActivity" />
+        <activity android:name=".ui.mine.activity.editinfo.HospitalCertifiedInfoActivity" />
+        <activity android:name=".ui.mine.activity.editinfo.HospitalAddressActivity" />
+        <activity android:name=".ui.find.activity.ThreePartiesActivity" />
+        <activity android:name=".ui.find.activity.ThreePartiesDetailActivity" />
+        <activity android:name=".ui.find.activity.CreditEnquiryActivity" />
+        <activity android:name=".ui.find.activity.UserCreditInfoActivity" />
+        <activity android:name=".ui.homepage.hospital.activity.DoctorListActivity" />
+        <activity android:name=".ui.homepage.hospital.activity.HospitalCaseListActivity" />
+        <activity android:name=".ui.homepage.user.activity.UserHomePageActivity" />
+        <activity android:name=".ui.homepage.activity.FansOrAttentionActivity" />
+        <activity android:name=".ui.homepage.user.activity.UserThumbUpActivity" />
+        <activity android:name=".ui.seckill.activity.SeckillActivity" />
+        <activity android:name=".ui.mine.activity.beautifulprofile.BeautifulProfileActivity" />
+        <activity android:name=".ui.mine.activity.beautifulprofile.BeautifulPhotoAlbumActivity" />
+        <activity
+            android:name=".ui.comment.activity.CommentContainerActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.homepage.hospital.activity.HospitalHomePageActivity" />
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".ui.pay.activity.PayOrderActivity" />
+        <activity android:name=".ui.mine.activity.HelpDetailsActivity" />
+        <activity android:name=".ui.peopleraise.activity.ConfirmRaiseOrderActivity" />
+        <activity android:name=".ui.homepage.activity.AppointmentActivity" />
+        <activity android:name=".ui.homepage.activity.ItsPublishActivity" />
+        <activity android:name=".ui.pay.activity.AlipayH5Activity" />
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleInstance"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".ui.homepage.doctor.activity.AddRecordActivity" />
+        <activity android:name=".ui.discover.activity.AtOtherUserActivity" />
+        <activity android:name=".ui.homepage.activity.AnswerActivity" />
+        <activity android:name=".ui.pay.activity.PayRaiseSuccessActivity" />
+        <activity android:name=".ui.pay.activity.PayRaiseFailureActivity" />
+        <activity android:name=".ui.pay.activity.PayOrderSuccessActivity" />
+        <activity android:name=".ui.pay.activity.PayOrderFailureActivity" />
+        <activity android:name=".GuidanceActivity" />
+        <activity android:name=".im.location.activity.LocationAmapActivity" />
+        <activity android:name=".im.location.activity.NavigationAmapActivity" />
+        <activity android:name=".ui.mine.activity.mywallet.SelectProvinceCitiesActivity" />
+        <activity android:name=".ui.message.activity.DoctorSelectorActivity" />
+        <activity android:name=".ui.common.activity.WebActivity" />
+
+        <receiver android:name=".receiver.UmCustomMsgBroadcastReceiver" />
+    </application>
+
+</manifest>

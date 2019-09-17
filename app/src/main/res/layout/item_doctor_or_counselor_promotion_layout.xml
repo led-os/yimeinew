@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <!--2-医生 3-咨询师-->
+        <variable
+            name="type"
+            type="Integer" />
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.DoctorPromotionBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@color/white">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_doctor_or_counselor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp10">
+
+            <com.chengzi.app.widget.CircleImageView
+                android:id="@+id/iv_doctor"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:scaleType="centerCrop"
+                android:src="@drawable/morentouxiang"
+                app:avatar="@{true}"
+                app:image="@{url}" />
+
+            <!--昵称-->
+            <TextView
+                android:id="@+id/tv_doctor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/dp2"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp10"
+                android:text="@{bean.name}"
+                android:textColor="#FF333333"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toRightOf="@id/iv_doctor" />
+
+            <!--职称-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp4"
+                android:paddingTop="@dimen/dp3"
+                android:text="@{bean.Consultant}"
+                android:textColor="#FF333333"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@id/tv_doctor" />
+
+            <!--评分-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingTop="@dimen/dp2"
+                app:layout_constraintLeft_toRightOf="@id/iv_doctor"
+                app:layout_constraintTop_toBottomOf="@id/tv_doctor">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="审美："
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{bean.grade}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="分   "
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@{type==2?@string/skills:@string/services}"
+                    android:textColor="#FFFF526A"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{bean.skill_grade}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="分"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <View
+            android:id="@+id/view"
+            style="@style/lineStyle"
+            android:layout_marginTop="@dimen/dp10"
+            app:layout_constraintTop_toBottomOf="@id/cl_doctor_or_counselor" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/view">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp10"
+                android:text="限额"
+                android:textColor="#FF999999"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_promote_money"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp4"
+                android:text="@{@string/the_yuan+bean.preset_amount}"
+                android:textColor="#FF333333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_set"
+                android:layout_width="@dimen/dp55"
+                android:layout_height="26dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp10"
+                android:background="@drawable/rect_btn_red_background"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:text="设置"
+                android:textColor="#FFFFFFFF"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/dp8"
+                android:text="推广"
+                android:textColor="#FF999999"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/tv_promote"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="30dp"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="@dimen/dp15"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:src="@drawable/sel_set" />
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

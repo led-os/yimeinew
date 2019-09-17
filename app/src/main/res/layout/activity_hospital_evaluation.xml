@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="Object" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.myorder.HospitalEvaluationActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="评价" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingTop="@dimen/dp10"
+                android:text="用户满意分"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <com.chengzi.app.widget.RatingBar
+                android:id="@+id/rb_doctor1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp40"
+                android:paddingLeft="@dimen/dp15"
+                app:starCheckedIcon="@drawable/shoucang_selected"
+                app:starCurCount="0"
+                app:starMaxCount="10"
+                app:starNormalIcon="@drawable/shoucang_default"
+                app:starPadding="@dimen/dp5"
+                app:starSize="@dimen/dp20" />
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/et_number"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp140"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:cursorVisible="true"
+            android:gravity="top"
+            android:hint="请输入你的评价，200字以内"
+            android:imeOptions="actionDone"
+            android:maxLength="200"
+            android:padding="@dimen/dp15"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingRight="@dimen/dp15"
+            android:textColor="@color/color_6"
+            android:textColorHint="#FF999999"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/sp15" />
+
+        <TextView
+            android:id="@+id/tv_submit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginLeft="38dp"
+            android:layout_marginTop="@dimen/dp100"
+            android:layout_marginRight="38dp"
+            android:background="@drawable/rect_btn_red_background"
+            android:gravity="center"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:text="确认评价"
+            android:textColor="#FFFFFFFF"
+            android:textSize="15sp" />
+    </LinearLayout>
+</layout>

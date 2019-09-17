@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="isVip"
+            type="Boolean" />
+
+        <!--status=1(抢购中) ->显示抢购价 否则不显示抢购价-->
+        <variable
+            name="isShowStatus"
+            type="Boolean" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.seckill.bean.KillIndexBean" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp10"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp10">
+
+        <com.chengzi.app.widget.AspectRatioFrameLayout
+            android:layout_width="@dimen/dp128"
+            android:layout_height="wrap_content"
+            app:aspectRatio="@{1.7534f}"
+            android:layout_gravity="center_vertical"
+            app:resize_mode="fixed_width">
+
+            <com.chengzi.app.widget.RoundImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:image="@{url}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="@dimen/dp5"
+                android:src="@drawable/vip"
+                android:visibility="@{isVip?View.VISIBLE:View.GONE}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom"
+                android:layout_margin="@dimen/dp5"
+                android:text="@{bean.grade}"
+                android:textColor="#FF666666"
+                android:textSize="10sp" />
+
+        </com.chengzi.app.widget.AspectRatioFrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp10"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="2"
+                android:text="@{bean.good_name}"
+                android:textColor="#FF333333"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp9"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:backgroundTint="#FFC3C5"
+                    android:gravity="center"
+                    android:max="100"
+                    android:progress="@{bean.plan_int}"
+                    android:progressBackgroundTint="#fb656b"
+                    android:progressTint="#D40000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:text="@{bean.plan_name}"
+                    android:textColor="#FFD40000"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp4"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_original_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/the_yuan+bean.practical_price}"
+                    android:textColor="#FF333333"
+                    android:textSize="11sp" />
+
+                <!--
+                    android:visibility="@{isShowStatus?View.VISIBLE:View.GONE}"-->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:layout_marginRight="@dimen/dp10"
+                    android:layout_weight="1"
+                    android:text="@{@string/the_yuan+bean.price}"
+                    android:textColor="#FFFF526A"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                <!--立即抢购/提醒    已抢完/已开启-->
+                <!--
+ //1-抢购中 0-即将开始
+                    -->
+                <TextView
+                    android:id="@+id/tv_go"
+                    android:layout_width="58dp"
+                    android:layout_height="25dp"
+                    android:background="@{isShowStatus?@drawable/attention_bg_selector:@drawable/attention_bg_selector_green}"
+                    android:gravity="center"
+                    android:text="立即抢购"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp4"
+                android:text="@{bean.hospital_name}"
+                android:textColor="#FF666666"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

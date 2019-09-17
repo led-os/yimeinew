@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Hand_RatioImageView">
+        <attr name="hand_ratio_width" format="integer|dimension" />
+        <attr name="hand_ratio_height" format="integer|dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="AspectRatioFrameLayout">
+        <attr name="resize_mode" />
+    </declare-styleable>
+
+    <attr name="resize_mode" format="enum">
+        <enum name="fit" value="0" />
+        <enum name="fixed_width" value="1" />
+        <enum name="fixed_height" value="2" />
+        <enum name="fill" value="3" />
+        <enum name="zoom" value="4" />
+    </attr>
+
+    <declare-styleable name="hand_custom_edittext">
+        <attr name="hand_disableEmoji" format="boolean" />
+        <attr name="hand_max_length" format="reference|integer" />
+        <attr name="hand_sensitive_filter" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="Hand_JCameraView">
+        <attr name="hand_iconSize" format="dimension" />
+        <attr name="hand_iconMargin" format="dimension" />
+        <attr name="hand_iconSrc" format="reference" />
+        <attr name="hand_iconLeft" format="reference" />
+        <attr name="hand_iconRight" format="reference" />
+        <attr name="hand_duration_max" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="image_radius" format="reference|dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="UploadImageView">
+        <attr name="image" format="reference" />
+        <attr name="text" format="string|reference" />
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="ViewPager2">
+        <attr name="android:orientation" />
+    </declare-styleable>
+
+</resources>

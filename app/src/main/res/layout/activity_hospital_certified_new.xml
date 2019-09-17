@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.chengzi.app.ui.account.viewmodel.HospitalCertifiedViewModel2" />
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".ui.account.activity.HospitalCertifiedActivity2">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="填写认证资料" />
+
+        <View
+            style="@style/lineStyle"
+            android:layout_marginBottom="@dimen/dp5" />
+
+        <!--
+            android:cursorVisible="true"
+            android:textCursorDrawable="@null"
+            -->
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingRight="@dimen/dp15">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:background="@drawable/rect_gray4_border"
+                    android:hint="请输入医院名称"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLength="30"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@={viewModel.real_name}"
+                    android:textColor="@color/color_9"
+                    android:textColorHint="#FF999999"
+                    android:textSize="@dimen/sp12" />
+
+                <EditText
+                    android:id="@+id/et_name_people"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp4"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:background="@drawable/rect_gray4_border"
+                    android:hint="请输入医院运营人姓名"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLength="20"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@={viewModel.hospital_opreation_name}"
+                    android:textColor="@color/color_9"
+                    android:textColorHint="#FF999999"
+                    android:textSize="@dimen/sp12" />
+
+                <com.nevermore.oceans.widget.EnterLayout
+                    android:id="@+id/el_choose_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    app:textSubject="医院所属城市"
+                    app:text_content="请选择" />
+
+                <com.nevermore.oceans.widget.EnterLayout
+                    android:id="@+id/el_choose_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    app:textSubject="医院所属类型"
+                    app:text_content="请选择" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1pt"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:background="#f7f7f7" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:gravity="center_vertical"
+                    android:text="经营资质材料"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/company_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:background="@drawable/rect_gray4_border"
+                    android:hint="请输入企业工商注册名称"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLength="30"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@={viewModel.companyName}"
+                    android:textColor="@color/color_9"
+                    android:textColorHint="#FF999999"
+                    android:textSize="@dimen/sp12" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:background="@drawable/rect_gray4_border"
+                    android:hint="请输入企业统一社会信用代码"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLength="18"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@={viewModel.creditCode}"
+                    android:textColor="@color/color_9"
+                    android:textColorHint="#FF999999"
+                    android:textSize="@dimen/sp12" />
+
+                <EditText
+                    android:id="@+id/company_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:background="@drawable/rect_gray4_border"
+                    android:hint="请输入企业相关邮箱"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLength="20"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@={viewModel.companyEmail}"
+                    android:textColor="@color/color_9"
+                    android:textColorHint="#FF999999"
+                    android:textSize="@dimen/sp12" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:gravity="center_vertical"
+                        android:text="注册资金"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_register_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_marginBottom="@dimen/dp6"
+                        android:background="@drawable/rect_gray4_border"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingRight="@dimen/dp15"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/color_9"
+                        android:textColorHint="#FF999999"
+                        android:textSize="@dimen/sp12"
+                        android:onClick="@{v -> listener.onClick(v)}"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:gravity="center_vertical"
+                        android:text="员工规模"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_staff_size"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_marginBottom="@dimen/dp6"
+                        android:background="@drawable/rect_gray4_border"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingRight="@dimen/dp15"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/color_9"
+                        android:textColorHint="#FF999999"
+                        android:textSize="@dimen/sp12"
+                        android:onClick="@{v -> listener.onClick(v)}"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:gravity="center_vertical"
+                        android:text="办公面积"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_office_space"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_marginBottom="@dimen/dp6"
+                        android:background="@drawable/rect_gray4_border"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingRight="@dimen/dp15"
+                        android:textColor="@color/color_9"
+                        android:textColorHint="#FF999999"
+                        android:textSize="@dimen/sp12"
+                        android:onClick="@{v -> listener.onClick(v)}"
+                        />
+
+                </LinearLayout>
+
+                <!--上传经营资质照片-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:orientation="horizontal">
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_business1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.onClick(v)}"
+                        android:paddingLeft="@dimen/dp8"
+                        app:text="营业执照" />
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_business2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.onClick(v)}"
+                        app:text="医疗机构许可证" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1pt"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:background="#f7f7f7" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:gravity="center_vertical"
+                    android:paddingTop="@dimen/dp5"
+                    android:text="法人身份信息"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:background="@drawable/rect_gray4_border"
+                    android:hint="请输入法人姓名"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLength="20"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@={viewModel.legalPersonName}"
+                    android:textColor="@color/color_9"
+                    android:textColorHint="#FF999999"
+                    android:textSize="@dimen/sp12" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:background="@drawable/rect_gray4_border"
+                    android:hint="请输入法人身份证号"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLength="18"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@={viewModel.legalPersonIdcardNumber}"
+                    android:textColor="@color/color_9"
+                    android:textColorHint="#FF999999"
+                    android:textSize="@dimen/sp12" />
+
+                <TextView
+                    android:id="@+id/btn_idcard_number_starttime"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:background="@drawable/rect_gray4_border"
+                    android:gravity="center_vertical"
+                    android:hint="请选择法人身份证限期开始"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:textColor="@color/color_9"
+                    android:textColorHint="#FF999999"
+                    android:onClick="@{v -> listener.onClick(v)}"
+                    android:textSize="@dimen/sp12" />
+
+                <TextView
+                    android:id="@+id/btn_idcard_number_endtime"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:background="@drawable/rect_gray4_border"
+                    android:gravity="center_vertical"
+                    android:hint="请选择法人身份证限期结束"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:onClick="@{v -> listener.onClick(v)}"
+                    android:textColor="@color/color_9"
+                    android:textColorHint="#FF999999"
+                    android:textSize="@dimen/sp12" />
+
+                <!--上传法人身份证照片-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp8">
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_id_number1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.onClick(v)}"
+                        app:text="身份证正面" />
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_id_number2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.onClick(v)}"
+                        app:text="身份证反面" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1pt"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:background="#f7f7f7" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:gravity="center_vertical"
+                    android:paddingTop="@dimen/dp5"
+                    android:text="医院对公账号信息"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:background="@drawable/rect_gray4_border"
+                    android:hint="请输入开户账号"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLength="18"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@={viewModel.bankCardNumber}"
+                    android:textColor="@color/color_9"
+                    android:textColorHint="#FF999999"
+                    android:textSize="@dimen/sp12" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:gravity="center_vertical"
+                    android:paddingTop="@dimen/dp5"
+                    android:text="选择开户行"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/btn_select_bank"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:background="@drawable/rect_gray4_border"
+                    android:gravity="center_vertical"
+                    android:hint="请选择开户行"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:textColor="@color/color_9"
+                    android:textColorHint="#FF999999"
+                    android:textSize="@dimen/sp12"
+                    android:onClick="@{v -> listener.onClick(v)}"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:gravity="center_vertical"
+                        android:text="省"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/btn_select_province"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_marginBottom="@dimen/dp6"
+                        android:background="@drawable/rect_gray4_border"
+                        android:gravity="center_vertical"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingRight="@dimen/dp15"
+                        android:textColor="@color/color_9"
+                        android:textColorHint="#FF999999"
+                        android:textSize="@dimen/sp12"
+                        android:onClick="@{v -> listener.onClick(v)}"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:gravity="center_vertical"
+                        android:text="市"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/btn_select_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_marginBottom="@dimen/dp6"
+                        android:background="@drawable/rect_gray4_border"
+                        android:gravity="center_vertical"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingRight="@dimen/dp15"
+                        android:textColor="@color/color_9"
+                        android:textColorHint="#FF999999"
+                        android:textSize="@dimen/sp12"
+                        android:onClick="@{v -> listener.onClick(v)}"
+                        />
+
+                </LinearLayout>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:background="@drawable/rect_gray4_border"
+                    android:hint="请输入开户银行支行信息"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLength="30"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@={viewModel.bankBranchInfo}"
+                    android:textColor="@color/color_9"
+                    android:textColorHint="#FF999999"
+                    android:textSize="@dimen/sp12" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:layout_marginBottom="@dimen/dp6"
+                    android:background="@drawable/rect_gray4_border"
+                    android:hint="请输入开户银行预留手机号"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLength="11"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@={viewModel.reservedMobile}"
+                    android:textColor="@color/color_9"
+                    android:textColorHint="#FF999999"
+                    android:textSize="@dimen/sp12" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp8">
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_bankcard1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.onClick(v)}"
+                        app:text="@string/bank_opening_permit" />
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_bankcard2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.onClick(v)}"
+                        app:text="@string/bank_card_front" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1pt"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:background="#f7f7f7" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:gravity="center_vertical"
+                    android:paddingTop="@dimen/dp5"
+                    android:text="上传广审资质照片"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+                <!--上传广审资质照片-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp8">
+
+                    <com.chengzi.app.widget.UploadImageView
+                        android:id="@+id/iv_honor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{v -> listener.onClick(v)}"
+                        app:text="上传广审资质照片" />
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_announcement"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:padding="@dimen/dp13"
+                android:selected="@{viewModel.agreement}"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:src="@drawable/hospital_certified_agreement_selector" />
+
+            <TextView
+                android:id="@+id/tv_announcement"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp40"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:text="我已阅读并同意"
+                android:textColor="#FF333333"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_user_agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp40"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp20"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp"
+                android:text="三方支付电子协议" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_submit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginLeft="38dp"
+            android:layout_marginRight="38dp"
+            android:layout_marginBottom="@dimen/dp10"
+            android:background="@drawable/rect_btn_red_background"
+            android:gravity="center"
+            android:onClick="@{v -> listener.onClick(v)}"
+            android:text="确认"
+            android:textColor="#FFFFFFFF"
+            android:textSize="15sp" />
+    </LinearLayout>
+</layout>

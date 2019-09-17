@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.home.bean.CaseBean" />
+
+        <variable
+            name="isShowHead"
+            type="Boolean" />
+
+        <variable
+            name="baseViewModel"
+            type="com.chengzi.app.ui.cases.viewmodel.CaseBaseViewModel" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp10"
+        android:background="@android:color/white"
+        android:onClick="@{v -> listener.handleClick(v,bean)}"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingRight="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/dp10"
+            android:visibility="@{isShowHead?View.VISIBLE:View.GONE}">
+
+            <com.chengzi.app.widget.AspectRatioFrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.chengzi.app.widget.RoundImageView
+                    android:layout_width="@dimen/dp60"
+                    android:layout_height="@dimen/dp50"
+                    android:scaleType="centerCrop"
+                    app:image="@{bean.image}" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_margin="@dimen/dp2"
+                    android:src="@drawable/vip"
+                    android:visibility="@{bean.is_VIP == 1?View.VISIBLE:View.GONE}" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="@dimen/dp2"
+                    android:src="@drawable/guanggao"
+                    android:visibility="@{bean.is_extension == 1?View.VISIBLE:View.GONE}" />
+
+            </com.chengzi.app.widget.AspectRatioFrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="@{bean.name}"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:textColor="#FF999999"
+                        android:textSize="12sp"
+                        app:dateAndTime="@{bean.create_time}" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:text="@{@string/score_placeholder(bean.grade)}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.chengzi.app.widget.AspectRatioFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            app:aspectRatio="@{2.3f}"
+            app:resize_mode="fixed_width">
+
+            <com.chengzi.app.widget.RoundImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:image="@{bean.lastImg}" />
+
+            <com.chengzi.app.widget.RoundImageView
+                android:layout_width="@dimen/dp70"
+                android:layout_height="@dimen/dp70"
+                android:layout_gravity="bottom"
+                android:scaleType="centerCrop"
+                app:image="@{bean.fristImg}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="@dimen/dp3"
+                android:text="@string/Preoperative_figure"
+                android:textColor="#FF666666"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="@dimen/dp3"
+                android:text="@string/Postoperative_figure"
+                android:textColor="#FF666666"
+                android:textSize="10sp" />
+
+        </com.chengzi.app.widget.AspectRatioFrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{bean.content}"
+            android:textColor="#FF333333"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/liulan"
+                android:drawablePadding="@dimen/dp5"
+                android:gravity="center"
+                android:paddingTop="@dimen/dp8"
+                android:paddingRight="@dimen/dp10"
+                android:paddingBottom="@dimen/dp8"
+                android:textColor="#FF999999"
+                android:textSize="12sp"
+                app:viewNum="@{baseViewModel.viewObservable?bean.view_number:bean.view_number}" />
+
+            <Space
+                android:layout_width="@dimen/dp0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/pinglun"
+                android:drawablePadding="@dimen/dp5"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingTop="@dimen/dp8"
+                android:paddingRight="@dimen/dp15"
+                android:paddingBottom="@dimen/dp8"
+                android:textColor="#FF999999"
+                android:textSize="12sp"
+                app:viewNum="@{baseViewModel.commentObservable?bean.comment_number:bean.comment_number}" />
+
+            <TextView
+                android:id="@+id/btn_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/zhaunfa"
+                android:drawablePadding="@dimen/dp5"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingTop="@dimen/dp8"
+                android:paddingRight="@dimen/dp15"
+                android:paddingBottom="@dimen/dp8"
+                android:textColor="#FF999999"
+                android:textSize="12sp"
+                app:viewNum="@{bean.forward_number}" />
+
+            <TextView
+                android:id="@+id/btn_thumbup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/thumbup_selector"
+                android:drawablePadding="@dimen/dp5"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingTop="@dimen/dp8"
+                android:paddingBottom="@dimen/dp8"
+                android:selected="@{baseViewModel.thumbUpObservable &amp;&amp;bean.is_relation == 1}"
+                android:textColor="#FF999999"
+                android:textSize="12sp"
+                app:viewNum="@{baseViewModel.thumbUpObservable?String.valueOf(bean.like_number):String.valueOf(bean.like_number)}" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

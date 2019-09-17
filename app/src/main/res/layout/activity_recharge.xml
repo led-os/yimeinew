@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="Object" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.popularize.RechargeActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="充值" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="26dp"
+            android:paddingBottom="@dimen/dp15"
+            android:text="充值金额"
+            android:textColor="#FF333333"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp42"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp15"
+                android:text="@string/rmb_symbol"
+                android:textColor="#FF333333"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/et_money"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="输入充值金额"
+                android:paddingLeft="@dimen/dp35"
+                android:textColor="#FF333333"
+                android:textColorHint="@color/color_9"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:text="充值方式"
+            android:textColor="#FF666666"
+            android:textSize="12sp" />
+
+        <!--微信-->
+        <LinearLayout
+            android:id="@+id/ll_weixin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp44"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:id="@+id/tv_weixin"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/zhifu_weixin"
+                android:drawablePadding="@dimen/dp5"
+                android:gravity="center_vertical"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp15"
+                android:text="微信"
+                android:textColor="#FF333333"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/iv_weixin"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:layout_margin="@dimen/dp15"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:padding="@dimen/dp5"
+                android:src="@drawable/bg_select_pay" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@drawable/list_divider_left15_bg" />
+        <!--微信-->
+        <LinearLayout
+            android:id="@+id/ll_zhifubao"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp44"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_zhifubao"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/zhifu_zhifubao"
+                android:drawablePadding="@dimen/dp5"
+                android:gravity="center_vertical"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp15"
+                android:text="@string/alipay"
+                android:textColor="#FF333333"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/iv_zhifubao"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:layout_margin="@dimen/dp15"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:padding="@dimen/dp5"
+                android:src="@drawable/bg_select_pay" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_pay"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginLeft="38dp"
+            android:layout_marginTop="@dimen/dp55"
+            android:layout_marginRight="38dp"
+            android:background="@drawable/rect_btn_red_background"
+            android:gravity="center"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:text="确认"
+            android:textColor="#FFFFFFFF"
+            android:textSize="15sp" />
+    </LinearLayout>
+</layout>

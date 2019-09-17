@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="pos"
+            type="Integer" />
+
+        <variable
+            name="selectedPos"
+            type="android.databinding.ObservableInt" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.home.bean.CategoryItem" />
+    </data>
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/select_province_selector"
+        android:gravity="center"
+        android:selected="@{pos == selectedPos}"
+        android:text="@{bean.name}"
+        android:textColor="#FF333333"
+        android:textSize="15sp" />
+
+</layout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+    </data>
+
+    <com.chengzi.app.widget.RatioImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp60"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginRight="@dimen/dp10"
+        android:scaleType="centerCrop"
+        android:src="@color/colorGray"
+        app:hand_ratio_height="60"
+        app:hand_ratio_width="60"
+        app:image="@{url}" />
+</layout>

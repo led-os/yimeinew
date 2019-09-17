@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshView_goods"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:id="@+id/fragment_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@drawable/divider_10"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                </LinearLayout>
+
+            </android.support.v4.widget.NestedScrollView>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_goods_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:background="@drawable/top_line_bg"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:id="@+id/btn_org_homepage"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableTop="@drawable/shangpin_jigouzhuye"
+                android:drawablePadding="@dimen/dp4"
+                android:gravity="center"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingTop="@dimen/dp7"
+                android:paddingRight="@dimen/dp15"
+                android:text="@string/org_home_page"
+                android:textColor="#FF999999"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/btn_online_services"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableTop="@drawable/shangpin_zaixianzixun"
+                android:drawablePadding="@dimen/dp4"
+                android:gravity="center"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingTop="@dimen/dp7"
+                android:paddingRight="@dimen/dp15"
+                android:text="@string/online_reference_services"
+                android:textColor="#FF999999"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/btn_add_shopcar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableTop="@drawable/shangpin_gouwuche"
+                android:drawablePadding="@dimen/dp4"
+                android:gravity="center"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingTop="@dimen/dp7"
+                android:paddingRight="@dimen/dp15"
+                android:text="@string/add_to_shopcar"
+                android:textColor="#FF999999"
+                android:textSize="10sp" />
+
+
+            <TextView
+                android:id="@+id/btn_rush_purchase"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/f29c9f"
+                android:gravity="center"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:textColor="#FFFFFFFF"
+                android:textSize="15sp" />
+                <!--android:text="@string/snapped_up_immediately"-->
+
+            <TextView
+                android:id="@+id/btn_group_buying"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:text="@string/purchasing"
+                android:textColor="#FFFFFFFF"
+                android:textSize="15sp"
+                android:visibility="gone"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="@string/confirm_order"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingRight="@dimen/dp15"
+            android:paddingBottom="@dimen/dp10"
+            android:paddingTop="@dimen/dp10"
+            >
+            
+            <com.chengzi.app.widget.RatioImageView
+                android:layout_width="@dimen/dp110"
+                android:layout_height="wrap_content"
+                app:hand_ratio_width="110"
+                app:hand_ratio_height="90"
+                android:background="#40FF526A"
+                android:src="@drawable/meirenchou"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/tv_category_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF333333"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFF526A"
+                    android:textSize="15sp"
+                    android:layout_marginTop="@dimen/dp6"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_people_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="5人"
+                    android:textColor="#FF333333"
+                    android:textSize="14sp"
+                    android:layout_marginTop="@dimen/dp6"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"
+            android:background="@color/f4f3f8"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"
+            />
+
+        <TextView
+            android:id="@+id/tv_pay_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="实付金额："
+            android:textColor="#FF333333"
+            android:textSize="14sp"
+            android:gravity="right"
+            android:layout_marginRight="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp15"
+            />
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp0"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:id="@+id/btn_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:text="@string/confirm_order"
+            android:textColor="#FFFFFFFF"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:background="@drawable/primary_round_bg"
+            android:layout_marginLeft="38dp"
+            android:layout_marginRight="38dp"
+            android:layout_marginBottom="@dimen/dp50"
+            android:layout_marginTop="@dimen/dp10"
+            android:onClick="@{v -> listener.onClick(v)}"
+            android:foreground="?selectableItemBackground"
+            />
+
+
+    </LinearLayout>
+
+</layout>

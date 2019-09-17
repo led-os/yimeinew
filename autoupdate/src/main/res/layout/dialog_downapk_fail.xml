@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/list_popu_bg"
+    android:orientation="vertical" >
+    
+   <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="14dp"
+        android:paddingTop="10dp"
+        android:text="提示:"
+        android:textColor="#333"
+        android:textSize="16sp" />
+ <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#cdcdcd" />
+ 
+  <TextView
+      android:id="@+id/content"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="12dp"
+      android:layout_marginTop="12dp"
+      android:paddingLeft="24dp"
+      android:paddingRight="14dp"
+      android:text="下载失败，是否重试?"
+      android:textColor="#333"
+      android:textSize="14sp" />
+ <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#cdcdcd" />
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/list_popu_bg"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="取消"
+            android:textColor="#2982d0"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#cccccc" />
+
+        <TextView
+            android:id="@+id/ok"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/list_popu_bg2"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="确定"
+            android:textColor="#2982d0"
+            android:textSize="14sp" />
+    </LinearLayout>
+  
+</LinearLayout>

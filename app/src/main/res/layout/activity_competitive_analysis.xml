@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.CompetitiveAnalysisActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="竞对分析" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:paddingTop="@dimen/dp12"
+            android:paddingBottom="@dimen/dp12">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp15"
+                android:text="医院名称"
+                android:textColor="#FF999999"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_hospital_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingLeft="@dimen/dp90"
+                android:paddingRight="@dimen/dp15"
+                android:textColor="#FF333333"
+                android:textSize="15sp"
+                tools:text="北京格莱美医疗整形医院" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingTop="@dimen/dp8"
+                android:text="所属城市"
+                android:textColor="#FF999999"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_hospital_name" />
+
+            <TextView
+                android:id="@+id/tv_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingLeft="@dimen/dp90"
+                android:paddingTop="@dimen/dp12"
+                android:paddingRight="@dimen/dp15"
+                android:textColor="#FF333333"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_hospital_name"
+                tools:text="北京" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingTop="@dimen/dp8"
+                android:text="本城市排名"
+                android:textColor="#FF999999"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_city" />
+
+            <TextView
+                android:id="@+id/tv_city_rank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingLeft="@dimen/dp90"
+                android:paddingTop="@dimen/dp8"
+                android:paddingRight="@dimen/dp15"
+                android:textColor="#FF333333"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@id/tv_city"
+                tools:text="1" />
+        </android.support.constraint.ConstraintLayout>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/dp12"
+            android:paddingBottom="@dimen/dp10">
+
+            <RadioButton
+                android:id="@+id/rb_doctor"
+                android:layout_width="@dimen/dp90"
+                android:layout_height="@dimen/dp35"
+                android:background="@drawable/sel_doctor_check_look_left"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,null)}"
+                android:text="医生"
+                android:textColor="@drawable/sel_doctor_check_look_text_color"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/rb_counselor"
+                android:layout_width="@dimen/dp90"
+                android:layout_height="@dimen/dp35"
+                android:background="@drawable/sel_doctor_check_look_right"
+                android:button="@null"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,null)}"
+                android:text="咨询师"
+                android:textColor="@drawable/sel_doctor_check_look_text_color"
+                android:textSize="13sp" />
+        </RadioGroup>
+
+        <!--<com.nevermore.oceans.widget.SwipeRefreshView-->
+        <!--android:id="@+id/swipeRefreshView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:background="@color/color_f5" />-->
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

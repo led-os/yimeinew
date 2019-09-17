@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.goods.bean.PeopleSayQuestionBean" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingRight="@dimen/dp15"
+        android:paddingBottom="@dimen/dp10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/wen"
+            android:drawablePadding="@dimen/dp10"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@{bean.content}"
+            android:textColor="#FF333333"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp10"
+            android:text="@{@string/answer_num(bean.answers_count)}"
+            android:textColor="#FF999999"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+</layout>

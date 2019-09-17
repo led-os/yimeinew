@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.find.bean.CreditSearchDetailBean" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="@dimen/dp5"
+        android:background="@color/white"
+        android:paddingTop="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10">
+
+        <com.handongkeji.widget.RoundImageView
+            android:layout_width="@dimen/dp45"
+            android:layout_height="@dimen/dp45"
+            android:layout_marginLeft="@dimen/dp15"
+            android:background="@drawable/cricle_border"
+            android:scaleType="centerCrop"
+            android:src="@drawable/morentouxiang"
+            app:avatar="@{true}"
+            app:image="@{url}" />
+
+        <TextView
+            android:layout_width="@dimen/dp0"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:text="@{bean.nickName}"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableRight="@drawable/jiantou_hui"
+            android:drawablePadding="@dimen/dp5"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp12"
+            android:text="信用查询"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+    </LinearLayout>
+</layout>

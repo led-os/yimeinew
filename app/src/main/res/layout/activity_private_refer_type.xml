@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp15"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/login_logo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp15"
+                android:background="@drawable/round_bg"
+                android:padding="@dimen/dp15"
+                android:text="@string/refer_type_hint"
+                android:textColor="#FF333333"
+                android:textSize="13sp"
+                android:minHeight="@dimen/dp50"
+                />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/btn_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginBottom="@dimen/dp20"
+            android:background="@drawable/refer_type_btn_bg"
+            android:foreground="?selectableItemBackground"
+            android:onClick="@{v -> listener.onClick(v)}"
+            android:paddingLeft="@dimen/dp40"
+            android:paddingTop="@dimen/dp13"
+            android:paddingRight="@dimen/dp40"
+            android:paddingBottom="@dimen/dp13"
+            android:text="不想选择了"
+            android:textColor="#FF666666"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</layout>

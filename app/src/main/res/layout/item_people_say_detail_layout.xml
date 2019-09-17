@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.goods.bean.PeopleSayAnswerBean"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp15"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <com.chengzi.app.widget.CircleImageView
+                android:layout_width="30dp"
+                android:layout_height="@dimen/dp30"
+                android:scaleType="centerCrop"
+                app:image="@{bean.image}"
+                app:avatar="@{true}"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{bean.name}"
+                android:textColor="#FF999999"
+                android:textSize="13sp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp10"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{bean.content}"
+            android:textColor="#FF333333"
+            android:textSize="13sp"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginLeft="@dimen/dp40"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{bean.update_time}"
+            android:textColor="#FF999999"
+            android:textSize="11sp"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_gravity="right"
+            />
+
+    </LinearLayout>
+</layout>

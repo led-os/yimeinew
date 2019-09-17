@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res','src/main/res-avchat']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+}
+
+dependencies {
+//    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+    implementation baseDependencies.appCompatV7
+
+    implementation baseDependencies.glide
+//    annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
+    compileOnly 'jp.wasabeef:glide-transformations:3.0.1'
+
+    // 基础功能 (必需)
+//    api 'com.netease.nimlib:basesdk:6.3.0'
+    // 互动白板服务需要
+//    api 'com.netease.nimlib:rts:6.3.0'
+
+}

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.BindHistoryBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/ll_bind_hospital_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@color/white"
+        android:onClick="@{v -> listener.handleClick(v,bean)}"
+        android:paddingLeft="@dimen/dp10">
+
+        <TextView
+            android:id="@+id/tv_bing_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp12"
+            android:text="@{bean.bindingTime}"
+            android:textColor="#FF333333"
+            android:textSize="15sp"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/rl_img"
+            android:layout_width="@dimen/dp70"
+            android:layout_height="@dimen/dp70"
+            android:layout_marginTop="@dimen/dp10"
+            app:layout_constraintTop_toBottomOf="@id/tv_bing_time">
+
+            <com.chengzi.app.widget.RatioImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:image="@{url}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:padding="@dimen/dp5"
+                android:text="@{bean.grade}"
+                android:textColor="#FF666666"
+                android:textSize="10sp" />
+        </RelativeLayout>
+
+        <!--机构名称-->
+        <TextView
+            android:id="@+id/tv_name1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp80"
+            android:paddingTop="@dimen/dp10"
+            android:paddingRight="@dimen/dp15"
+            android:paddingBottom="@dimen/dp10"
+            android:singleLine="true"
+            android:text="@{bean.name}"
+            android:textColor="#FF333333"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_bing_time" />
+
+        <!--?人下单-->
+        <TextView
+            android:id="@+id/tv_people_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp10"
+            android:text="@{bean.count+@string/person_place_order}"
+            android:textColor="#FF999999"
+            android:textSize="10sp"
+            app:layout_constraintLeft_toRightOf="@id/rl_img"
+            app:layout_constraintTop_toBottomOf="@id/tv_name1" />
+
+        <!--地址-->
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingTop="@dimen/dp6"
+            android:text="@{bean.hospital_address}"
+            android:textColor="#FF666666"
+            android:textSize="9sp"
+            app:layout_constraintLeft_toRightOf="@id/rl_img"
+            app:layout_constraintTop_toBottomOf="@id/tv_people_order" />
+
+        <View
+            android:id="@+id/view"
+            style="@style/lineStyle"
+            android:layout_marginLeft="@dimen/dp80"
+            android:layout_marginTop="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp10"
+            app:layout_constraintTop_toBottomOf="@id/tv_address" />
+
+        <!--擅长：皮肤美容、玻尿酸、肉毒素-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp35"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp80"
+            android:singleLine="true"
+            android:text="@{@string/good_at+bean.category}"
+            android:textColor="#FF333333"
+            android:textSize="10sp"
+            app:layout_constraintTop_toBottomOf="@id/view" />
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

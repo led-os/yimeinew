@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="Object" />
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="selectedTabPos"
+            type="android.databinding.ObservableInt" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.GoodsManageActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="商品管理" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp30"
+            android:background="@color/color_f4f3f8"
+            android:gravity="center"
+            android:text="上传商品请移至PC端   www.inchengzi.com"
+            android:textColor="@color/color_3"
+            android:textSize="@dimen/sp15" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/layout_all_goods"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:foreground="?selectableItemBackground"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:selected="@{selectedTabPos == 0}">
+
+                <TextView
+                    android:id="@+id/tv_all_goods"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableRight="@drawable/sanjiao"
+                    android:drawablePadding="@dimen/dp_4"
+                    android:duplicateParentState="true"
+                    android:text="@string/all_goods_type"
+                    android:textColor="@color/search_span_text_color_selector"
+                    android:textSize="14sp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/layout_sort"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:foreground="?selectableItemBackground"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:selected="@{selectedTabPos == 1}">
+
+                <TextView
+                    android:id="@+id/tv_sort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableRight="@drawable/sanjiao"
+                    android:drawablePadding="@dimen/dp_4"
+                    android:duplicateParentState="true"
+                    android:text="筛选"
+                    android:textColor="@color/search_span_text_color_selector"
+                    android:textSize="14sp" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <com.nevermore.oceans.widget.SwipeRefreshView
+            android:id="@+id/swipeRefreshView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_f4f3f8" />
+    </LinearLayout>
+</layout>

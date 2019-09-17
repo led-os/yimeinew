@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.chengzi.app.ui.comment.viewmodel.CommentContainerViewModel" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <com.handongkeji.widget.KeyboardLayout1
+        android:id="@+id/keyboardLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.nevermore.oceans.widget.SwipeRefreshView
+            android:id="@+id/swipeRefreshView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp0"
+            android:layout_weight="1"
+            />
+
+        <FrameLayout
+            android:id="@+id/bottom_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <LinearLayout
+                android:id="@+id/ll_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp50"
+                android:orientation="horizontal"
+                android:visibility="@{viewModel.isComment?View.VISIBLE:View.GONE}">
+
+                <com.chengzi.app.widget.CommentEditText
+                    android:id="@+id/edit_comment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:gravity="center_vertical"
+                    android:hint="@string/post_comment"
+                    android:inputType="textMultiLine"
+                    android:maxLength="500"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="@dimen/dp10"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="@dimen/dp10"
+                    android:text="@={viewModel.content}"
+                    android:reply="@{viewModel.reply}"
+                    android:textColor="#333333"
+                    android:textColorHint="#FF999999"
+                    android:textSize="15sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/btn_send" />
+
+                <TextView
+                    android:id="@+id/btn_send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.handleClick(v,null)}"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="@string/hand_send"
+                    android:textColor="#47B6E2"
+                    android:textSize="15sp"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </com.handongkeji.widget.KeyboardLayout1>
+
+</layout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.SettingPhoneActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="设置电话"
+            app:rightText="确定" />
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp45"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:hint="输入您的座机号码"
+            android:imeOptions="actionDone"
+            android:paddingLeft="@dimen/dp15"
+            android:singleLine="true"
+            android:textColor="#FF999999"
+            android:textColorHint="#FF999999"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp10"
+            android:paddingRight="@dimen/dp11"
+            android:text="温馨提示：请先绑定您的400电话，绑定后可设置多个手机号转接"
+            android:textColor="#FF666666"
+            android:textSize="14sp"
+            android:visibility="gone" />
+    </LinearLayout>
+</layout>

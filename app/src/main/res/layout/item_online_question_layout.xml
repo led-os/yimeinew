@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.onlinequestionandanswer.bean.QAbean" />
+
+        <variable
+            name="resolved"
+            type="Boolean" />
+
+        <import type="android.view.View" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp2"
+        android:layout_marginBottom="@dimen/dp8"
+        android:background="@drawable/shadow_gray_bg"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingTop="@dimen/dp15"
+        android:paddingRight="@dimen/dp20"
+        android:paddingBottom="@dimen/dp23">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{bean.title}"
+            android:textColor="#FF333333"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingTop="@dimen/dp4"
+                android:paddingBottom="@dimen/dp4"
+                android:text="@{@string/answer_num(bean.awser)}"
+                android:textColor="#FF999999"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="@dimen/dp70"
+                android:layout_height="wrap_content"
+                android:background="@drawable/attention_bg_selector"
+                android:gravity="center"
+                android:paddingTop="@dimen/dp4"
+                android:paddingBottom="@dimen/dp4"
+                android:text='@{bean.status == 2?@string/not_resolved:""}'
+                android:textColor="#FFFFFFFF"
+                android:textSize="13sp"
+                android:visibility="@{resolved?View.GONE:View.VISIBLE}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_show_resolved"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:orientation="horizontal"
+            android:visibility="@{resolved?View.VISIBLE:View.GONE}">
+
+            <com.chengzi.app.widget.CircleImageView
+                android:id="@+id/iv_awser_image"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:scaleType="centerCrop"
+                app:avatar="@{true}"
+                app:image="@{bean.awser_user_img}" />
+
+            <TextView
+                android:id="@+id/iv_awser_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp10"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{bean.awser_user_name}"
+                android:textColor="#FF999999"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_answer_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="#FF999999"
+            android:textSize="13sp"
+            android:visibility="@{resolved?View.VISIBLE:View.GONE}" />
+    </LinearLayout>
+</layout>

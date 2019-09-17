@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="showCancel"
+            type="Boolean"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:divider="@drawable/divider_bg"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp8"
+            android:background="@color/divider"
+            android:visibility="@{showCancel?View.VISIBLE:View.GONE}"
+            />
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="#FF333333"
+            android:textSize="18sp"
+            android:background="@android:color/white"
+            android:visibility="@{showCancel?View.VISIBLE:View.GONE}"/>
+
+    </LinearLayout>
+
+</layout>

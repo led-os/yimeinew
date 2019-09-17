@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.vip.bean.VipUserInfoBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler"/>
+
+        <import type="android.view.View"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp10"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:foreground="?selectableItemBackground"
+        android:onClick="@{v -> listener.handleClick(v,bean)}"
+        >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.chengzi.app.widget.CircleBorderFrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp3"
+                android:background="@android:color/white"
+                android:padding="@dimen/dp1">
+
+                <com.chengzi.app.widget.CircleImageView
+                    android:id="@+id/image_head"
+                    android:layout_width="@dimen/dp80"
+                    android:layout_height="@dimen/dp80"
+                    app:avatar="@{true}"
+                    android:scaleType="centerCrop"
+                    app:image="@{bean.headimg}" />
+
+            </com.chengzi.app.widget.CircleBorderFrameLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:src="@drawable/vip"
+                android:visibility="@{bean.is_vip?View.VISIBLE:View.GONE}"
+                />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp7"
+            android:text="@{bean.name}"
+            android:textColor="#FF333333"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="@{@string/doctor_rank_score(bean.level,bean.grade)}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:text="@{bean.hospitalName}"
+            android:textColor="#FF666666"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+</layout>

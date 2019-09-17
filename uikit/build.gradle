@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+repositories {
+    flatDir {
+        dirs 'libs','../oceans/libs'
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    // 基础功能 (必需)
+    api 'com.netease.nimlib:basesdk:6.3.0'
+    // 音视频需要
+    api 'com.netease.nimlib:avchat:6.3.0'
+    // 互动白板服务需要
+//    api 'com.netease.nimlib:rts:6.3.0'
+    // 聊天室需要
+    api 'com.netease.nimlib:chatroom:6.3.0'
+    // 全文检索服务需要
+    api 'com.netease.nimlib:lucene:6.3.0'
+    // 音视频和互动白板服务需要
+        api 'com.netease.nimlib:nrtc:6.3.0'
+    implementation baseDependencies.appCompatV7
+    implementation baseDependencies.designV7
+    implementation baseDependencies.constraintLayout
+    implementation baseDependencies.glide
+    api ('me.everything:overscroll-decor-android:1.0.4'){
+        exclude group:'com.android.support'
+    }
+    api 'me.leolin:ShortcutBadger:1.1.17@aar'
+    api project(':faceunity')
+    implementation project(':framework')
+
+    implementation 'android.arch.lifecycle:viewmodel:1.1.1'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+}

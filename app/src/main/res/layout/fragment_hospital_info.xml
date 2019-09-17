@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+
+        <variable
+            name="isSelf"
+            type="Boolean" />
+
+        <variable
+            name="init"
+            type="Boolean" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.homepage.bean.HospitalHomeInfoBean" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.chengzi.app.widget.AspectRatioFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:aspectRatio="@{1.786f}"
+            app:resize_mode="fixed_width">
+
+            <com.chengzi.app.widget.RatioImageView
+                android:id="@+id/iv_back_ground"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:scaleType="centerCrop"
+                app:image_radius="0dp"
+                app:layout_collapseMode="parallax" />
+
+            <LinearLayout
+                android:id="@+id/layout_header"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp15">
+
+                    <FrameLayout
+                        android:id="@+id/layout_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.chengzi.app.widget.CircleImageView
+                            android:id="@+id/image_head"
+                            android:layout_width="@dimen/dp50"
+                            android:layout_height="@dimen/dp50"
+                            android:layout_marginBottom="@dimen/dp4"
+                            android:scaleType="centerCrop"
+                            app:avatar="@{true}"
+                            app:image="@{bean.info.headimg}" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:src="@drawable/vip"
+                            android:visibility="@{bean.info.is_vip?View.VISIBLE:View.GONE}" />
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tv_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:text="@{bean.info.nameAndId}"
+                        android:textColor="#FFFFFFFF"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toRightOf="@+id/layout_head"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <TextView
+                        android:id="@+id/tv_technique_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:text='@{bean == null || bean.info == null?"":@string/user_homepage_score(bean.info.grade)}'
+                        android:textColor="#FFFFFFFF"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toLeftOf="@+id/tv_user_name"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_user_name" />
+
+                    <TextView
+                        android:id="@+id/btn_attention"
+                        android:layout_width="56dp"
+                        android:layout_height="24dp"
+                        android:background="@drawable/rect_white_4_radius"
+                        android:gravity="center"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        android:text="@{bean.is_follow == 1?@string/cancel_attention:@string/attention}"
+                        android:textColor="#FFFF526A"
+                        android:textSize="13sp"
+                        android:visibility="@{!init?View.GONE:(isSelf?View.GONE:View.VISIBLE)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/btn_compile_profile"
+                        android:layout_width="56dp"
+                        android:layout_height="24dp"
+                        android:background="@drawable/rect_white_4_radius"
+                        android:gravity="center"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        android:text="@string/compile_profile"
+                        android:textColor="#FFFF526A"
+                        android:textSize="13sp"
+                        android:visibility="@{!init?View.GONE:(isSelf?View.VISIBLE:View.GONE)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:layout_marginBottom="@dimen/sp15"
+                    android:background="@drawable/bg_white"
+                    android:minHeight="@dimen/dp110"
+                    android:nestedScrollingEnabled="false"
+                    android:paddingTop="@dimen/dp3"
+                    android:paddingBottom="@dimen/dp3"
+                    app:layoutManager="android.support.v7.widget.GridLayoutManager"
+                    app:spanCount="4" />
+
+            </LinearLayout>
+
+        </com.chengzi.app.widget.AspectRatioFrameLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp40"
+            android:paddingTop="@dimen/dp15"
+            android:paddingRight="@dimen/dp15"
+            android:paddingBottom="@dimen/dp15">
+
+            <TextView
+                android:id="@+id/tv_buy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text='@{bean == null?"":@string/today_buy_num(bean.todayOrderCount)}'
+                android:textColor="#FF333333"
+                android:textSize="13sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_better_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="@string/good_at"
+                android:textColor="#FF333333"
+                android:textSize="13sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_buy" />
+
+            <TextView
+                android:id="@+id/tv_better"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#FF333333"
+                android:textSize="13sp"
+                app:layout_constraintLeft_toRightOf="@+id/tv_better_hint"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_better_hint" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp10"
+            android:background="#f7f7f7" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/dp15"
+                android:background="@drawable/red_line_bg"
+                android:gravity="center" />
+
+            <com.nevermore.oceans.widget.EnterLayout
+                android:id="@+id/el_autograph"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp2"
+                android:paddingRight="@dimen/dp15"
+                app:rightTextSize="14"
+                app:textSize="16"
+                app:textSubject="机构介绍"
+                app:text_color="@color/color_3" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_autograph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp3"
+            android:paddingRight="@dimen/dp15"
+            android:paddingBottom="@dimen/dp15"
+            android:text="@{bean.info.synopsis}"
+            android:visibility="gone"
+            tools:text="哈哈哈嗯of大家佛大积分代发价的房价欧艾斯的房价大S佛教奥斯迪发家史的覅  " />
+
+    </LinearLayout>
+
+</layout>

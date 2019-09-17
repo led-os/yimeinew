@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+
+        <variable
+            name="isSelf"
+            type="Boolean" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.nevermore.oceans.widget.SwipeRefreshView
+            android:id="@+id/swipeRefreshView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dp10"
+            android:paddingBottom="@dimen/dp10" />
+
+        <TextView
+            android:id="@+id/btn_add_experience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="38dp"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginRight="38dp"
+            android:layout_marginBottom="@dimen/dp20"
+            android:background="@drawable/primary_round_bg"
+            android:gravity="center"
+            android:onClick="@{v -> listener.handleClick(v,null)}"
+            android:paddingTop="@dimen/dp12"
+            android:paddingBottom="@dimen/dp12"
+            android:text="@string/add_professional_experience"
+            android:textColor="#FFFFFFFF"
+            android:textSize="15sp"
+            android:visibility="@{isSelf?View.VISIBLE:View.GONE}" />
+    </LinearLayout>
+</layout>

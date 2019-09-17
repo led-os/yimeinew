@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cl_image"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dp10"
+    android:paddingLeft="@dimen/dp7"
+    android:paddingTop="@dimen/dp3"
+    android:paddingRight="@dimen/dp8"
+    android:paddingBottom="@dimen/dp10">
+
+    <com.chengzi.app.widget.RatioImageView
+        android:id="@+id/iv_image"
+        android:layout_width="@dimen/dp70"
+        android:layout_height="@dimen/dp70"
+        android:scaleType="centerCrop"
+        android:src="@drawable/shangchuanzhaopian"
+        app:hand_ratio_height="70"
+        app:hand_ratio_width="70" />
+
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dp5"
+        android:paddingBottom="@dimen/dp5"
+        android:src="@drawable/guanbi"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="@dimen/dp70"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="@dimen/dp5"
+        android:text="资质照片"
+        android:textColor="#FF333333"
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@id/iv_image" />
+
+</android.support.constraint.ConstraintLayout>

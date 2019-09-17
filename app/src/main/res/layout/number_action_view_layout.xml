@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:id="@+id/btn_decrease"
+        android:layout_width="@dimen/dp40"
+        android:layout_height="@dimen/dp23"
+        android:gravity="center"
+        android:minWidth="@dimen/dp40"
+        android:minHeight="@dimen/dp40">
+
+        <TextView
+            android:id="@+id/tv_decrease"
+            android:layout_width="@dimen/dp15"
+            android:layout_height="@dimen/dp15"
+            android:background="@drawable/cricle_border"
+            android:gravity="center"
+            android:text="-"
+            android:textColor="#FF333333"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_number"
+        android:layout_width="37dp"
+        android:layout_height="@dimen/dp21"
+        android:background="@drawable/rect_gray4_border"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="#FF333333"
+        android:textSize="13sp" />
+
+    <RelativeLayout
+        android:id="@+id/btn_increase"
+        android:layout_width="@dimen/dp40"
+        android:layout_height="@dimen/dp23"
+        android:gravity="center"
+        android:minWidth="@dimen/dp40"
+        android:minHeight="@dimen/dp40">
+
+        <TextView
+            android:id="@+id/tv_increase"
+            android:layout_width="@dimen/dp15"
+            android:layout_height="@dimen/dp15"
+            android:background="@drawable/cricle_border"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="#FF333333"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+</LinearLayout>

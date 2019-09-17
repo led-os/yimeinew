@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:background="@drawable/round_bg"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/btn_resolving"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/dp10"
+                android:paddingBottom="@dimen/dp10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/zaixianwenda_weihuifu"
+                    android:drawablePadding="@dimen/dp4"
+                    android:text="@string/not_reply"
+                    android:textColor="#FF333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_unresolved"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp4"
+                    tools:text="265445"
+                    android:textColor="#FF333333"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btn_resolved"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/dp10"
+                android:paddingBottom="@dimen/dp10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@drawable/zaixianwenda_yihuifu"
+                    android:drawablePadding="@dimen/dp4"
+                    android:text="@string/reply"
+                    android:textColor="#FF333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_resolved"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp4"
+                    tools:text="265445"
+                    android:textColor="#FF333333"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp20"
+            android:layout_marginBottom="@dimen/dp10"
+            android:background="@drawable/left_red_white_square_bg"
+            android:paddingLeft="@dimen/dp7"
+            android:text="@string/ask_doctor"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <android.support.design.widget.CustomTabLayout
+            android:id="@+id/tabLayout_doctor"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:background="@drawable/round_bg"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10"
+            android:paddingBottom="@dimen/dp3"
+            app:tabIndicator="@color/colorPrimary"
+            app:tabIndicatorHeight="@dimen/dp2"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabTextAppearance="@style/tab_textsize_14"
+            app:tabTextColor="@color/color_3"
+            app:tabUnboundedRipple="false" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_doctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp2"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:reverseLayout="false" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginBottom="@dimen/dp10"
+            android:background="@drawable/left_red_white_square_bg"
+            android:paddingLeft="@dimen/dp7"
+            android:text="@string/ask_counselor"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <android.support.design.widget.CustomTabLayout
+            android:id="@+id/tabLayout_counselor"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:background="@drawable/round_bg"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10"
+            android:paddingBottom="@dimen/dp3"
+            app:tabIndicator="@color/colorPrimary"
+            app:tabIndicatorHeight="@dimen/dp2"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabTextAppearance="@style/tab_textsize_14"
+            app:tabTextColor="@color/color_3"
+            app:tabUnboundedRipple="false" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_counselor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp2"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:reverseLayout="false" />
+
+    </LinearLayout>
+
+</layout>

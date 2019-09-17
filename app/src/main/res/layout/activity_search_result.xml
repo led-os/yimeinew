@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.chengzi.app.ui.search.viewmodel.SearchResultViewModel" />
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+        <import type="com.chengzi.app.ui.search.OnDisplayChangeObserver.Display"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:paddingLeft="@dimen/dp17"
+                android:paddingRight="@dimen/dp20"
+                android:src="@drawable/nav_fanhui" />
+
+            <ImageView
+                android:id="@+id/btn_display_change"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
+                android:selected="@{viewModel.display == Display.GRID}"
+                android:src="@drawable/search_result_display_type" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="62dp"
+                android:layout_marginTop="@dimen/dp8"
+                android:layout_marginRight="62dp"
+                android:layout_marginBottom="@dimen/dp8"
+                android:background="@drawable/main_stroke_bg">
+
+
+                <com.chengzi.app.widget.CommentEditText
+                    android:id="@+id/editText"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/home_sousuo"
+                    android:hint="@string/search_for_content_of_interest"
+                    android:imeOptions="actionSearch"
+                    android:inputType="textAutoComplete"
+                    android:maxLength="30"
+                    android:paddingLeft="@dimen/dp10"
+                    android:paddingRight="@dimen/dp10"
+                    android:singleLine="true"
+                    android:text="@={viewModel.keyword}"
+                    android:textColor="@color/color_3"
+                    android:textColorHint="#FF999999"
+                    android:textSize="13sp"
+                    app:hand_disableEmoji="true" />
+
+                <ImageView
+                    android:id="@+id/btn_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/dp10"
+                    android:paddingRight="@dimen/dp10"
+                    android:src="@drawable/guanbi"
+                    android:onClick="@{v -> listener.onClick(v)}"
+                    />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp46"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.CustomTabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:tabIndicator="@color/colorPrimary"
+                app:tabIndicatorHeight="@dimen/dp2"
+                app:tabMode="fixed"
+                app:tabUnboundedRipple="false"
+                app:tabPaddingStart="@dimen/dp0"
+                app:tabPaddingEnd="@dimen/dp0"
+                />
+
+            <TextView
+                android:id="@+id/btn_people_say"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:background="@drawable/main_stroke_bg"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:padding="@dimen/dp6"
+                android:text="@string/everyone_says"
+                android:textColor="#FF999999"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/btn_refer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp10"
+                android:background="@drawable/main_stroke_bg"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:padding="@dimen/dp6"
+                android:text="@string/consult"
+                android:textColor="#FF999999"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </LinearLayout>
+
+</layout>

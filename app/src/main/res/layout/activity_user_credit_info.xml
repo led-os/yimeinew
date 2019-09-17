@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.find.bean.CreditSearchDetailBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.find.activity.UserCreditInfoActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="用户信用信息" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp160"
+            android:background="@drawable/yonghuxinxi_beijing"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp15">
+
+            <com.handongkeji.widget.RoundImageView
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:scaleType="centerCrop"
+                android:src="@drawable/morentouxiang"
+                app:avatar="@{true}"
+                app:image="@{url}" />
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="@dimen/dp10">
+
+                <!--昵称-->
+                <TextView
+                    android:id="@+id/tv_nick_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{bean.name}"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="20sp" />
+                <!--
+                                android:text="评分 8.0分"-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dp4"
+                    android:text='@{bean == null ?"":@string/user_homepage_score(bean.grade)}'
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="12sp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_nick_name" />
+
+                <!--年龄-->
+                <!--   <TextView
+                       android:id="@+id/tv_sex"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginLeft="@dimen/dp8"
+                       android:drawableLeft="@drawable/nv"
+                       android:drawablePadding="@dimen/dp1"
+                       android:gravity="center"
+                       android:padding="@dimen/dp3"
+                       android:text="@{bean.age}"
+                       android:textColor="#FFFFFFFF"
+                       android:textSize="8sp"
+                       android:visibility="gone"
+                       app:layout_constraintLeft_toRightOf="@id/tv_nick_name" />-->
+            </android.support.constraint.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_look_home_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:padding="@dimen/dp15"
+                android:text="查看主页"
+                android:textColor="#FFFFFFFF"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cd_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp75"
+            android:layout_gravity="bottom"
+            android:layout_margin="@dimen/dp15"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="@dimen/dp8"
+            app:cardElevation="@dimen/dp3">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--下单-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_place_order_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{bean.orderNum}"
+                        android:textColor="#FFFF526A"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_place_order_num"
+                        android:paddingTop="@dimen/dp5"
+                        android:text="下单"
+                        android:textColor="#FF666666"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+                <!--投诉率-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_complain_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{bean.complaintRate}"
+                        android:textColor="#FFFF526A"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_complain_num"
+                        android:paddingTop="@dimen/dp5"
+                        android:text="投诉率"
+                        android:textColor="#FF666666"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+                <!--退款率-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_refund_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{bean.refundRate}"
+                        android:textColor="#FFFF526A"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_refund_num"
+                        android:paddingTop="@dimen/dp5"
+                        android:text="退款率"
+                        android:textColor="#FF666666"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</layout>

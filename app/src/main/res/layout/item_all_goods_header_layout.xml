@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.home.bean.CategoryItem" />
+
+        <variable
+            name="showDrawable"
+            type="Boolean"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp15"
+            android:drawableRight="@{showDrawable?null:@drawable/jianyou}"
+            android:paddingTop="@dimen/dp10"
+            android:paddingBottom="@dimen/dp10"
+            android:text="@{bean.name}"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:spanCount="2"
+            android:layout_marginRight="@dimen/dp10"
+            app:layoutManager="android.support.v7.widget.GridLayoutManager"
+            />
+    </LinearLayout>
+</layout>

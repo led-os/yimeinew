@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="viewModel"
+            type="com.chengzi.app.ui.homepage.viewmodel.AppointmentViewModel" />
+
+        <variable
+            name="doctorBean"
+            type="com.chengzi.app.ui.homepage.bean.DoctorHomeInfoBean" />
+
+        <variable
+            name="hospitalBean"
+            type="com.chengzi.app.ui.homepage.bean.BelongOrgBean" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="@{doctorBean != null?@string/make_an_appointment_with_doctor:@string/make_an_appointment_with_hospital}" />
+        <!--app:centerText="@string/make_an_appointment_with_doctor" />-->
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:layout_marginBottom="@dimen/dp10"
+                    android:background="@drawable/left_red_white_square_bg"
+                    android:paddingLeft="@dimen/dp7"
+                    android:text="@{doctorBean != null?@string/the_doctor_who_wants_to_make_an_appointment:@string/the_hospital_who_wants_to_make_an_appointment}"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:layout_marginBottom="@dimen/dp12"
+                    android:orientation="horizontal"
+                    android:visibility="@{doctorBean != null?View.VISIBLE:View.GONE}">
+
+                    <com.chengzi.app.widget.CircleImageView
+                        android:layout_width="50dp"
+                        android:layout_height="@dimen/dp50"
+                        android:scaleType="centerCrop"
+                        app:avatar="@{true}"
+                        app:image="@{doctorBean.usericon}" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="@{doctorBean.username}"
+                            android:textColor="#FF333333"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp6"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{doctorBean.occupation}"
+                                android:textColor="#FFFF526A"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{@string/score_place(doctorBean.grade)}"
+                                android:textColor="#FFFF526A"
+                                android:textSize="11sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:layout_marginBottom="@dimen/dp12"
+                    android:orientation="horizontal"
+                    android:visibility="@{hospitalBean != null?View.VISIBLE:View.GONE}">
+
+                    <com.chengzi.app.widget.CircleImageView
+                        android:layout_width="50dp"
+                        android:layout_height="@dimen/dp50"
+                        android:scaleType="centerCrop"
+                        app:avatar="@{true}"
+                        app:image="@{hospitalBean.image}" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:text="@{hospitalBean.name}"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp10"
+                    android:background="@color/color_f4f3f8" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:layout_marginBottom="@dimen/dp10"
+                    android:background="@drawable/left_red_white_square_bg"
+                    android:paddingLeft="7dp"
+                    android:text="@string/my_appointment_info"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@drawable/bottom_line_bg"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/my_username"
+                        android:textColor="#FF333333"
+                        android:textSize="14sp" />
+
+                    <com.chengzi.app.widget.CommentEditText
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:gravity="right|center_vertical"
+                        android:hint="@string/please_input_your_name"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:paddingRight="@dimen/dp10"
+                        android:text="@={viewModel.name}"
+                        android:textColor="@color/color_3"
+                        android:textColorHint="#FF999999"
+                        android:textSize="14sp"
+                        app:hand_disableEmoji="true"
+                        app:hand_max_length="10" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@drawable/bottom_line_bg"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/contact_number"
+                        android:textColor="#FF333333"
+                        android:textSize="14sp" />
+
+                    <com.chengzi.app.widget.CommentEditText
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:gravity="right|center_vertical"
+                        android:imeOptions="actionDone"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        android:paddingRight="@dimen/dp10"
+                        android:text="@={viewModel.mobile}"
+                        android:textColor="@color/color_3"
+                        android:textColorHint="#FF999999"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn_pick_appointment_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@drawable/bottom_line_bg"
+                    android:onClick="@{v -> listener.onClick(v)}"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/select_appointment_time"
+                        android:textColor="#FF333333"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_appointment_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_weight="1"
+                        android:drawableRight="@drawable/jiantou_hui"
+                        android:drawablePadding="@dimen/dp4"
+                        android:gravity="right|center_vertical"
+                        android:textColor="@color/color_3"
+                        android:textColorHint="#FF999999"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <com.chengzi.app.widget.CommentEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:background="@drawable/main_stroke_bg"
+                    android:gravity="left|top"
+                    android:hint="@string/appointment_hint"
+                    android:minLines="4"
+                    android:padding="@dimen/dp10"
+                    android:text="@={viewModel.supplement}"
+                    android:textColor="@color/color_3"
+                    android:textColorHint="@color/color_9"
+                    android:textSize="13sp"
+                    app:hand_disableEmoji="true"
+                    app:hand_max_length="200" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp0"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/btn_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="38dp"
+                    android:layout_marginTop="@dimen/dp30"
+                    android:layout_marginRight="38dp"
+                    android:layout_marginBottom="@dimen/dp20"
+                    android:background="@drawable/primary_round_bg"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.onClick(v)}"
+                    android:paddingTop="@dimen/dp12"
+                    android:paddingBottom="@dimen/dp12"
+                    android:text="@string/submit"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</layout>

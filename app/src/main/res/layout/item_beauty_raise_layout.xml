@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.UserPlanOrderListBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/dp10"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp7">
+
+            <!--订单编号-->
+            <TextView
+                android:id="@+id/tv_order_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingTop="@dimen/dp10"
+                android:paddingBottom="@dimen/dp10"
+                android:text="@{@string/pay_order_number+bean.plan_details.plan_number}"
+                android:textColor="#FF333333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp10"
+                android:paddingRight="@dimen/dp15"
+                android:paddingBottom="@dimen/dp10"
+                android:text="@{bean.plan_details.status_name}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <com.chengzi.app.widget.RatioImageView
+                android:id="@+id/iv_order_pic"
+                android:layout_width="@dimen/dp110"
+                android:layout_height="@dimen/dp90"
+                android:layout_marginLeft="@dimen/dp15"
+                android:layout_marginBottom="@dimen/dp7"
+                android:background="#40FF526A"
+                android:scaleType="centerCrop"
+                android:src="@drawable/meirenchou"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_order_num" />
+
+            <TextView
+                android:id="@+id/tv_order_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingTop="@dimen/dp1"
+                android:paddingRight="@dimen/dp15"
+                android:text="@{bean.plan_details.category_name}"
+                android:textColor="#FF333333"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@id/iv_order_pic"
+                app:layout_constraintTop_toBottomOf="@id/tv_order_num" />
+
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingTop="@dimen/dp11"
+                android:text="@string/rmb_symbol"
+                android:textColor="@color/colorPrimary"
+                android:textSize="10sp"
+                app:layout_constraintLeft_toRightOf="@id/iv_order_pic"
+                app:layout_constraintTop_toBottomOf="@id/tv_order_name" />
+
+            <TextView
+                android:id="@+id/tv_order_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp6"
+                android:text="@{bean.plan_details.price}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp"
+                app:layout_constraintLeft_toRightOf="@id/tv1"
+                app:layout_constraintTop_toBottomOf="@id/tv_order_name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp1"
+                android:paddingTop="@dimen/dp11"
+                android:text="/人"
+                android:textColor="@color/colorPrimary"
+                android:textSize="10sp"
+                app:layout_constraintLeft_toRightOf="@id/tv_order_money"
+                app:layout_constraintTop_toBottomOf="@id/tv_order_name" />
+
+            <!--?人参与-->
+            <TextView
+                android:id="@+id/tv_order_person_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp16"
+                android:paddingTop="@dimen/dp5"
+                android:paddingRight="@dimen/dp15"
+                android:text="@{bean.plan_details.people_number+@string/order_person}"
+                android:textColor="#FF333333"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toRightOf="@id/iv_order_pic"
+                app:layout_constraintTop_toBottomOf="@id/tv_order_money" />
+
+            <LinearLayout
+                android:id="@+id/ll_plan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp15"
+                android:layout_marginTop="@dimen/dp10"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toRightOf="@id/iv_order_pic"
+                app:layout_constraintTop_toBottomOf="@id/tv_order_person_num">
+
+                <ProgressBar
+                    android:id="@+id/customProgressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="5dp"
+                    android:layout_centerInParent="true"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/progress_bar_states"
+                    app:layout_constraintLeft_toRightOf="@id/iv_order_pic"
+                    app:layout_constraintTop_toBottomOf="@id/tv_order_person_num" />
+
+                <TextView
+                    android:id="@+id/tv_plan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp5"
+                    android:text="@{bean.plan_details.plan}"
+                    android:textColor="#FFD40000"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_other"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dp13">
+
+                <!--剩余时间-->
+                <LinearLayout
+                    android:id="@+id/ll_time"
+                    android:layout_width="@dimen/dp140"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="@{bean.plan_details.end_time == 0 || bean.plan_details.statusInt &gt;1?View.INVISIBLE:View.VISIBLE}">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/dp15"
+                        android:text="@string/surplus"
+                        android:textColor="#FF333333"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/tv_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp7"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="11sp"
+                        app:surplusTime="@{bean.plan_details.end_time}" />
+
+                </LinearLayout>
+
+                <!--进行中/已完成-->
+                <TextView
+                    android:id="@+id/tv_order_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dp4"
+                    android:text="@{bean.plan_details.status_names}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+                <!--¥?/人-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingTop="@dimen/dp7"
+                    android:text="@string/rmb_symbol"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/tv_order_all_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/dp4"
+                    android:text="@{bean.plan_details.schedule}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+                <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:paddingLeft="@dimen/dp1"-->
+                <!--android:paddingTop="@dimen/dp7"-->
+                <!--android:text="/人"-->
+                <!--android:textColor="@color/colorPrimary"-->
+                <!--android:textSize="10sp"-->
+                <!--app:layout_constraintLeft_toRightOf="@id/tv_order_all_money" />-->
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp1"
+                android:paddingTop="@dimen/dp7"
+                android:text="/人"
+                android:textColor="@color/colorPrimary"
+                android:textSize="10sp"
+                android:visibility="gone"
+                app:layout_constraintLeft_toRightOf="@id/tv_order_all_money" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view"
+            style="@style/lineStyle" />
+
+        <LinearLayout
+            android:id="@+id/ll_show_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:gravity="center|right"
+            android:paddingRight="@dimen/dp5"
+            app:layout_constraintTop_toBottomOf="@id/view">
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="@dimen/dp78"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginRight="@dimen/dp10"
+                android:background="@drawable/rect_gray4_border"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:text="取消订单"
+                android:textColor="#FF666666"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_invited"
+                android:layout_width="@dimen/dp78"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginRight="@dimen/dp10"
+                android:background="@drawable/rect_btn_red_background"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:text="付款"
+                android:textColor="#FFFFFFFF"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

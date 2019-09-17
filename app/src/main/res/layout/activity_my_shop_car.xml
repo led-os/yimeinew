@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.ShopCarBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.MyShopCarActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="购物车"
+            app:rightText="编辑" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/color_9" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp0"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/ll_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/mRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false" />
+
+                    <com.nevermore.oceans.widget.EnterLayout
+                        android:id="@+id/el_discount_coupon"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp55"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingRight="@dimen/dp15"
+                        app:textColor="@color/color_3"
+                        app:textSize="14"
+                        app:textSubject="优惠券"
+                        app:text_content="已抵扣0元" />
+
+                    <ImageView
+                        android:id="@+id/iv_shopcar"
+                        android:layout_width="match_parent"
+                        android:layout_height="102dp"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/shopcar" />
+                </LinearLayout>
+
+                <include
+                    android:id="@+id/empty_view"
+                    layout="@layout/empty_layout"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/color_9" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_choose_all"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatCheckedTextView
+                    android:id="@+id/iv_choose_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/bg_select_pay"
+                    android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp10" />
+
+                <android.support.v7.widget.AppCompatCheckedTextView
+                    android:id="@+id/tv_choose_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="全选"
+                    android:textColor="#FF333333"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tv_total_money"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dp20"
+                    android:singleLine="true"
+                    android:textColor="#FF333333"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_submit"
+                android:layout_width="@dimen/dp110"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:text="结算"
+                android:textColor="#FFFFFFFF"
+                android:textSize="17sp" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

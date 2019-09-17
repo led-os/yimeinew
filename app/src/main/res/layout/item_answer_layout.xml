@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.onlinequestionandanswer.bean.AnswerBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler"/>
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingTop="@dimen/dp10"
+        android:paddingRight="@dimen/dp15"
+        android:paddingBottom="@dimen/dp10">
+
+        <FrameLayout
+            android:id="@+id/btn_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            >
+
+            <com.chengzi.app.widget.CircleImageView
+                android:layout_width="@dimen/dp35"
+                android:layout_height="@dimen/dp35"
+                android:layout_margin="@dimen/dp3"
+                android:scaleType="centerCrop"
+                app:avatar="@{true}"
+                app:image="@{bean.image}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:src="@drawable/vip"
+                android:visibility="@{bean.is_vip == 1?View.VISIBLE:View.GONE}" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp10"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{bean.user_name}"
+                    android:textColor="#FF999999"
+                    android:textSize="14sp"
+                    android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginRight="@dimen/dp10"
+                    android:layout_weight="1"
+                    android:text="@{bean.occupation_name}"
+                    android:textColor="#FF999999"
+                    android:textSize="14sp"
+                    android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/answer_accept_bg"
+                    android:gravity="center"
+                    android:text="@string/already_accept"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="14sp"
+                    android:visibility="@{bean.status == 1?View.VISIBLE:View.GONE}" />
+
+                <TextView
+                    android:id="@+id/btn_accept_answer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp25"
+                    android:background="@drawable/attention_bg_selector"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    android:text="@string/accept_answer"
+                    android:textColor="#FFFFFFFF"
+                    android:paddingLeft="@dimen/dp12"
+                    android:paddingRight="@dimen/dp12"
+                    android:textSize="13sp"
+                    android:visibility="gone"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp15"
+                android:text="@{bean.content}"
+                android:textColor="#FF333333"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="@dimen/dp10"
+                android:textColor="#FF999999"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

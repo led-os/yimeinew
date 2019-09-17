@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.chengzi.app.widget.RatioImageView
+            android:id="@+id/video_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp10"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            app:hand_ratio_height="136"
+            app:hand_ratio_width="345"
+            android:onClick="@{v -> listener.onClick(v)}"
+            />
+
+        <ImageView
+            android:id="@+id/btn_play"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:onClick="@{v -> listener.onClick(v)}"
+            android:src="@drawable/bofang"
+            android:visibility="gone" />
+
+        <com.chengzi.app.widget.RatioImageView
+            android:id="@+id/single_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp10"
+            android:onClick="@{v -> listener.onClick(v)}"
+            android:scaleType="centerCrop"
+            android:src="@drawable/tupian"
+            android:visibility="gone"
+            app:hand_ratio_height="136"
+            app:hand_ratio_width="345" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/ninegrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:visibility="gone"
+            app:layoutManager="android.support.v7.widget.GridLayoutManager"
+            app:reverseLayout="false"
+            app:spanCount="3" />
+
+    </FrameLayout>
+
+</layout>

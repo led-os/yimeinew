@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="Object" />
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.editinfo.EditInfoDoctorOrCounselorActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="@string/edit_info" />
+
+        <!--头像-->
+        <LinearLayout
+            android:id="@+id/ll_head"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp56"
+            android:layout_marginBottom="@dimen/dp0.5"
+            android:background="@color/white"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp15"
+                android:text="头像"
+                android:textColor="#FF333333"
+                android:textSize="14sp" />
+
+            <com.chengzi.app.widget.CircleImageView
+                android:id="@+id/iv_head"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerCrop"
+                android:src="@drawable/morentouxiang"
+                app:avatar="@{true}"
+                app:image="@{url}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/dp5"
+                android:paddingRight="@dimen/dp15"
+                android:src="@drawable/jiantou_hui" />
+        </LinearLayout>
+
+        <!--昵称-->
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/el_nick_name"
+            style="@style/edit_info_style"
+            app:hideArrow="true"
+            app:textColor="#333333"
+            app:textSize="14"
+            app:textSubject="姓名"
+            tools:text_content="尘埃" />
+
+        <!--性别-->
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/el_sex"
+            style="@style/edit_info_style"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            app:textColor="#333333"
+            app:textSize="14"
+            app:textSubject="性别"
+            tools:text_content="男" />
+
+        <!--从业年限-->
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/el_year_age"
+            style="@style/edit_info_style"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            app:textColor="#333333"
+            app:textSize="14"
+            app:textSubject="从业年限"
+            tools:text_content="23年" />
+
+        <!--擅长-->
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/el_good_at"
+            style="@style/edit_info_style"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            app:textColor="#333333"
+            app:textSize="14"
+            app:textSubject="擅长"
+            tools:text_content="请选择" />
+
+        <!--医生介绍-->
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/el_individuality_signature"
+            style="@style/edit_info_style"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            app:textColor="#333333"
+            app:textSize="14"
+            app:textSubject="医生介绍"
+            tools:text_content="夜空中最亮的星，能否...夜空中最亮的halk" />
+
+        <!--认证信息-->
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/el_authentication_info"
+            style="@style/edit_info_style"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            app:textColor="#333333"
+            app:textSize="14"
+            app:textSubject="认证信息" />
+    </LinearLayout>
+</layout>

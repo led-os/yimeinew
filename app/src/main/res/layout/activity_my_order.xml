@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="Object" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.myorder.MyOrderActivity">
+
+        <RelativeLayout
+            android:id="@+id/rl_top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/iv_finish"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/page_padding"
+                android:paddingRight="@dimen/page_padding"
+                android:src="@drawable/fanhui_hui" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_regular_orders"
+                    android:layout_width="@dimen/dp100"
+                    android:layout_height="@dimen/dp30"
+                    android:background="@drawable/sel_myorder_item_left"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    android:text="普通订单"
+                    android:textColor="@drawable/sel_myorder_check_text"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_group_buy_orders"
+                    android:layout_width="@dimen/dp100"
+                    android:layout_height="@dimen/dp30"
+                    android:background="@drawable/sel_myorder_item_right"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    android:text="拼购订单"
+                    android:textColor="@drawable/sel_myorder_check_text"
+                    android:textSize="13sp" />
+            </RadioGroup>
+        </RelativeLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp0.5"
+            android:background="@color/color_f5" />
+    </LinearLayout>
+</layout>

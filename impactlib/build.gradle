@@ -1,0 +1,70 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+
+    api baseDependencies.appCompatV7
+    api baseDependencies.designV7
+    api baseDependencies.cardviewV7
+    api baseDependencies.recyclerViewV7
+    api baseDependencies.supportV4
+    api baseDependencies.constraintLayout
+    api baseDependencies.utilcode
+    api baseDependencies.gson
+    api baseDependencies.glide
+    annotationProcessor baseDependencies.glideCompiler
+    api baseDependencies.okHttp
+    api baseDependencies.retrofit
+    api baseDependencies.retrofitGsonConverter
+    api baseDependencies.retrofitRxJava2Adapter
+    api baseDependencies.okHttpLogging
+    api baseDependencies.rxJava2
+    api baseDependencies.rxAndroid2
+    api baseDependencies.qmui
+    api baseDependencies.baseAdapter
+    api baseDependencies.skeleton
+    api baseDependencies.flowlayout
+    api baseDependencies.multiDex
+    debugApi baseDependencies.leakcanary_android
+    releaseApi baseDependencies.leakcanary_android_no_op
+    //
+    api baseDependencies.rxbus
+    api baseDependencies.logger
+    api baseDependencies.SwipeDelMenuLayout
+    api baseDependencies.rxPermissions
+//    api(name: 'imagepicker', ext: 'aar')
+    api baseDependencies.jsoup
+    api baseDependencies.banner
+    api 'liji.library.dev:citypickerview:3.1.6'
+    api project(':imagepicker')
+
+    api 'com.google.zxing:core:3.3.0'
+}

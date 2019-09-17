@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.KillHospitalListBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+
+        <variable
+            name="viewModel"
+            type="com.chengzi.app.ui.mine.viewmodel.TakePartSeckillViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.takepartseckill.ConfirmTakePartActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="确认参与" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/red_line_bg"
+                android:drawablePadding="@dimen/dp3"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingTop="10dp"
+                android:text="参与项目"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <include
+                android:id="@+id/include"
+                layout="@layout/item_take_part_seckill_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/red_line_bg"
+            android:drawablePadding="@dimen/dp3"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="10dp"
+            android:paddingBottom="@dimen/dp5"
+            android:text="参与明天秒杀时段"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:paddingLeft="@dimen/dp5"
+            android:paddingRight="@dimen/dp18"
+            android:paddingBottom="@dimen/dp15" />
+
+        <!--秒杀价格-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp41"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp15"
+                android:text="秒杀价格"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/et_seckill_money"
+                android:layout_width="@dimen/dp130"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:digits="0123456789."
+                android:gravity="center_vertical|right"
+                android:hint="输入秒杀价"
+                android:imeOptions="actionNext"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp5"
+                android:singleLine="true"
+                android:text="@={viewModel.price}"
+                android:textColor="@color/color_3"
+                android:textColorHint="#FF999999"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingRight="@dimen/dp15"
+                android:text="元"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp0.5"
+            android:background="@drawable/list_divider_left15_bg" />
+
+        <!--每一轮秒杀活动的限购量-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp41"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp15"
+                android:text="每一轮秒杀活动的限购量"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/et_seckill_num"
+                android:layout_width="@dimen/dp130"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:digits="@string/dist_num"
+                android:gravity="center_vertical|right"
+                android:hint="输入限购数量"
+                android:imeOptions="actionDone"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp5"
+                android:singleLine="true"
+                android:text="@={viewModel.num}"
+                android:textColor="@color/color_3"
+                android:textColorHint="#FF999999"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingRight="@dimen/dp15"
+                android:text="件"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_confirm_take_part"
+            style="@style/submitBtnStyle"
+            android:layout_marginTop="@dimen/dp45"
+            android:background="@drawable/rect_btn_red_background"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:text="确定参与" />
+    </LinearLayout>
+</layout>

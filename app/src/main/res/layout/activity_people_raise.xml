@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="isShow"
+            type="Boolean" />
+
+        <variable
+            name="viewModel"
+            type="com.chengzi.app.ui.peopleraise.viewmodel.PeopleRaiseActivityViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="@string/beauty_raise" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.chengzi.app.widget.CommentEditText
+                android:id="@+id/editText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_weight="1"
+                android:background="@drawable/main_stroke_bg"
+                android:drawableLeft="@drawable/home_sousuo"
+                android:drawablePadding="@dimen/dp8"
+                android:hint="@string/search_for_content_of_interest"
+                android:imeOptions="actionSearch"
+                android:inputType="textAutoComplete"
+                android:maxLength="30"
+                android:paddingLeft="@dimen/dp13"
+                android:paddingTop="@dimen/dp8"
+                android:paddingRight="@dimen/dp13"
+                android:paddingBottom="@dimen/dp8"
+                android:singleLine="true"
+                android:text="@={viewModel.keyword}"
+                android:textColor="@color/color_3"
+                android:textColorHint="@color/color_9"
+                android:textSize="13sp"
+                app:hand_disableEmoji="true" />
+
+            <TextView
+                android:id="@+id/btn_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp5"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:padding="@dimen/dp15"
+                android:text="@string/search"
+                android:textColor="#FF666666"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <android.support.design.widget.CustomTabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:paddingBottom="@dimen/dp3"
+            app:tabIndicator="@color/colorPrimary"
+            app:tabIndicatorHeight="2dp"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabTextAppearance="@style/tab_textsize_14"
+            app:tabTextColor="@color/color_3"
+            app:tabUnboundedRipple="false" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp5"
+            android:background="@color/color_f4f3f8" />
+
+        <android.support.design.widget.CustomTabLayout
+            android:id="@+id/tabLayout_status"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:background="@drawable/bottom_line_bg"
+            android:paddingBottom="@dimen/dp3"
+            app:tabIndicator="@color/colorPrimary"
+            app:tabIndicatorHeight="@dimen/dp2"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabTextAppearance="@style/tab_textsize_15"
+            app:tabTextColor="@color/color_3"
+            app:tabUnboundedRipple="false" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/color_f4f3f8" />
+
+        <TextView
+            android:id="@+id/btn_raise"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp45"
+            android:background="@color/colorPrimary"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center"
+            android:onClick="@{v -> listener.onClick(v)}"
+            android:text="@string/want_plan"
+            android:textColor="#FFFFFFFF"
+            android:textSize="18sp"
+            android:visibility="@{isShow?View.VISIBLE:View.GONE}" />
+
+    </LinearLayout>
+
+</layout>

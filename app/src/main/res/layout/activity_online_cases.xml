@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.CaseInfoBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="在线病例" />
+
+        <!--无数据-->
+        <LinearLayout
+            android:id="@+id/ll_no_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/top_bar"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="@dimen/dp120"
+                android:layout_height="@dimen/dp130"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="106dp"
+                android:src="@drawable/zaixianbingli_zanwu" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="@dimen/dp20"
+                android:text="暂未添加过病例"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp0"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tv_add_cases"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:layout_marginLeft="38dp"
+                android:layout_marginRight="38dp"
+                android:layout_marginBottom="@dimen/dp20"
+                android:background="@drawable/rect_btn_red_background"
+                android:gravity="center"
+                android:text="添加病例"
+                android:textColor="#FFFFFFFF"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <!--有数据-->
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nsv_have_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/top_bar"
+            android:background="@color/color_f5"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!--基本信息-->
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp46"
+                        android:drawableLeft="@drawable/red_line_bg"
+                        android:drawablePadding="@dimen/dp3"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingTop="@dimen/dp11"
+                        android:paddingBottom="@dimen/dp5"
+                        android:text="基本信息"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <com.chengzi.app.widget.CircleImageView
+                        android:id="@+id/iv_head"
+                        android:layout_width="@dimen/dp50"
+                        android:layout_height="@dimen/dp50"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:layout_marginTop="@dimen/dp46"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/morentouxiang"
+                        app:avatar="@{true}"
+                        app:image="@{url}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp46"
+                        android:paddingLeft="@dimen/dp75"
+                        android:paddingTop="@dimen/dp10"
+                        android:text="@{bean.user_name}"
+                        android:textColor="#FF333333"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_sex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/dp30"
+                        android:paddingTop="60dp"
+                        android:text="@{bean.user_sex_name}"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp"
+                        app:layout_constraintLeft_toRightOf="@id/tv_name" />
+
+                    <TextView
+                        android:id="@+id/tv_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/dp20"
+                        android:paddingTop="60dp"
+                        android:text="@{bean.user_birthday_name}"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp"
+                        app:layout_constraintLeft_toRightOf="@id/tv_sex"
+                        tools:text="26岁" />
+
+                    <TextView
+                        android:id="@+id/tv_id_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/dp75"
+                        android:paddingTop="@dimen/dp10"
+                        android:text='@{@string/cases_user_codes+bean.user_codes}'
+                        android:textColor="#FF333333"
+                        android:textSize="15sp"
+                        app:layout_constraintTop_toBottomOf="@id/iv_head" />
+
+                    <TextView
+                        android:id="@+id/tv_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/dp75"
+                        android:paddingTop="@dimen/dp10"
+                        android:text='@{@string/cases_phone+bean.phone}'
+                        android:textColor="#FF333333"
+                        android:textSize="15sp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_id_num" />
+
+                    <TextView
+                        android:id="@+id/tv_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/dp75"
+                        android:paddingTop="@dimen/dp10"
+                        android:paddingBottom="@dimen/dp20"
+                        android:text='@{@string/cases_address+bean.address}'
+                        android:textColor="#FF333333"
+                        android:textSize="15sp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_phone" />
+                </android.support.constraint.ConstraintLayout>
+
+                <!--健康信息-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/dp15">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp41"
+                            android:drawableLeft="@drawable/red_line_bg"
+                            android:drawablePadding="@dimen/dp3"
+                            android:gravity="center_vertical"
+                            android:paddingTop="@dimen/dp11"
+                            android:paddingBottom="@dimen/dp5"
+                            android:text="健康信息"
+                            android:textColor="#FF333333"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tv_height"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/dp41"
+                            android:text='@{@string/cases_height+bean.height+"cm"}'
+                            android:textColor="#FF333333"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/dp60"
+                            android:paddingTop="@dimen/dp41"
+                            android:text='@{@string/cases_weight+bean.weight+"kg"}'
+                            android:textColor="#FF333333"
+                            android:textSize="15sp"
+                            app:layout_constraintLeft_toRightOf="@id/tv_height" />
+
+                        <TextView
+                            android:id="@+id/tv_blood_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/dp10"
+                            android:text='@{@string/blood_type+bean.blood_type_name}'
+                            android:textColor="#FF333333"
+                            android:textSize="15sp"
+                            app:layout_constraintTop_toBottomOf="@id/tv_height"
+                            tools:text="血型：AB型" />
+
+                        <TextView
+                            android:id="@+id/tv_heart_rate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/dp30"
+                            android:paddingTop="@dimen/dp10"
+                            android:text='@{@string/cases_heart_rate+bean.heart_rate}'
+                            android:textColor="#FF333333"
+                            android:textSize="15sp"
+                            app:layout_constraintLeft_toRightOf="@id/tv_blood_type"
+                            app:layout_constraintTop_toBottomOf="@id/tv_height" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/dp30"
+                            android:paddingTop="@dimen/dp10"
+                            android:text='@{@string/cases_blood_pressure+bean.blood_pressure_low+"/"+bean.blood_pressure_high+"mmHg"}'
+                            android:textColor="#FF333333"
+                            android:textSize="15sp"
+                            app:layout_constraintLeft_toRightOf="@id/tv_heart_rate"
+                            app:layout_constraintTop_toBottomOf="@id/tv_height" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <View style="@style/lineStyle" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp15"
+                        android:text="以往手术经历"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp10"
+                        android:paddingBottom="@dimen/dp5"
+                        android:text='@{bean.operation_name}'
+                        android:textColor="#FF666666"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp15"
+                        android:text="外伤经历"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp10"
+                        android:paddingBottom="@dimen/dp5"
+                        android:text='@{bean.trauma_name}'
+                        android:textColor="#FF666666"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp15"
+                        android:text="变美经历"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp10"
+                        android:paddingBottom="@dimen/dp5"
+                        android:text='@{bean.beauty_name}'
+                        android:textColor="#FF666666"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp15"
+                        android:text="过敏药物"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp10"
+                        android:paddingBottom="@dimen/dp5"
+                        android:text='@{bean.allergy_drugs_name}'
+                        android:textColor="#FF666666"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp15"
+                        android:text="慢性病"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp10"
+                        android:paddingBottom="@dimen/dp5"
+                        android:text='@{bean.sidease_name}'
+                        android:textColor="#FF666666"
+                        android:textSize="14sp" />
+
+                    <!--是否有家族遗传病-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp15"
+                        android:paddingBottom="@dimen/dp15"
+                        android:text='@{@string/family_diseases+bean.getFamily_diseases_name}'
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <!--生活习惯-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp41"
+                        android:drawableLeft="@drawable/red_line_bg"
+                        android:drawablePadding="@dimen/dp3"
+                        android:gravity="center_vertical"
+                        android:paddingTop="@dimen/dp11"
+                        android:paddingBottom="@dimen/dp5"
+                        android:text="生活习惯"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_smoke"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:paddingTop="@dimen/dp5"
+                        android:paddingBottom="@dimen/dp10"
+                        android:text='@{@string/smoke +bean.smoke_name}'
+                        android:textColor="#FF333333"
+                        android:textSize="15sp"
+                        tools:text="吸烟频率：不吸烟" />
+
+                    <TextView
+                        android:id="@+id/tv_drink_wine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="@dimen/dp10"
+                        android:text='@{@string/drink_wine +bean.drink_wine_name}'
+                        android:textColor="#FF333333"
+                        android:textSize="15sp"
+                        tools:text="喝酒频率：每天" />
+
+                    <TextView
+                        android:id="@+id/tv_exercise"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="@dimen/dp20"
+                        android:text='@{@string/exercise +bean.exercise_name}'
+                        android:textColor="#FF333333"
+                        android:textSize="15sp"
+                        tools:text="锻炼频率：不锻炼" />
+                </LinearLayout>
+
+                <!--补充信息-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingBottom="@dimen/dp20">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp41"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:drawableLeft="@drawable/red_line_bg"
+                        android:drawablePadding="@dimen/dp3"
+                        android:gravity="center_vertical"
+                        android:paddingTop="@dimen/dp11"
+                        android:paddingBottom="@dimen/dp5"
+                        android:text="补充信息"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <!--补充信息-->
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/mRecyclerView"
+                        android:layout_width="@dimen/dp250"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_video"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <com.chengzi.app.widget.RatioImageView
+                            android:id="@+id/video_image"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="@dimen/dp10"
+                            android:onClick="@{v -> listener.handleClick(v,bean)}"
+                            android:scaleType="centerCrop" />
+
+                        <ImageView
+                            android:id="@+id/btn_play"
+                            android:layout_width="@dimen/dp30"
+                            android:layout_height="@dimen/dp30"
+                            android:layout_centerInParent="true"
+                            android:onClick="@{v -> listener.handleClick(v,bean)}"
+                            android:src="@drawable/bofang" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </RelativeLayout>
+</layout>

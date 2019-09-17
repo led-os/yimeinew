@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.bean.account.UserInfoBean" />
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_background"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        tools:context=".ui.mine.fragment.MineFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/cl_user"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="@dimen/dp10"
+                android:background="@color/white"
+                android:onClick="@{v-> listener.onClick(v)}">
+
+                <com.chengzi.app.widget.CircleImageView
+                    android:id="@+id/iv_head"
+                    android:layout_width="@dimen/dp50"
+                    android:layout_height="@dimen/dp50"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/morentouxiang"
+                    app:avatar="@{true}"
+                    app:image="@{url}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_nick_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp10"
+                    android:paddingTop="@dimen/dp27"
+                    android:text="@{bean.name}"
+                    android:textColor="#FF333333"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toRightOf="@id/iv_head"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLength="100"
+                    android:paddingLeft="@dimen/dp75"
+                    android:paddingTop="@dimen/dp4"
+                    android:paddingRight="150dp"
+                    android:singleLine="true"
+                    android:text="@{bean.autograph}"
+                    android:textColor="#FF333333"
+                    android:textSize="13sp"
+                    app:layout_constraintLeft_toRightOf="@id/iv_head"
+                    app:layout_constraintTop_toBottomOf="@id/tv_nick_name" />
+
+                <!--
+                    android:onClick="@{listener::onClick}"-->
+                <TextView
+                    android:id="@+id/tv_sign_in"
+                    android:layout_width="@dimen/dp56"
+                    android:layout_height="@dimen/dp25"
+                    android:layout_marginTop="@dimen/dp25"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:gravity="center"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="13sp"
+                    android:visibility="invisible"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_orange_credit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{listener::onClick}"
+                    android:paddingLeft="@dimen/dp10"
+                    android:paddingTop="@dimen/dp8"
+                    android:paddingRight="@dimen/dp15"
+                    android:paddingBottom="@dimen/dp10"
+                    android:text="@{@string/tv_orange_credit+bean.orange_create+@string/score}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_sign_in" />
+            </android.support.constraint.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:divider="@drawable/divider_bg"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <TextView
+                    android:id="@+id/tv_personal_homepage"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp55"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/wode_gerenzhuye"
+                    android:drawableRight="@drawable/jiantou_hui"
+                    android:drawablePadding="@dimen/dp15"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="个人主页"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_wallet"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp55"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/wode_qianbao"
+                    android:drawableRight="@drawable/jiantou_hui"
+                    android:drawablePadding="@dimen/dp15"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@string/wallet"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp55"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/wode_xiaoxi"
+                    android:drawableRight="@drawable/jiantou_hui"
+                    android:drawablePadding="@dimen/dp15"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@string/message"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_my_vip"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp55"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/wode_vip"
+                    android:drawableRight="@drawable/jiantou_hui"
+                    android:drawablePadding="@dimen/dp15"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@string/my_vip"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_my_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp55"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/wode_dingdan"
+                    android:drawableRight="@drawable/jiantou_hui"
+                    android:drawablePadding="@dimen/dp15"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@string/my_order"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_shopping_cart"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp55"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/wode_gouwuche"
+                    android:drawableRight="@drawable/jiantou_hui"
+                    android:drawablePadding="@dimen/dp15"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@string/shopping_cart"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp10"
+                    android:background="@color/color_background" />
+
+                <TextView
+                    android:id="@+id/tv_my_reservation"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp55"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/wode_yuyue"
+                    android:drawableRight="@drawable/jiantou_hui"
+                    android:drawablePadding="@dimen/dp15"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@string/my_reservation"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_consult"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp55"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/wode_sixiangzixun"
+                    android:drawableRight="@drawable/jiantou_hui"
+                    android:drawablePadding="@dimen/dp15"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@string/consult"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_online_consultation"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp55"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/wode_zaixianmianzhen"
+                    android:drawableRight="@drawable/jiantou_hui"
+                    android:drawablePadding="@dimen/dp15"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@string/online_consultation"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp55">
+
+                    <TextView
+                        android:id="@+id/tv_beauty_raise"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp55"
+                        android:background="@color/white"
+                        android:drawableLeft="@drawable/wode_meirenchou"
+                        android:drawableRight="@drawable/jiantou_hui"
+                        android:drawablePadding="@dimen/dp15"
+                        android:foreground="?selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:onClick="@{v-> listener.onClick(v)}"
+                        android:paddingLeft="@dimen/dp15"
+                        android:paddingRight="@dimen/dp15"
+                        android:text="@string/beauty_raise"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tv_beauty_raise1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center_vertical"
+                        android:onClick="@{v-> listener.onClick(v)}"
+                        android:paddingRight="@dimen/dp35"
+                        android:text="规则"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_beauty_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp55"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/wode_meilidangan"
+                    android:drawableRight="@drawable/jiantou_hui"
+                    android:drawablePadding="@dimen/dp15"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="美丽档案"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_online_cases"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp55"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/wode_zaixianbingli"
+                    android:drawableRight="@drawable/jiantou_hui"
+                    android:drawablePadding="@dimen/dp15"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="在线病例"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp10"
+                    android:background="@color/color_background" />
+
+                <TextView
+                    android:id="@+id/tv_electronic_invoice"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp55"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/wode_dianzifapiao"
+                    android:drawableRight="@drawable/jiantou_hui"
+                    android:drawablePadding="@dimen/dp15"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@string/electronic_invoice"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp55"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/wode_shezhi"
+                    android:drawableRight="@drawable/jiantou_hui"
+                    android:drawablePadding="@dimen/dp15"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@string/setting"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_help"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp55"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/wode_bangzhu"
+                    android:drawableRight="@drawable/jiantou_hui"
+                    android:drawablePadding="@dimen/dp15"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@string/help"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_feedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp55"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/wode_yijian"
+                    android:drawableRight="@drawable/jiantou_hui"
+                    android:drawablePadding="@dimen/dp15"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:onClick="@{v-> listener.onClick(v)}"
+                    android:paddingLeft="@dimen/dp15"
+                    android:paddingRight="@dimen/dp15"
+                    android:text="@string/feedback"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</layout>

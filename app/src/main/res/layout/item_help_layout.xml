@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.RuleListBean" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp36"
+            android:paddingTop="@dimen/dp8"
+            android:paddingRight="@dimen/dp36"
+            android:paddingBottom="@dimen/dp8"
+            android:textColor="#FF333333"
+            android:textSize="@dimen/sp14"
+            tools:text="hahahaha" />
+
+        <!--<TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/dp4"
+            android:text="@{bean.content}"
+            android:textColor="#FF333333"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />-->
+    </android.support.constraint.ConstraintLayout>
+</layout>

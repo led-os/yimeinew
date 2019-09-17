@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.UserPlanOrderDetailsBean.JoinOrganizationEntity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/dp12"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp10">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp60">
+
+            <com.chengzi.app.widget.RatioImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorGray"
+                android:scaleType="centerCrop"
+                app:image="@{url}" />
+
+            <TextView
+                android:id="@+id/iv_is_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp5"
+                android:background="@drawable/rect_btn_red_background"
+                android:padding="@dimen/dp2"
+                android:text="选中"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp10"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/iv_is_vip"
+                android:layout_width="@dimen/dp20"
+                android:layout_height="@dimen/dp10"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/dp5"
+                android:src="@drawable/vip"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:paddingRight="@dimen/dp5"
+                android:paddingBottom="@dimen/dp2"
+                android:text="@{bean.grade}"
+                android:textColor="#FF666666"
+                android:textSize="10sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp3"
+            android:text="@{@string/order_num+bean.order_num}"
+            android:textColor="#FF666666"
+            android:textSize="10sp" />
+    </LinearLayout>
+</layout>

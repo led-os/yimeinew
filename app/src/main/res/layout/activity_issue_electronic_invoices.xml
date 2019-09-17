@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.chengzi.app.ui.mine.viewmodel.ElectronicInvoiceModel" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.ElectronicInvoiceBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:divider="@drawable/list_divider_left15_bg"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        tools:context=".ui.mine.activity.electronicinvoice.IssueElectronicInvoicesActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="开具电子发票" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:text="发票详情"
+            android:textColor="#FF666666"
+            android:textSize="14sp" />
+
+        <!--抬头类型 医生 咨询师 医院-->
+        <RadioGroup
+            android:id="@+id/rg_type"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp42"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp15"
+                android:text="抬头类型"
+                android:textColor="@color/color_3"
+                android:textSize="@dimen/sp15" />
+
+            <RadioButton
+                android:id="@+id/rb_company"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp30"
+                android:button="@null"
+                android:checked="true"
+                android:drawableLeft="@drawable/bg_select_pay"
+                android:drawablePadding="@dimen/dp7"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
+                android:text="企业单位"
+                android:textColor="@color/color_3"
+                android:textSize="@dimen/sp15" />
+
+            <RadioButton
+                android:id="@+id/rb_personage"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp30"
+                android:button="@null"
+                android:drawableLeft="@drawable/bg_select_pay"
+                android:drawablePadding="@dimen/dp7"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp15"
+                android:text="个人"
+                android:textColor="@color/color_3"
+                android:textSize="@dimen/sp15" />
+        </RadioGroup>
+
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/el_type_company"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp42"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            app:hideArrow="true"
+            app:textColor="@color/color_3"
+            app:textSize="15"
+            app:textSubject="抬头类型"
+            app:text_content="企业单位" />
+
+        <!--发票抬头-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp42"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp15"
+                android:text="@string/invoice_looked_up"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/et_invoice_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="center_vertical|right"
+                android:hint="填写发票抬头"
+                android:imeOptions="actionNext"
+                android:paddingRight="@dimen/dp15"
+                android:singleLine="true"
+                android:text="@={model.rise}"
+                android:textColor="@color/color_3"
+                android:textColorHint="#FF999999"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp" />
+        </LinearLayout>
+        <!--税号-->
+        <LinearLayout
+            android:id="@+id/ll_duty_paragraph"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp42"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp15"
+                android:text="@string/duty_paragraph"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/et_duty_paragraph"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="center_vertical|right"
+                android:hint="填写纳税人识别号"
+                android:imeOptions="actionDone"
+                android:paddingRight="@dimen/dp15"
+                android:singleLine="true"
+                android:text="@={model.identify_number}"
+                android:textColor="@color/color_3"
+                android:textColorHint="#FF999999"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp" />
+        </LinearLayout>
+        <!--发票内容-->
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/el_invoice_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp42"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            app:hideArrow="true"
+            app:textColor="@color/color_3"
+            app:textSize="15"
+            app:textSubject="发票内容"
+            app:text_content="需客户提供一下这里显示固定字段" />
+        <!--发票金额-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp42"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp15"
+                android:text="发票金额"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/et_invoice_amount"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/dp15"
+                android:text="¥700.00"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp" />
+        </LinearLayout>
+        <!--接收方式-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:text="接收方式"
+            android:textColor="#FF666666"
+            android:textSize="14sp" />
+        <!--电子邮件-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp42"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp15"
+                android:text="电子邮件"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/et_Email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="center_vertical|right"
+                android:hint="用户向您发送电子发票"
+                android:paddingRight="@dimen/dp15"
+                android:singleLine="true"
+                android:text="@={model.email}"
+                android:textColor="@color/color_3"
+                android:textColorHint="@color/color_9"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_submit"
+            style="@style/submitBtnStyle"
+            android:layout_marginTop="@dimen/dp100"
+            android:background="@drawable/rect_btn_red_background"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:text="@string/submit" />
+    </LinearLayout>
+</layout>

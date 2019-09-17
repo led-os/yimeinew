@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.message.bean.AttentionDoctorBean" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_line_bg"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingTop="@dimen/dp10"
+        android:paddingRight="@dimen/dp15"
+        android:paddingBottom="@dimen/dp10">
+
+        <RelativeLayout
+            android:layout_width="@dimen/dp45"
+            android:layout_height="50dp">
+
+            <com.chengzi.app.widget.CircleImageView
+                android:layout_width="@dimen/dp45"
+                android:layout_height="@dimen/dp45"
+                android:layout_marginTop="@dimen/dp2"
+                android:scaleType="centerCrop"
+                app:avatar="@{true}"
+                app:image="@{bean.img}" />
+
+            <!--<ImageView-->
+                <!--android:id="@+id/iv_vip"-->
+                <!--android:layout_width="20dp"-->
+                <!--android:layout_height="10dp"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_marginLeft="@dimen/dp13"-->
+                <!--android:src="@drawable/vip"-->
+                <!--android:visibility="@{bean.is_VIP == 1?View.VISIBLE:View.GONE}" />-->
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp10"
+            android:ellipsize="end"
+            android:maxLength="20"
+            android:text="@{bean.cover_name}"
+            android:textColor="#FF333333"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp20"
+            android:ellipsize="end"
+            android:maxLength="30"
+            android:text="@{bean.title}"
+            android:textColor="#FFFF526A"
+            android:textSize="13sp" />
+
+        <Space
+            android:layout_width="@dimen/dp0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_followed"-->
+            <!--android:layout_width="56dp"-->
+            <!--android:layout_height="24dp"-->
+            <!--android:background="@drawable/attention_bg_selector"-->
+            <!--android:gravity="center"-->
+            <!--android:textColor="#FFFFFFFF"-->
+            <!--android:textSize="13sp"-->
+            <!--android:visibility="@{isSelf?View.GONE:View.VISIBLE}"-->
+            <!--android:selected="@{bean.is_followed == 1}"-->
+            <!--android:text="@{bean.is_followed == 1?@string/attentioned:@string/attention}"-->
+            />
+    </LinearLayout>
+
+</layout>

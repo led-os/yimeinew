@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.MyAppointmentBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp10"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp11">
+
+            <com.chengzi.app.widget.CircleImageView
+                android:id="@+id/iv_head"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:scaleType="centerCrop"
+                android:src="@drawable/morentouxiang"
+                app:avatar="@{true}"
+                app:image="@{url}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:layout_marginLeft="@dimen/dp45"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@{bean.uu_name}"
+                    android:textColor="#FF333333"
+                    android:textSize="16sp" />
+
+                <!--android:text="主治医师   8.0分"-->
+                <TextView
+                    android:id="@+id/tv_zhicheng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@{bean.uu_level+' '+' '+bean.uu_grade+@string/score}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="13sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/el_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp30"
+            android:layout_marginTop="@dimen/dp5"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            app:hideArrow="true"
+            app:textColor="@color/color_3"
+            app:textSize="15"
+            app:textSubject="我的姓名" />
+
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/el_phone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp30"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            app:hideArrow="true"
+            app:textColor="@color/color_3"
+            app:textSize="15"
+            app:textSubject="联系电话" />
+
+        <com.nevermore.oceans.widget.EnterLayout
+            android:id="@+id/el_time"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp30"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp15"
+            app:hideArrow="true"
+            app:textColor="@color/color_3"
+            app:textSize="15"
+            app:textSubject="预约时间" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/dp110"
+                android:layout_height="@dimen/dp30"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp15"
+                android:text="变美需求"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:paddingTop="@dimen/dp8"
+                android:paddingRight="@dimen/dp15"
+                android:text="@{bean.content}"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <View
+            style="@style/lineStyle"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp15" />
+
+        <TextView
+            android:id="@+id/tv_cancellation"
+            android:layout_width="@dimen/dp78"
+            android:layout_height="@dimen/dp30"
+            android:layout_gravity="right"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp15"
+            android:layout_marginBottom="@dimen/dp10"
+            android:background="@drawable/rect_gray4_border"
+            android:gravity="center"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:text="取消预约"
+            android:textColor="#FF666666"
+            android:textSize="12sp" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.homepage.bean.DoctorHomeInfoBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+
+        <variable
+            name="isSelf"
+            type="Boolean" />
+
+        <variable
+            name="init"
+            type="Boolean" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/btn_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:enabled="@{isSelf}"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:id="@+id/layout_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp15">
+
+                    <com.chengzi.app.widget.CircleImageView
+                        android:id="@+id/image_head"
+                        android:layout_width="@dimen/dp50"
+                        android:layout_height="@dimen/dp50"
+                        android:scaleType="centerCrop"
+                        app:avatar="@{true}"
+                        app:image="@{bean.usericon}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:text="@{bean.userNameAndId}"
+                        android:textColor="#FFFFFFFF"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toRightOf="@+id/image_head"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_user_technical_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp15"
+                        android:text="@{bean.occupation}"
+                        android:textColor="#FFFFFFFF"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_user_name"
+                        app:layout_constraintLeft_toRightOf="@+id/tv_user_name" />
+
+                    <TextView
+                        android:id="@+id/tv_profession_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:textColor="#FFFFFFFF"
+                        android:textSize="12sp"
+                        app:layout_constraintLeft_toRightOf="@+id/image_head"
+                        app:layout_constraintTop_toBottomOf="@id/tv_user_name"
+                        tools:text="@string/beauty_score_home_page" />
+
+                    <TextView
+                        android:id="@+id/tv_technique_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp10"
+                        android:textColor="#FFFFFFFF"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_profession_score"
+                        app:layout_constraintLeft_toRightOf="@+id/tv_profession_score"
+                        tools:text="technique_score_home_page" />
+
+                    <TextView
+                        android:id="@+id/btn_attention"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:background="@drawable/rect_white_4_radius"
+                        android:gravity="center"
+                        android:minWidth="@dimen/dp56"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        android:paddingLeft="@dimen/dp5"
+                        android:paddingRight="@dimen/dp5"
+                        android:text="@{bean.follow == 1?@string/cancel_attention:@string/attention}"
+                        android:textColor="#FFFF526A"
+                        android:textSize="13sp"
+                        android:visibility="@{!init?View.GONE:(isSelf?View.GONE:View.VISIBLE)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/btn_compile_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:background="@drawable/rect_white_4_radius"
+                        android:gravity="center"
+                        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                        android:paddingLeft="@dimen/dp10"
+                        android:paddingRight="@dimen/dp10"
+                        android:text="@string/compile_profile"
+                        android:textColor="#FFFF526A"
+                        android:textSize="13sp"
+                        android:visibility="@{!init?View.GONE:(isSelf?View.VISIBLE:View.GONE)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </android.support.constraint.ConstraintLayout>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:layout_marginBottom="@dimen/dp15"
+                    android:background="@drawable/bg_white"
+                    android:minHeight="@dimen/dp110"
+                    android:nestedScrollingEnabled="false"
+                    android:paddingTop="@dimen/dp7"
+                    android:paddingBottom="@dimen/dp7"
+                    app:layoutManager="android.support.v7.widget.GridLayoutManager"
+                    app:spanCount="4" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp40"
+            android:paddingTop="@dimen/dp15"
+            android:paddingRight="@dimen/dp15"
+            android:paddingBottom="@dimen/dp15">
+
+            <TextView
+                android:id="@+id/tv_profession_age"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text='@{@string/profession_age_homepage(bean == null?"":bean.work_year)}'
+                android:textColor="#FF333333"
+                android:textSize="13sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--<TextView-->
+            <!--android:id="@+id/tv_university"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="@dimen/dp10"-->
+            <!--android:text='@{@string/graduate_school(bean == null?"":bean.school)}'-->
+            <!--android:textColor="#FF333333"-->
+            <!--android:textSize="13sp"-->
+            <!--android:visibility="gone"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/tv_profession_age" />-->
+
+            <LinearLayout
+                android:id="@+id/layout_better"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/tv_profession_age">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/good_at"
+                    android:textColor="#FF333333"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_better"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{bean.major_text}"
+                    android:textColor="#FF333333"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_qualification_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:text='@{@string/Number_of_qualification(bean == null?"":bean.qualnumber)}'
+                android:textColor="#FF333333"
+                android:textSize="13sp"
+                app:layout_constraintTop_toBottomOf="@+id/layout_better" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp10"
+            android:background="#f7f7f7" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/dp15"
+                android:background="@drawable/red_line_bg"
+                android:gravity="center" />
+
+            <com.nevermore.oceans.widget.EnterLayout
+                android:id="@+id/el_autograph"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp2"
+                android:paddingRight="@dimen/dp15"
+                app:rightTextSize="14"
+                app:textSize="16"
+                app:textSubject="介绍"
+                app:text_color="@color/color_3" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_autograph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp3"
+            android:paddingRight="@dimen/dp15"
+            android:paddingBottom="@dimen/dp15"
+            android:text="@{bean.synopsis}"
+            android:visibility="gone"
+            tools:text="哈哈哈嗯of大家佛大积分代发价的房价欧艾斯的房价大S佛教奥斯迪发家史的覅  " />
+
+    </LinearLayout>
+
+</layout>

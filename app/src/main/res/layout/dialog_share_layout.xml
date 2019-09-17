@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/divider"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dp15"
+            android:text="@string/transpond"
+            android:textColor="@color/color_6"
+            android:textSize="@dimen/sp15" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp20"
+            android:paddingRight="@dimen/dp20">
+
+            <LinearLayout
+                android:id="@+id/btn_weixin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/btn_circle"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <FrameLayout
+                    android:layout_width="@dimen/dp50"
+                    android:layout_height="@dimen/dp50">
+
+                    <com.chengzi.app.widget.CircleImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:padding="@dimen/dp6"
+                        android:src="@drawable/umeng_socialize_wechat" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:gravity="center"
+                    android:text="微信"
+                    android:textColor="@color/color_6"
+                    android:textSize="@dimen/sp13" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btn_circle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp20"
+                android:gravity="center_horizontal"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toRightOf="@+id/btn_weixin"
+                app:layout_constraintRight_toLeftOf="@+id/btn_sina"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <FrameLayout
+                    android:layout_width="@dimen/dp50"
+                    android:layout_height="@dimen/dp50">
+
+                    <com.chengzi.app.widget.CircleImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:padding="@dimen/dp6"
+                        android:src="@drawable/umeng_socialize_wxcircle" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:gravity="center"
+                    android:text="微信朋友圈"
+                    android:textColor="@color/color_6"
+                    android:textSize="@dimen/sp13" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btn_sina"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp20"
+                android:gravity="center_horizontal"
+                android:onClick="@{v -> listener.onClick(v)}"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toRightOf="@+id/btn_circle"
+                app:layout_constraintRight_toLeftOf="@+id/view2"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <FrameLayout
+                    android:layout_width="@dimen/dp50"
+                    android:layout_height="@dimen/dp50">
+
+                    <com.chengzi.app.widget.CircleImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:padding="@dimen/dp6"
+                        android:src="@drawable/umeng_socialize_sina" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:gravity="center"
+                    android:text="微博"
+                    android:textColor="@color/color_6"
+                    android:textSize="@dimen/sp13" />
+
+            </LinearLayout>
+
+            <!--<View-->
+            <!--android:id="@+id/view1"-->
+            <!--android:layout_width="@dimen/dp60"-->
+            <!--android:layout_height="@dimen/dp60"-->
+            <!--app:layout_constraintLeft_toRightOf="@+id/btn_circle"-->
+            <!--app:layout_constraintRight_toLeftOf="@+id/view2"-->
+            <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp60"
+                app:layout_constraintLeft_toRightOf="@+id/btn_sina"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/divider" />
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:onClick="@{v -> listener.onClick(v)}"
+            android:text="@string/cancel_share"
+            android:textColor="@color/color_6"
+            android:textSize="@dimen/sp15" />
+
+    </LinearLayout>
+</layout>

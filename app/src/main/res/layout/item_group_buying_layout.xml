@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.goods.bean.SpellBean"/>
+
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp15"
+        android:gravity="center_vertical"
+        >
+        <com.chengzi.app.widget.CircleImageView
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:scaleType="centerCrop"
+            app:image="@{bean.user_logo}"
+            app:avatar="@{true}"
+            />
+
+        <LinearLayout
+            android:layout_width="@dimen/dp0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/dp10"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{bean.user_name}"
+                android:textColor="#FF333333"
+                android:textSize="13sp"
+                />
+
+            <com.chengzi.app.widget.CountDownTextView
+                android:id="@+id/countDownTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FF999999"
+                android:textSize="11sp"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_join_group_buy"
+            android:layout_width="@dimen/dp70"
+            android:layout_height="@dimen/dp30"
+            android:text="@string/in_the_purchase"
+            android:textColor="#FFFFFFFF"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:background="@drawable/primary_round_bg"
+            android:foreground="?selectableItemBackground"
+            android:layout_marginLeft="@dimen/dp10"
+            />
+
+    </LinearLayout>
+
+</layout>

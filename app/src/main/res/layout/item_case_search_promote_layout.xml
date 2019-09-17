@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="urlBefore"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.CaseManageListBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+
+        <variable
+            name="baseViewModel"
+            type="com.chengzi.app.ui.cases.viewmodel.CaseBaseViewModel" />
+
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/ll_case"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_case"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/red_line_bg"
+                android:drawablePadding="@dimen/dp3"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingTop="@dimen/dp10"
+                android:text="@string/case_type"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp41"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingTop="@dimen/dp10">
+
+                <TextView
+                    android:id="@+id/tv_case_promotion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/dp10"
+                    android:text="案例类似"
+                    android:textColor="#FF999999"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{bean.catename}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_img"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10">
+
+                <com.chengzi.app.widget.RatioImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#cccccc"
+                    android:scaleType="centerCrop"
+                    app:image="@{url}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:padding="@dimen/dp5"
+                    android:text="术后图"
+                    android:textColor="#FF666666"
+                    android:textSize="9sp" />
+
+                <com.chengzi.app.widget.RatioImageView
+                    android:layout_width="@dimen/dp70"
+                    android:layout_height="@dimen/dp70"
+                    android:layout_alignParentBottom="true"
+                    android:background="#bbbbbb"
+                    android:scaleType="centerCrop"
+                    app:image="@{urlBefore}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:padding="@dimen/dp3"
+                    android:text="术前图"
+                    android:textColor="#FF666666"
+                    android:textSize="9sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingTop="@dimen/dp8"
+                android:paddingRight="@dimen/dp10"
+                android:text="@={bean.content}"
+                android:textColor="#FF333333"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view"
+            style="@style/lineStyle"
+            android:layout_marginTop="@dimen/dp10"
+            app:layout_constraintTop_toBottomOf="@id/ll_case" />
+
+        <LinearLayout
+            android:id="@+id/ll_promote"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/view">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp10"
+                android:text="限额"
+                android:textColor="#FF999999"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_promote_money"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp4"
+                android:text="@{@string/the_yuan+bean.preset_amount}"
+                android:textColor="#FF333333"
+                android:textSize="14sp" />
+
+            <!--
+                android:onClick="@{v -> listener.handleClick(v,bean)}"-->
+            <TextView
+                android:id="@+id/tv_set"
+                android:layout_width="@dimen/dp55"
+                android:layout_height="26dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp10"
+                android:background="@drawable/rect_btn_red_background"
+                android:gravity="center"
+                android:text="设置"
+                android:textColor="#FFFFFFFF"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/dp8"
+                android:text="推广"
+                android:textColor="#FF999999"
+                android:textSize="14sp" />
+
+            <!--
+                android:onClick="@{v -> listener.handleClick(v,bean)}"-->
+            <ImageView
+                android:id="@+id/tv_promote"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="30dp"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="@dimen/dp15"
+                android:src="@drawable/sel_set" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_case_manage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/view">
+
+            <TextView
+                android:id="@+id/tv_look_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/liulan"
+                android:drawablePadding="@dimen/dp5"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingTop="@dimen/dp8"
+                android:paddingRight="@dimen/dp10"
+                android:paddingBottom="@dimen/dp8"
+                android:text="@{bean.view_number}"
+                android:textColor="#FF999999"
+                android:textSize="11sp" />
+
+            <Space
+                android:layout_width="@dimen/dp0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tv_message_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/pinglun"
+                android:drawablePadding="@dimen/dp5"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingTop="@dimen/dp8"
+                android:paddingRight="@dimen/dp10"
+                android:paddingBottom="@dimen/dp8"
+                app:viewNum="@{baseViewModel.commentObservable?bean.comment_number:bean.comment_number}"
+                android:textColor="#FF999999"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/tv_share_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/zhaunfa"
+                android:drawablePadding="@dimen/dp5"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingTop="@dimen/dp8"
+                android:paddingRight="@dimen/dp10"
+                android:paddingBottom="@dimen/dp8"
+                android:text="@{bean.forward_number}"
+                android:textColor="#FF999999"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/tv_praise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/thumbup_selector"
+                android:drawablePadding="@dimen/dp5"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,bean)}"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingTop="@dimen/dp8"
+                android:paddingRight="10dp"
+                android:paddingBottom="@dimen/dp8"
+                android:text="@{String.valueOf(bean.like_number)}"
+                android:textColor="#FF999999"
+                android:textSize="11sp"
+                 />
+
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

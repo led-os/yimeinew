@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="urlhospital"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.PromoteRoutingBean" />
+        <!--
+                <variable
+                    name="listener"
+                    type="com.handong.framework.utils.ClickEventHandler" />
+
+        android:onClick="@{v -> listener.handleClick(v,bean)}"
+                    -->
+    </data>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingRight="@dimen/dp15"
+        tools:context=".ui.mine.fragment.IWantRecommendFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp15"
+                android:background="@color/white"
+                android:padding="@dimen/dp15">
+
+                <com.chengzi.app.widget.CircleImageView
+                    android:id="@+id/iv_head"
+                    android:layout_width="@dimen/dp50"
+                    android:layout_height="@dimen/dp50"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/morentouxiang"
+                    app:avatar="@{true}"
+                    app:image="@{url}"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp13"
+                    android:paddingTop="@dimen/dp5"
+                    android:text="@{bean.name}"
+                    android:textColor="#FF333333"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toRightOf="@id/iv_head" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp13"
+                    android:paddingTop="@dimen/dp1"
+                    android:text="@{bean.mobile}"
+                    android:textColor="#FF999999"
+                    android:textSize="15sp"
+                    app:layout_constraintLeft_toRightOf="@id/iv_head"
+                    app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+                <ImageView
+                    android:id="@+id/iv_qr_code"
+                    android:layout_width="228dp"
+                    android:layout_height="228dp"
+                    android:layout_marginTop="@dimen/dp30"
+                    android:src="@color/colorGray"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_head" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp22"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/dp5"
+                    app:layout_constraintTop_toBottomOf="@id/iv_qr_code">
+
+                    <ImageView
+                        android:id="@+id/iv_logo"
+                        android:layout_width="@dimen/dp30"
+                        android:layout_height="@dimen/dp41"
+                        android:src="@drawable/login_logo" />
+
+                    <TextView
+                        android:id="@+id/tv_hospital_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/iv_logo"
+                        android:paddingLeft="@dimen/dp7"
+                        android:paddingTop="@dimen/dp3"
+                        android:text="橙子医美整形平台"
+                        android:textColor="#FF333333"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_hospital_name"
+                        android:layout_toRightOf="@id/iv_logo"
+                        android:paddingLeft="@dimen/dp7"
+                        android:paddingTop="@dimen/dp1"
+                        android:text="美丽，让青春不离不弃"
+                        android:textColor="#FF999999"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="73dp"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginBottom="@dimen/dp15"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/dp15">
+
+                <!--urlhospital-->
+                <com.chengzi.app.widget.RatioImageView
+                    android:id="@+id/riv_image"
+                    android:layout_width="@dimen/dp50"
+                    android:layout_height="@dimen/dp50"
+                    android:scaleType="centerCrop"
+                    android:src="@color/colorGray"
+                    app:image="@{urlhospital}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dp10"
+                    android:text="@{bean.binding_name}"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/riv_image"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</layout>

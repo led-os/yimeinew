@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="userType"
+            type="Integer" />
+
+        <variable
+            name="begoodat"
+            type="Integer" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.home.bean.DoctorBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp10"
+        android:background="@android:color/white"
+        android:onClick="@{v -> listener.handleClick(v,bean)}"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingTop="@dimen/dp15"
+        android:paddingRight="@dimen/dp10"
+        android:paddingBottom="@dimen/dp10">
+
+        <LinearLayout
+            android:layout_width="@dimen/dp70"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp8"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@{bean.name}"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"
+                android:text="@{bean.rank}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp10">
+
+            <com.chengzi.app.widget.CircleImageView
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:layout_margin="@dimen/dp4"
+                android:scaleType="centerCrop"
+                app:avatar="@{true}"
+                app:image="@{bean.image}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="@dimen/dp6"
+                android:src="@drawable/guanggao"
+                android:visibility="@{bean.is_extension == 1?View.VISIBLE:View.GONE}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:src="@drawable/vip"
+                android:visibility="@{bean.is_Vip == 1?View.VISIBLE:View.GONE}" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp10"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!--android:text="@{userType==2?@string/profession_score(bean.grade):@string/profession_score_cou(bean.grade)}"-->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{@string/profession_scores(bean.grade)}"
+                    android:textColor="#FF666666"
+                    android:textSize="11sp" />
+
+                <!--android:text="@{@string/skill_score(bean.skill_grade)}"-->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{userType==2?@string/skill_scores(bean.skill_grade):@string/service_scores(bean.skill_grade)}"
+                    android:textColor="#FF666666"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp6"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{userType==2?@string/profession_age(bean.work_year):@string/counsel_num(bean.sheetNum)}"
+                    android:textColor="#FF666666"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{@string/his_order_num(bean.orderNum)}"
+                    android:textColor="#FF666666"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/good_at"
+                    android:textColor="#FF333333"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@{begoodat==1?bean.begoodat:bean.begoodatString}"
+                    android:textColor="#FF333333"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:background="@drawable/top_line_bg"
+                android:ellipsize="end"
+                android:paddingTop="@dimen/dp10"
+                android:singleLine="true"
+                android:text="@{bean.bind_name}"
+                android:textColor="#FF333333"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

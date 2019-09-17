@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="itemCount"
+            type="Integer" />
+
+        <variable
+            name="selectedPos"
+            type="Integer" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dp10"
+            android:background="@android:color/white"
+            android:layout_marginBottom="@dimen/dp10"
+
+            >
+
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
+                android:paddingTop="@dimen/dp10"
+                android:paddingBottom="@dimen/dp10"
+                >
+
+                <View
+                    android:layout_width="@dimen/dp3"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dp3"
+                    android:layout_marginBottom="@dimen/dp3"
+                    android:background="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp3"
+                    android:textColor="#FF333333"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <android.support.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginBottom="@dimen/dp4"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="@{itemCount &lt;= 0?View.GONE:View.VISIBLE}">
+
+                <View
+                    android:layout_width="@dimen/dp5"
+                    android:layout_height="@dimen/dp5"
+                    android:background="@drawable/point"
+                    android:selected="@{selectedPos == 0}" />
+
+                <View
+                    android:layout_width="@dimen/dp5"
+                    android:layout_height="@dimen/dp5"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:background="@drawable/point"
+                    android:selected="@{selectedPos == 1}"
+                    android:visibility="@{itemCount &lt;= 1?View.GONE:View.VISIBLE}"
+
+                    />
+
+                <View
+                    android:layout_width="@dimen/dp5"
+                    android:layout_height="@dimen/dp5"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:background="@drawable/point"
+                    android:selected="@{selectedPos == 2}"
+                    android:visibility="@{itemCount &lt;= 2?View.GONE:View.VISIBLE}" />
+
+                <View
+                    android:layout_width="@dimen/dp5"
+                    android:layout_height="@dimen/dp5"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:background="@drawable/point"
+                    android:selected="@{selectedPos == 3}"
+                    android:visibility="@{itemCount &lt;= 3?View.GONE:View.VISIBLE}" />
+
+                <View
+                    android:layout_width="@dimen/dp5"
+                    android:layout_height="@dimen/dp5"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:background="@drawable/point"
+                    android:selected="@{selectedPos == 4}"
+                    android:visibility="@{itemCount &lt;= 4?View.GONE:View.VISIBLE}" />
+
+                <View
+                    android:layout_width="@dimen/dp5"
+                    android:layout_height="@dimen/dp5"
+                    android:layout_marginLeft="@dimen/dp10"
+                    android:background="@drawable/point"
+                    android:selected="@{selectedPos == 5}"
+                    android:visibility="@{itemCount &lt;= 5?View.GONE:View.VISIBLE}" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+</layout>

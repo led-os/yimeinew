@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="viewModel"
+            type="com.chengzi.app.ui.onlinequestionandanswer.viewmodel.AskQuestionViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="@string/I_am_going_to_ask" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/btn_select_question_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_marginBottom="@dimen/dp10"
+                    android:onClick="@{v -> listener.onClick(v)}"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp15">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/problem_types"
+                        android:textColor="#FF333333"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/jianyou"
+                        android:drawablePadding="@dimen/dp10"
+                        android:gravity="center_vertical"
+                        android:hint="@string/please_select"
+                        android:textColor="#FF333333"
+                        android:textColorHint="@color/color_3"
+                        android:textSize="14sp"
+                        android:text="@{viewModel.categoryName}"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:background="@drawable/main_stroke_bg"
+                    android:orientation="vertical">
+
+                    <com.chengzi.app.widget.CommentEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:gravity="left|top"
+                        android:hint="@string/ask_question_hint1"
+                        android:maxLength="50"
+                        android:minLines="3"
+                        android:paddingLeft="@dimen/dp10"
+                        android:paddingTop="@dimen/dp10"
+                        android:paddingRight="@dimen/dp10"
+                        android:text="@={viewModel.questionDesc}"
+                        android:textColor="@color/color_3"
+                        android:textColorHint="#FF999999"
+                        android:textSize="14sp"
+                        app:hand_disableEmoji="false" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="@dimen/dp2"
+                        android:layout_marginRight="@dimen/dp10"
+                        android:layout_marginBottom="@dimen/dp10"
+                        android:text="@{@string/percent_50(viewModel.descLength)}"
+                        android:textColor="#FF333333"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp15"
+                    android:layout_marginRight="@dimen/dp15"
+                    android:background="@drawable/main_stroke_bg"
+                    android:orientation="vertical">
+
+                    <com.chengzi.app.widget.CommentEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:gravity="left|top"
+                        android:hint="@string/ask_question_hint2"
+                        android:maxLength="1000"
+                        android:minLines="6"
+                        android:paddingLeft="@dimen/dp10"
+                        android:paddingTop="@dimen/dp10"
+                        android:paddingRight="@dimen/dp10"
+                        android:text="@={viewModel.descSupplement}"
+                        android:textColor="@color/color_3"
+                        android:textColorHint="#FF999999"
+                        android:textSize="14sp"
+                        app:hand_disableEmoji="false" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="@dimen/dp2"
+                        android:layout_marginRight="@dimen/dp10"
+                        android:layout_marginBottom="@dimen/dp10"
+                        android:text="@{@string/percent_1000(viewModel.supplementLength)}"
+                        android:textColor="#FF333333"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btn_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="38dp"
+                    android:layout_marginTop="@dimen/dp60"
+                    android:layout_marginRight="38dp"
+                    android:layout_marginBottom="@dimen/dp30"
+                    android:background="@drawable/primary_round_bg"
+                    android:foreground="?selectableItemBackground"
+                    android:gravity="center"
+                    android:onClick="@{v -> listener.onClick(v)}"
+                    android:paddingTop="@dimen/dp12"
+                    android:paddingBottom="@dimen/dp12"
+                    android:text="@string/submit"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="15sp" />
+
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+
+    </LinearLayout>
+
+</layout>

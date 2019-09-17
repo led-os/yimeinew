@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/divider_match_parent"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp48"
+            android:gravity="center"
+            android:background="@color/white"
+            android:text="支付方式"
+            android:textColor="#FF333333"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_pay_wx"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/zhifu_weixin"
+            android:drawableRight="@drawable/jiantou_hui"
+            android:drawablePadding="@dimen/dp6"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingRight="@dimen/dp15"
+            android:text="微信"
+            android:textColor="#3E3A39"
+            android:textSize="16sp"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/tv_pay_ali"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/zhifu_zhifubao"
+            android:drawableRight="@drawable/jiantou_hui"
+            android:drawablePadding="@dimen/dp6"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingRight="@dimen/dp15"
+            android:text="@string/alipay"
+            android:textColor="#3E3A39"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp10"
+            android:background="@color/divider" />
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="#FF333333"
+            android:textSize="18sp" />
+    </LinearLayout>
+</layout>

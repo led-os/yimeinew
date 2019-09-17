@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="Object" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.activity.popularize.AdvPromoteSnapUpActivity">
+
+        <com.nevermore.oceans.widget.TopBar
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:centerText="抢广告位" />
+
+        <TextView
+            android:id="@+id/tv_city"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/home_dingwei"
+            android:drawablePadding="@dimen/dp8"
+            android:gravity="center_vertical"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:paddingLeft="@dimen/dp10"
+            android:text="北京"
+            android:textColor="#FF333333"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_type_cate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:textColor="@color/color_6"
+            android:textSize="14sp"
+            tools:text="普通区  皮肤美容" />
+
+        <RelativeLayout
+            android:id="@+id/rl_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp160"
+            android:layout_marginBottom="@dimen/dp10"
+            android:background="@color/white"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:padding="@dimen/dp10">
+
+            <ImageView
+                android:id="@+id/iv_img"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:background="@drawable/shangchuanzhaopian"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tv_img_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:padding="@dimen/dp15"
+                android:text="点击加号设置广告位照片，建议宽高比为1190x380"
+                android:textColor="#FF999999"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <!--秒杀价格-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp41"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp15"
+                android:text="预设消耗额度"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/et_seckill_money"
+                android:layout_width="@dimen/dp120"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="center_vertical|right"
+                android:hint="请输入金额"
+                android:imeOptions="actionNext"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp5"
+                android:singleLine="true"
+                android:textColor="@color/color_3"
+                android:textColorHint="#FF999999"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingRight="@dimen/dp15"
+                android:text="元"
+                android:textColor="#FF333333"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp0.5"
+            android:background="@drawable/list_divider_left15_bg" />
+
+        <!--每一轮秒杀活动的限购量-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp41"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <com.nevermore.oceans.widget.EnterLayout
+                android:id="@+id/el_type"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp15"
+                app:hideArrow="true"
+                app:textColor="@color/color_3"
+                app:textSize="15"
+                app:textSubject="跳转地址"
+                app:text_content="机构主页" />
+            <!-- <TextView
+                 android:layout_width="0dp"
+                 android:layout_height="match_parent"
+                 android:layout_weight="1"
+                 android:gravity="center_vertical"
+                 android:paddingLeft="@dimen/dp15"
+                 android:text="每一轮秒杀活动的限购量"
+                 android:textColor="#FF333333"
+                 android:textSize="15sp" />
+
+             <EditText
+                 android:id="@+id/et_seckill_num"
+                 android:layout_width="@dimen/dp120"
+                 android:layout_height="match_parent"
+                 android:background="@null"
+                 android:digits="@string/dist_num"
+                 android:gravity="center_vertical|right"
+                 android:hint="输入限购数量"
+                 android:imeOptions="actionDone"
+                 android:paddingLeft="@dimen/dp15"
+                 android:paddingRight="@dimen/dp5"
+                 android:singleLine="true"
+                 android:textColor="@color/color_3"
+                 android:textColorHint="#FF999999"
+                 android:textCursorDrawable="@null"
+                 android:textSize="15sp" />
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="match_parent"
+                 android:gravity="center_vertical"
+                 android:paddingRight="@dimen/dp15"
+                 android:text="件"
+                 android:textColor="#FF333333"
+                 android:textSize="15sp" />-->
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingTop="@dimen/dp10"
+            android:text="注：未填写预设消耗额度则默认为不限额度"
+            android:textColor="#FF999999"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            style="@style/submitBtnStyle"
+            android:layout_marginTop="@dimen/dp42"
+            android:background="@drawable/rect_btn_red_background"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:text="确定" />
+    </LinearLayout>
+</layout>

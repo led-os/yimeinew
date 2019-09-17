@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f5"
+        android:orientation="vertical"
+        tools:context=".ui.mine.fragment.HospitalCheckLookFragment">
+
+        <RadioGroup
+            android:id="@+id/rg_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/dp12"
+            android:paddingBottom="@dimen/dp10"
+            android:visibility="gone">
+
+            <RadioButton
+                android:id="@+id/rb_doctor"
+                android:layout_width="@dimen/dp90"
+                android:layout_height="@dimen/dp35"
+                android:background="@drawable/sel_doctor_check_look_left"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,null)}"
+                android:text="医生"
+                android:textColor="@drawable/sel_doctor_check_look_text_color"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/rb_counselor"
+                android:layout_width="@dimen/dp90"
+                android:layout_height="@dimen/dp35"
+                android:background="@drawable/sel_doctor_check_look_right"
+                android:button="@null"
+                android:gravity="center"
+                android:onClick="@{v -> listener.handleClick(v,null)}"
+                android:text="咨询师"
+                android:textColor="@drawable/sel_doctor_check_look_text_color"
+                android:textSize="13sp" />
+        </RadioGroup>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</layout>

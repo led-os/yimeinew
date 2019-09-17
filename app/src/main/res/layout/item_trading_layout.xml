@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="type"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.home.bean.TradeListBean" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp5">
+
+        <com.chengzi.app.widget.CircleImageView
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:scaleType="centerCrop"
+            android:src="@drawable/morentouxiang"
+            app:avatar="@{true}"
+            app:image="@{url}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp5"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="@{bean.user_names}"
+                    android:textColor="#FF333333"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/tv_type_show"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_weight="1"
+                    android:text="@{bean.timeBefore}"
+                    android:textColor="#FF999999"
+                    android:textSize="10sp"
+                    android:visibility='@{bean.type.equals("1")?View.VISIBLE:View.GONE}' />
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp5"
+                    android:layout_weight="1"
+                    android:textColor="#FF999999"
+                    android:textSize="10sp"
+                    android:visibility='@{bean.type.equals("1")?View.GONE:View.VISIBLE}' />
+
+                <TextView
+                    android:id="@+id/tv_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp8"
+                    android:background="@drawable/attention_bg_selector"
+                    android:paddingLeft="@dimen/dp10"
+                    android:paddingTop="@dimen/dp3"
+                    android:paddingRight="@dimen/dp10"
+                    android:paddingBottom="@dimen/dp3"
+                    android:text='@{bean.type.equals("1")?@string/to_buy:@string/to_spell_list}'
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="剩余"
+                    android:textColor="#FF999999"
+                    android:textSize="11sp"
+                    android:visibility='@{bean.type.equals("1")?View.GONE:View.VISIBLE}' />
+
+                <TextView
+                    android:id="@+id/tv_time_or_goodsname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textColor="#FF333333"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.UserOrderListBean.SpellPromoterEntity" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingTop="@dimen/dp5"
+        android:paddingBottom="@dimen/dp5">
+
+        <com.chengzi.app.widget.CircleImageView
+            android:id="@+id/iv_order_pic"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:scaleType="centerCrop"
+            android:src="@drawable/morentouxiang"
+            app:avatar="@{true}"
+            app:image="@{url}" />
+
+        <TextView
+            android:id="@+id/tv_order_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp6"
+            android:textColor="#FF333333"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toRightOf="@id/iv_order_pic" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp6"
+            android:textColor="#FF999999"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toRightOf="@id/iv_order_pic"
+            app:layout_constraintTop_toBottomOf="@id/tv_order_name" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

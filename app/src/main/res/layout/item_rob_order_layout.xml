@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="url"
+            type="String" />
+
+        <variable
+            name="bean"
+            type="com.chengzi.app.ui.mine.bean.SheetListBean" />
+
+        <variable
+            name="listener"
+            type="com.handong.framework.utils.ClickEventHandler" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/dp15"
+        android:paddingTop="@dimen/dp12">
+
+        <com.chengzi.app.widget.CircleImageView
+            android:id="@+id/iv_head"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:scaleType="centerCrop"
+            android:src="@drawable/morentouxiang"
+            app:avatar="@{true}"
+            app:image="@{url}" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/dp2"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp3"
+            android:text="@{bean.name}"
+            android:textColor="#FF333333"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toRightOf="@id/iv_head" />
+
+        <TextView
+            android:id="@+id/tv_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp12"
+            android:background="@drawable/rect_btn_red_background"
+            android:drawableLeft="@drawable/nv"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp5"
+            android:paddingRight="@dimen/dp5"
+            android:text="@{bean.age}"
+            android:textColor="#FFFFFFFF"
+            android:textSize="8sp"
+            app:layout_constraintLeft_toRightOf="@id/tv_name" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            app:layout_constraintLeft_toRightOf="@id/iv_head"
+            app:layout_constraintTop_toBottomOf="@id/tv_name">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp10"
+                android:text="评分："
+                android:textColor="@color/colorPrimary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{bean.grade+@string/score}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp10"
+                android:text="@{bean.cate_name}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_rob_order"
+            android:layout_width="@dimen/dp56"
+            android:layout_height="@dimen/dp24"
+            android:layout_marginRight="@dimen/dp15"
+            android:background="@drawable/rect_btn_red_background"
+            android:gravity="center"
+            android:onClick="@{v -> listener.handleClick(v,bean)}"
+            android:text="抢单"
+            android:textColor="#FFFFFFFF"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            style="@style/lineStyle"
+            android:layout_marginTop="@dimen/dp12"
+            app:layout_constraintTop_toBottomOf="@id/tv_rob_order" />
+    </android.support.constraint.ConstraintLayout>
+</layout>
